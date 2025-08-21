@@ -48,4 +48,13 @@ if [ $? -ne 0 ]; then
 fi
 echo "✅ Build successful"
 
+# Run build validation tests
+echo "🧪 Running build validation tests..."
+npm run test:build
+if [ $? -ne 0 ]; then
+    echo "❌ Build validation tests failed"
+    exit 1
+fi
+echo "✅ Build validation tests passed"
+
 echo "🎉 All local tests passed! Ready for CI/CD"
