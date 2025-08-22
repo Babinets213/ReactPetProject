@@ -7,7 +7,9 @@ export default function Hero() {
   return (
     <section className="flex flex-col items-center px-60 pb-50">
       <div className="mb-23 flex flex-col items-center justify-center">
-        <h1 className={`text-[70px] text-white ${poppins700.className} mb-3`}>
+        <h1
+          className={`text-center text-[70px] text-white ${poppins700.className} mb-3`}
+        >
           Welcome to Learning World
         </h1>
         <p className={`text-2xl ${inter400.className} mb-13 text-white`}>
@@ -15,10 +17,11 @@ export default function Hero() {
           and grow your career.
         </p>
         <Button type="primary" size="large">
-          Start Learning
+          Explore courses
         </Button>
       </div>
       <Image
+        unoptimized
         alt="Animated GIF showing mortgage learning process"
         src={"/animation.gif"}
         width={1440}

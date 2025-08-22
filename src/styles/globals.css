@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.bg-education-hover {
+  background: linear-gradient(176deg, #d7e7f9 13.12%, #d5f4ec 96.48%);
+}

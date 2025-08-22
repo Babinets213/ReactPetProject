@@ -1,6 +1,7 @@
 import { inter400, inter700, poppins700 } from "@/styles/fonts";
 import React from "react";
-import icons, { Icons } from "./icons";
+import { icons, Icons } from "./icons";
+import { BlurGradient } from "./ui/BackgroundGradients";
 
 type Feature = {
   title: string;
@@ -36,21 +37,21 @@ const features: Feature[] = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why" className="flex flex-col items-center gap-20">
+    <section id="why" className="flex flex-col items-center gap-20 pb-68">
       <div className="flex flex-col items-center gap-4">
         <span
-          className={`${inter400.className} text-2xl/[120%] tracking-[0.48px] text-[rgba(42,53,79,0.7)]`}
+          className={`${inter400.className} text-2xl leading-[120%] tracking-[0.48px] text-[rgba(42,53,79,0.7)]`}
         >
           Why choose us
         </span>
         <h2
-          className={`${poppins700.className} text-[56px]/[120%] text-[#2A354F]`}
+          className={`${poppins700.className} text-[56px] leading-[120%] text-[#2A354F]`}
         >
           Best Learning Experience
         </h2>
       </div>
 
-      <div className="grid grid-cols-4 gap-7.5">
+      <div className="relative grid grid-cols-4 gap-7.5">
         {features.map((feature, i) => {
           const IconComponent = icons[feature.icon];
           return (
@@ -61,15 +62,19 @@ export default function WhyChooseUs() {
               <div className="flex h-20 w-20 items-center justify-center">
                 <IconComponent />
               </div>
-              <h3 className={`${inter700.className} text-[23px]/[120%]`}>
+              <h3
+                className={`${inter700.className} text-[23px] leading-[120%]`}
+              >
                 {feature.title}
               </h3>
-              <p className={`${inter400.className} text-lg/[120%]`}>
+              <p className={`${inter400.className} text-lg leading-[120%]`}>
                 {feature.description}
               </p>
             </div>
           );
         })}
+
+        <BlurGradient />
       </div>
     </section>
   );
