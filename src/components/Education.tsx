@@ -69,7 +69,7 @@ export default function Education() {
         </Button>
       </div>
 
-      <div className="relative grid grid-cols-3 gap-[1.875rem] max-lg:grid-cols-2">
+      <div className="relative grid sm:grid-cols-2 sm:gap-3 md:gap-5 lg:grid-cols-3 2xl:gap-[1.875rem]">
         {educationBlocks.map((block, index) => (
           <EducationCard
             key={index}

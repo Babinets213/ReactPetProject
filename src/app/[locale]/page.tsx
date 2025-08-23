@@ -13,7 +13,7 @@ export default function HomePage() {
       <LandingPageGradient />
       <div className="relative">
         <Header />
-        <main className="sm:px-15 lg:px-30 2xl:px-60">
+        <main className="mt-41 sm:px-5 lg:px-10 2xl:px-60">
           <div className="min-h-screen w-full">
             <Hero />
             <WhyChooseUs />
