@@ -3,11 +3,10 @@ import React from "react";
 export function LeftGradient() {
   return (
     <svg
-      width="1396"
       height="1756"
       viewBox="0 0 1396 1756"
       fill="none"
-      className="absolute -top-135 -left-60 -z-10"
+      className="absolute -top-135 -left-60 -z-10 w-full"
       overflow="visible"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -58,8 +57,7 @@ export function LeftGradient() {
 export function RightGradient() {
   return (
     <svg
-      className="absolute -top-75 -right-50 -z-10"
-      width="1497"
+      className="absolute -top-75 -z-10 w-full sm:right-0 2xl:-right-50"
       height="1790"
       viewBox="0 0 1497 1790"
       fill="none"
@@ -113,9 +111,8 @@ export function RightGradient() {
 export function BlurGradient() {
   return (
     <svg
-      width="1545"
       height="1758"
-      className="absolute -top-130 -left-50 -z-10"
+      className="absolute -top-130 -left-50 -z-10 w-full"
       overflow="visible"
       viewBox="0 0 1545 1758"
       fill="none"

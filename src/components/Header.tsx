@@ -5,7 +5,7 @@ import Button from "./ui/Button";
 
 export default function Header() {
   return (
-    <header className="relative mb-41 flex w-full items-center justify-between px-60 py-4">
+    <header className="relative mb-41 flex w-full items-center justify-between py-4 sm:px-15 lg:px-30 2xl:px-60">
       <a href="#">
         <Image
           className="h-[50px]"

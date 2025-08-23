@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center px-60 pb-50">
+    <section className="flex flex-col items-center pb-50">
       <div className="mb-23 flex flex-col items-center justify-center">
         <h1
           className={`text-center text-[70px] text-white ${poppins700.className} mb-3`}
