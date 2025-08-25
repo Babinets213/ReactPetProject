@@ -37,24 +37,48 @@ export default function Header() {
             className={`flex justify-center text-base text-white sm:gap-0 lg:gap-3 2xl:gap-5 ${inter400.className}`}
           >
             <li>
-              <Link className="inline-block px-4 py-2" href="#why">
+              <Button
+                className="text-white"
+                to="#why"
+                type="text_btn"
+                size="normal"
+                content="text"
+              >
                 Benefit
-              </Link>
+              </Button>
             </li>
             <li>
-              <Link className="inline-block px-4 py-2" href="#education">
+              <Button
+                className="text-white"
+                to="#education"
+                type="text_btn"
+                size="normal"
+                content="text"
+              >
                 Learning Blocks
-              </Link>
+              </Button>
             </li>
             <li>
-              <Link className="inline-block px-4 py-2" href="#how">
+              <Button
+                className="text-white"
+                to="#how"
+                type="text_btn"
+                size="normal"
+                content="text"
+              >
                 How It Works
-              </Link>
+              </Button>
             </li>
             <li>
-              <Link className="inline-block px-4 py-2" href="#testimonial">
+              <Button
+                className="text-white"
+                to="#testimonial"
+                type="text_btn"
+                size="normal"
+                content="text"
+              >
                 Reviews
-              </Link>
+              </Button>
             </li>
           </ul>
         </nav>

@@ -1,10 +1,12 @@
 import { inter400, inter600 } from "@/styles/fonts";
+import Link from "next/link";
 import { ReactNode } from "react";
 
 type ButtonProps = {
   children: ReactNode;
   icon?: ReactNode;
   disabled?: boolean;
+  to?: string;
   content: "text" | "icon" | "text_icon";
   type: "primary" | "outline" | "text_btn";
   size: "normal" | "large";
@@ -15,6 +17,7 @@ function Button({
   children,
   icon,
   disabled,
+  to,
   type,
   size,
   content,
@@ -25,7 +28,8 @@ function Button({
   const typeStyles = {
     primary: `bg-[#2A354F] text-white disabled:bg-[#F5F5F5] disabled:text-[#C2C2C2] disabled:font-semibold hover:bg-[#A0F384] hover:text-[#2A354F] hover:font-semibold active:bg-[#96E57B] active:text-[#2A354F] active:font-semibold focus:font-semibold focus:bg-[#96E57B] focus:outline-none focus:ring focus:ring-offset-2 focus:ring-[#E1FFD5] focus:text-[#2A354F]`,
     outline: `bg-[#F4F5F6] border border-[#2A354F] text-[#2A354F] hover:bg-[#ECFDE6] hover:font-semibold active:bg-[#ECFDE6] active:font-semibold focus:font-semibold focus:outline-none focus:ring focus:ring-offset-2 focus:ring-[#E1FFD5] disabled:text-[#C2C2C2] disabled:border-[#F5F5F5] disabled:bg-[#F5F5F5]`,
-    text_btn: "",
+    text_btn:
+      "text-[#2A354F] hover:text-[#A0F384] active:text-[#96E57B] focus:font-semibold focus:outline-none focus:ring focus:ring-offset-2 focus:ring-[#E1FFD5] focus:text-[#96E57B] disabled:text-[#C2C2C2]",
   };
 
   const sizeStyles = {
@@ -40,6 +44,14 @@ function Button({
   };
 
   const combinedClassName = `${base} ${typeStyles[type]} ${sizeStyles[size]} ${contentStyles[content]} ${className}`;
+
+  if (to) {
+    return (
+      <Link className={combinedClassName} href={to}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button className={combinedClassName} disabled={disabled}>
