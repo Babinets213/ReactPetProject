@@ -58,7 +58,7 @@ const educationBlocks = [
 
 export default function Education() {
   return (
-    <section className="pb-65">
+    <section id="education" className="pb-65">
       <div className="mb-[5.375rem] flex flex-col items-center gap-4">
         <div className="flex items-center gap-6">
           <div>

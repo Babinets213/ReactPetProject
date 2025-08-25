@@ -42,17 +42,17 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link className="inline-block px-4 py-2" href="#">
+              <Link className="inline-block px-4 py-2" href="#education">
                 Learning Blocks
               </Link>
             </li>
             <li>
-              <Link className="inline-block px-4 py-2" href="#">
+              <Link className="inline-block px-4 py-2" href="#how">
                 How It Works
               </Link>
             </li>
             <li>
-              <Link className="inline-block px-4 py-2" href="#">
+              <Link className="inline-block px-4 py-2" href="#testimonial">
                 Reviews
               </Link>
             </li>
