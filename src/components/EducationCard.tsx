@@ -88,6 +88,7 @@ export default function EducationCard({
             className={isHovering ? "bg-[#ECFDE6]! font-semibold" : ""}
             type="outline"
             size="large"
+            content="text"
           >
             {buttonText}
           </Button>

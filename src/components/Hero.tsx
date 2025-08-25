@@ -16,7 +16,7 @@ export default function Hero() {
           The all-in-one learning platform for mortgage brokers: learn, certify,
           and grow your career.
         </p>
-        <Button type="primary" size="large">
+        <Button content="text" type="primary" size="large">
           Explore courses
         </Button>
       </div>

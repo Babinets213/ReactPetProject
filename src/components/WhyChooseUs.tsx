@@ -2,6 +2,7 @@ import { inter400, inter700, poppins700 } from "@/styles/fonts";
 import React from "react";
 import { icons, Icons } from "./icons";
 import { BlurGradient } from "./ui/BackgroundGradients";
+import GreenStrokeIcon from "./icons/GreenStrokeIcon";
 
 type Feature = {
   title: string;
@@ -39,11 +40,16 @@ export default function WhyChooseUs() {
   return (
     <section id="why" className="flex flex-col items-center gap-20 pb-68">
       <div className="flex flex-col items-center gap-4">
-        <span
-          className={`${inter400.className} text-2xl leading-[120%] tracking-[0.48px] text-[rgba(42,53,79,0.7)]`}
-        >
-          Why choose us
-        </span>
+        <div className="flex items-center gap-6">
+          <div>
+            <GreenStrokeIcon />
+          </div>
+          <span
+            className={`${inter400.className} text-2xl leading-[120%] tracking-[0.48px] text-[rgba(42,53,79,0.7)]`}
+          >
+            Why choose us
+          </span>
+        </div>
         <h2
           className={`${poppins700.className} text-[56px] leading-[120%] text-[#2A354F]`}
         >

@@ -5,6 +5,7 @@ import { inter400 } from "@/styles/fonts";
 import Button from "./ui/Button";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
+import CaretDownIcon from "./icons/CaretDownIcon";
 
 export default function Header() {
   const { ref: sentinelRef, inView } = useInView({
@@ -63,10 +64,15 @@ export default function Header() {
             className="bg-[rgba(255,255,255,0.3)] font-normal"
             type="primary"
             size="large"
+            content="text"
           >
             Explore courses
           </Button>
-          <Button type="primary" size="normal">
+          <select className="rounded-sm px-4 py-2 text-xl text-white focus:outline-none">
+            <option>EN</option>
+            <option>DE</option>
+          </select>
+          <Button content="text" type="primary" size="normal">
             Login
           </Button>
         </div>

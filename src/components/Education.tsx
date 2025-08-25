@@ -2,6 +2,8 @@ import React from "react";
 import Button from "./ui/Button";
 import EducationCard from "./EducationCard";
 import { LeftGradient, RightGradient } from "./ui/BackgroundGradients";
+import GreenStrokeIcon from "./icons/GreenStrokeIcon";
+import { inter400 } from "@/styles/fonts";
 
 const educationBlocks = [
   {
@@ -58,13 +60,21 @@ export default function Education() {
   return (
     <section className="pb-65">
       <div className="mb-[5.375rem] flex flex-col items-center gap-4">
-        <span className="text-2xl leading-[120%] tracking-[0.48px] text-[rgba(42,53,79,0.7)]">
-          Education
-        </span>
+        <div className="flex items-center gap-6">
+          <div>
+            <GreenStrokeIcon />
+          </div>
+          <span
+            className={`${inter400.className} text-2xl leading-[120%] tracking-[0.48px] text-[rgba(42,53,79,0.7)]`}
+          >
+            Education
+          </span>
+        </div>
+
         <h2 className="text-[56px] leading-[120%] font-bold text-[#2A354F]">
           Learning Paths for Every Level
         </h2>
-        <Button type="primary" size="large">
+        <Button content="text" type="primary" size="large">
           All Courses
         </Button>
       </div>
