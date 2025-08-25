@@ -2,10 +2,11 @@ import { inter400, poppins700 } from "@/styles/fonts";
 import React from "react";
 import Button from "./ui/Button";
 import Image from "next/image";
+import GreenCircleIcon from "./icons/GreenCircleIcon";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center pb-50">
+    <section className="relative flex flex-col items-center pb-50">
       <div className="mb-23 flex flex-col items-center justify-center">
         <h1
           className={`text-center text-[70px] text-white ${poppins700.className} mb-3`}
@@ -27,6 +28,8 @@ export default function Hero() {
         width={1440}
         height={660}
       />
+
+      <GreenCircleIcon />
     </section>
   );
 }
