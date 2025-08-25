@@ -26,7 +26,7 @@ export default function Header() {
           <Image
             className="h-[50px]"
             alt="Learning World logo"
-            src="/logo.png"
+            src="/images/logo.png"
             width={211}
             height={50}
           />

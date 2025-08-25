@@ -15,6 +15,11 @@ export const inter400 = Inter({
   weight: ["400"],
 });
 
+export const inter500 = Inter({
+  subsets: ["latin"],
+  weight: ["500"],
+});
+
 export const inter600 = Inter({
   subsets: ["latin"],
   weight: ["600"],

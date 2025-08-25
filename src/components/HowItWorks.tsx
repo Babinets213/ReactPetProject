@@ -27,12 +27,12 @@ export default function HowItWorks() {
         </h2>
       </div>
 
-      <div className="relative grid place-items-center sm:grid-cols-2 sm:gap-3 md:gap-5 lg:grid-cols-3 2xl:gap-7">
+      <ol className="relative grid place-items-center sm:grid-cols-2 sm:gap-3 md:gap-5 lg:grid-cols-3 2xl:gap-7">
         <div className="absolute top-10 left-1/2 -z-1 -translate-x-[50%]">
           <CurveIcon />
         </div>
 
-        <div className="flex h-full flex-col items-center justify-center text-center">
+        <li className="flex h-full flex-col items-center justify-center text-center">
           <div className="mb-6 flex h-[190px] items-start justify-center">
             <CreateAccountIcon />
           </div>
@@ -49,9 +49,9 @@ export default function HowItWorks() {
               dashboard
             </p>
           </div>
-        </div>
+        </li>
 
-        <div className="flex h-full flex-col items-center justify-center text-center">
+        <li className="flex h-full flex-col items-center justify-center text-center">
           <div className="mb-6 flex h-[190px] items-start justify-center">
             <ChooseBankIcon />
           </div>
@@ -69,9 +69,9 @@ export default function HowItWorks() {
               current level and goals
             </p>
           </div>
-        </div>
+        </li>
 
-        <div className="flex h-full flex-col items-center justify-center text-center">
+        <li className="flex h-full flex-col items-center justify-center text-center">
           <StartLearningIcon />
           <div className="mt-auto">
             <h3
@@ -86,8 +86,8 @@ export default function HowItWorks() {
               — no delays
             </p>
           </div>
-        </div>
-      </div>
+        </li>
+      </ol>
     </section>
   );
 }
