@@ -17,7 +17,7 @@ export default function StartLearningIcon() {
           width="140"
           height="149"
           fill="#14ACD7"
-          fill-opacity="0.1"
+          fillOpacity="0.1"
         />
       </g>
       <rect
@@ -37,8 +37,8 @@ export default function StartLearningIcon() {
         rx="15.6047"
         transform="rotate(-180 236.225 221.38)"
         stroke="white"
-        stroke-opacity="0.5"
-        stroke-width="0.790698"
+        strokeOpacity="0.5"
+        strokeWidth="0.790698"
       />
       <rect x="135" y="85" width="56" height="6" rx="3" fill="white" />
       <rect x="135" y="101" width="82" height="5" rx="2.5" fill="white" />
@@ -76,9 +76,9 @@ export default function StartLearningIcon() {
           width="350.853"
           height="359.853"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -97,9 +97,9 @@ export default function StartLearningIcon() {
           width="201"
           height="121"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

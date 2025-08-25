@@ -14,6 +14,10 @@ export default function Main() {
         <Education />
         <HowItWorks />
         <Testimonial />
+
+        <section>
+          <div className="px-20 py-[3.125rem]"></div>
+        </section>
       </div>
     </main>
   );

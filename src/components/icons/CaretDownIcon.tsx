@@ -12,8 +12,8 @@ export default function CaretDownIcon() {
       <path
         d="M13 6L8 11L3 6"
         stroke="white"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

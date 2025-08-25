@@ -7,8 +7,8 @@ export function BankCertificateIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1074_1196)">
-        <g clip-path="url(#clip1_1074_1196)">
+      <g clipPath="url(#clip0_1074_1196)">
+        <g clipPath="url(#clip1_1074_1196)">
           <path
             d="M39.5001 21.1049C42.7915 21.1049 45.4597 18.4367 45.4597 15.1453C45.4597 11.8539 42.7915 9.18567 39.5001 9.18567C36.2087 9.18567 33.5405 11.8539 33.5405 15.1453C33.5405 18.4367 36.2087 21.1049 39.5001 21.1049Z"
             fill="#2A354F"

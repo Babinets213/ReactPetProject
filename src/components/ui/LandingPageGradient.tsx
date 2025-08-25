@@ -22,8 +22,8 @@ export default function LandingPageGradient() {
             y2="882.5"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#14ACD7" />
-            <stop offset="1" stop-color="#A0F384" />
+            <stop stopColor="#14ACD7" />
+            <stop offset="1" stopColor="#A0F384" />
           </linearGradient>
         </defs>
       </svg>
@@ -44,8 +44,8 @@ export default function LandingPageGradient() {
             y2="1074"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#A0F384" />
-            <stop offset="1" stop-color="#CCF7E3" stop-opacity="0" />
+            <stop stopColor="#A0F384" />
+            <stop offset="1" stopColor="#CCF7E3" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>

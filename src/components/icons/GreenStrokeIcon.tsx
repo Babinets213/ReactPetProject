@@ -9,7 +9,7 @@ export default function GreenStrokeIcon() {
       viewBox="0 0 64 5"
       fill="none"
     >
-      <path d="M0 2.5H64" stroke="#A0F384" stroke-width="4" />
+      <path d="M0 2.5H64" stroke="#A0F384" strokeWidth="4" />
     </svg>
   );
 }

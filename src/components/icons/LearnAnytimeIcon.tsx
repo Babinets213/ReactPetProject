@@ -9,8 +9,8 @@ export default function LearnAnytimeIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1074_6828)">
-        <g clip-path="url(#clip1_1074_6828)">
+      <g clipPath="url(#clip0_1074_6828)">
+        <g clipPath="url(#clip1_1074_6828)">
           <path
             d="M15.651 21.8741C18.8118 21.8741 21.3742 19.3117 21.3742 16.1509C21.3742 12.99 18.8118 10.4276 15.651 10.4276C12.4901 10.4276 9.92773 12.99 9.92773 16.1509C9.92773 19.3117 12.4901 21.8741 15.651 21.8741Z"
             fill="#2A354F"
