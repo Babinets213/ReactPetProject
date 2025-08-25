@@ -5,8 +5,11 @@ import CurveIcon from "./icons/how-it-works/CurveIcon";
 import CreateAccountIcon from "./icons/how-it-works/CreateAccountIcon";
 import ChooseBankIcon from "./icons/how-it-works/ChooseBankIcon";
 import StartLearningIcon from "./icons/how-it-works/StartLearningIcon";
+import { useTranslations } from "next-intl";
 
 export default function HowItWorks() {
+  const t = useTranslations("HomePage.howItWorks");
+
   return (
     <section id="how" className="pb-50">
       <div className="mb-26 flex flex-col items-center gap-4">
@@ -17,13 +20,13 @@ export default function HowItWorks() {
           <span
             className={`${inter400.className} text-2xl leading-[120%] tracking-[0.48px] text-[rgba(42,53,79,0.7)]`}
           >
-            How it works
+            {t("subtitle")}
           </span>
         </div>
         <h2
           className={`${poppins700.className} text-[56px] leading-[120%] text-[#2A354F]`}
         >
-          How it works
+          {t("title")}
         </h2>
       </div>
 
@@ -40,13 +43,12 @@ export default function HowItWorks() {
             <h3
               className={`${poppins500.className} pb-8 text-[28px] text-[#2A354F]`}
             >
-              Create Account
+              {t("steps.createAccount.title")}
             </h3>
             <p
               className={`text-lg leading-[130%] ${inter400.className} text-[#2A354F]`}
             >
-              Sign up in just a few clicks to access your personalized learning
-              dashboard
+              {t("steps.createAccount.description")}
             </p>
           </div>
         </div>
@@ -60,13 +62,12 @@ export default function HowItWorks() {
             <h3
               className={`${poppins500.className} pb-8 text-[28px] text-[#2A354F]`}
             >
-              Choose a block
+              {t("steps.chooseBlock.title")}
             </h3>
             <p
               className={`text-lg leading-[130%] ${inter400.className} text-[#2A354F]`}
             >
-              Browse our course blocks and select the one that matches your
-              current level and goals
+              {t("steps.chooseBlock.description")}
             </p>
           </div>
         </div>
@@ -77,13 +78,12 @@ export default function HowItWorks() {
             <h3
               className={`${poppins500.className} pb-8 text-[28px] text-[#2A354F]`}
             >
-              Start learning instantly
+              {t("steps.startLearning.title")}
             </h3>
             <p
               className={`text-lg leading-[130%] ${inter400.className} text-[#2A354F]`}
             >
-              Get immediate access to lessons, materials, and progress tracking
-              — no delays
+              {t("steps.startLearning.description")}
             </p>
           </div>
         </div>

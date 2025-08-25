@@ -1,6 +1,117 @@
 {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "header": {
+      "nav": {
+        "benefit": "Benefit",
+        "education": "Learning Blocks",
+        "howItWorks": "How It Works",
+        "reviews": "Reviews"
+      },
+      "buttons": {
+        "explore": "Explore courses",
+        "login": "Login"
+      },
+      "language": {
+        "en": "EN",
+        "de": "DE"
+      }
+    },
+    "hero": {
+      "welcome": "Welcome to Learning World",
+      "subtitle": "The all-in-one learning platform for mortgage brokers: learn, certify, and grow your career.",
+      "getStarted": "Explore courses"
+    },
+    "whyChooseUs": {
+      "subtitle": "Why choose us",
+      "title": "Best Learning Experience",
+      "points": {
+        "recognized": {
+          "title": "Bank-recognized certificates",
+          "description": "Earn a certificate accepted by banks, agencies, and mortgage institutions."
+        },
+        "createdByProfessionals": {
+          "title": "Created by mortgage professionals",
+          "description": "Courses built by expert mortgage brokers with real-world scenarios."
+        },
+        "learning": {
+          "title": "Learn anytime",
+          "description": "Learn anytime, anywhere with 24/7 access to all materials."
+        },
+        "liveSupport": {
+          "title": "Live support & guidance",
+          "description": "Get live chat, technical help, and mentor advice throughout your journey."
+        }
+      }
+    },
+    "education": {
+      "subtitle": "Education",
+      "title": "Learning Paths for Every Level",
+      "button": "All Courses",
+      "blocks": [
+        {
+          "title": "Assessment Block",
+          "buttonText": "Start Assessment",
+          "description": "Gain a solid foundation: regulations, valuation, documentation. Required to unlock further modules.",
+          "items": [
+            "Der Hypothekarmarkt",
+            "Regulatorische Vorgaben",
+            "Verkehrswertschätzung",
+            "Refinanzierungsgeschäft",
+            "Tragbarkeitsberechnung",
+            "Neufinanzierungsgeschäft",
+            "Unterlagen für Hypothekarfinanzierung",
+            "Plattform «Chamäleon – H»"
+          ]
+        },
+        {
+          "title": "Professional Block",
+          "buttonText": "Start Professional",
+          "description": "Complex scenarios, multi-property strategy, and real client cases — for expert-level brokers.",
+          "items": [
+            "Renditeliegenschaften",
+            "Mehrfamilienhaus",
+            "Verpfändung & Vorsorgeguthaben",
+            "Kreditverträge & Produktvereinbarung",
+            "Bauland",
+            "Eigenmietwert & Grundstückgewinnsteuer"
+          ]
+        },
+        {
+          "title": "Expert Block",
+          "buttonText": "Start Expert",
+          "description": "Pick specific modules to deepen your expertise. Pay only for what you need.",
+          "items": [
+            "Eigenleistungen",
+            "Baurecht",
+            "Büro & Gewerbe",
+            "Schuldbriefe",
+            "Reservations- und Kaufvertrag",
+            "Schuldbriefe",
+            "Reservations- und Kaufvertrag",
+            "Renovationen & Umbau",
+            "Wohnrecht & Nutzniessung",
+            "Hypothekarmodelle & Strukturierung Hypothek"
+          ]
+        }
+      ]
+    },
+    "howItWorks": {
+      "subtitle": "How it works",
+      "title": "How it works",
+      "steps": {
+        "createAccount": {
+          "title": "Create Account",
+          "description": "Sign up in just a few clicks to access your personalized learning dashboard."
+        },
+        "chooseBlock": {
+          "title": "Choose a block",
+          "description": "Browse our course blocks and select the one that matches your current level and goals"
+        },
+        "startLearning": {
+          "title": "Start learning instantly",
+          "description": "Get immediate access to lessons, materials, and progress tracking — no delays"
+        }
+      }
+    }
   }
 }

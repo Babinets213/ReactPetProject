@@ -1,22 +1,43 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { inter400 } from "@/styles/fonts";
 import Button from "./ui/Button";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
-import CaretDownIcon from "./icons/CaretDownIcon";
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
 export default function Header() {
+  const [hasBeenInViewChecked, setHasBeenInViewChecked] = useState(false);
+
+  const t = useTranslations("HomePage.header");
+  const router = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale();
+
   const { ref: sentinelRef, inView } = useInView({
     threshold: 0,
     rootMargin: "150px 0px 0px 0px",
+    triggerOnce: false,
   });
+
+  useEffect(() => {
+    setHasBeenInViewChecked(true);
+  }, [inView]);
 
   const headerBaseClasses =
     "fixed top-0 z-50 flex w-full items-center justify-between py-4 transition-all duration-300 sm:px-5 lg:px-10 2xl:px-60";
 
-  const headerStyle = inView ? "bg-transparent text-white" : "bg-[#2A354F]";
+  const headerStyle = !hasBeenInViewChecked
+    ? "bg-transparent text-white"
+    : inView
+      ? "bg-transparent text-white"
+      : "bg-[#2A354F]";
+
+  const changeLanguage = function (locale: string) {
+    router.push(pathname, { locale });
+  };
 
   return (
     <>
@@ -44,7 +65,7 @@ export default function Header() {
                 size="normal"
                 content="text"
               >
-                Benefit
+                {t("nav.benefit")}
               </Button>
             </li>
             <li>
@@ -55,7 +76,7 @@ export default function Header() {
                 size="normal"
                 content="text"
               >
-                Learning Blocks
+                {t("nav.education")}
               </Button>
             </li>
             <li>
@@ -66,7 +87,7 @@ export default function Header() {
                 size="normal"
                 content="text"
               >
-                How It Works
+                {t("nav.howItWorks")}
               </Button>
             </li>
             <li>
@@ -77,7 +98,7 @@ export default function Header() {
                 size="normal"
                 content="text"
               >
-                Reviews
+                {t("nav.reviews")}
               </Button>
             </li>
           </ul>
@@ -90,14 +111,18 @@ export default function Header() {
             size="large"
             content="text"
           >
-            Explore courses
+            {t("buttons.explore")}
           </Button>
-          <select className="rounded-sm px-4 py-2 text-xl text-white focus:outline-none">
-            <option>EN</option>
-            <option>DE</option>
+          <select
+            onChange={(e) => changeLanguage(e.target.value)}
+            value={locale}
+            className="rounded-sm px-4 py-2 text-xl text-white focus:outline-none"
+          >
+            <option value="de">{t("language.de")}</option>
+            <option value="en">{t("language.en")}</option>
           </select>
           <Button content="text" type="primary" size="normal">
-            Login
+            {t("buttons.login")}
           </Button>
         </div>
       </header>
