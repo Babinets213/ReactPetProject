@@ -1,6 +1,117 @@
 {
   "HomePage": {
-    "title": "Hello DE!",
-    "about": "Go to the about page"
+    "header": {
+      "nav": {
+        "benefit": "Benefit",
+        "education": "Lernmodule",
+        "howItWorks": "So funktioniert's",
+        "reviews": "Bewertungen"
+      },
+      "buttons": {
+        "explore": "Explore courses",
+        "login": "Login"
+      },
+      "language": {
+        "en": "EN",
+        "de": "DE"
+      }
+    },
+    "hero": {
+      "welcome": "Willkommen bei der S.O.I. - Lernwelt",
+      "subtitle": "Die führende Lernplattform für Finanz- und Versicherungsexperten auf dem Weg zum Hypothekarspezialisten – Wissen aufbauen, Zertifizierungen erwerben und langfristig erfolgreich sein.",
+      "getStarted": "Lernen starten"
+    },
+    "whyChooseUs": {
+      "subtitle": "Warum Sie uns wählen sollten",
+      "title": "Gründe für Ihre Weiterbildung zum Hypothekarspezialisten",
+      "points": {
+        "recognized": {
+          "title": "Flexibles Lernen",
+          "description": "Jederzeit und überall Unsere Plattform ermöglicht es Ihnen, zeit- und ortsunabhängig zu lernen – ideal für berufstätige Spezialisten."
+        },
+        "createdByProfessionals": {
+          "title": "Erweiterung Ihres Angebots",
+          "description": "Mit Hypothekenberatung ergänzen Sie Ihr bestehendes Beratungs-Portfolio sinnvoll und steigern Ihre Kundenbindung und Ihren Umsatz."
+        },
+        "learning": {
+          "title": "Anerkannte Qualifikation",
+          "description": "Eine zertifizierte Ausbildung schafft Vertrauen bei Kunden und verschafft Ihnen einen klaren Vorsprung im Wettbewerb."
+        },
+        "liveSupport": {
+          "title": "Langfristige Perspektiven",
+          "description": "Immobilienfinanzierung bleibt ein wichtiger Meilenstein – als Hypothekarspezialist sichern Sie sich zukunftsfähige Karrierechancen."
+        }
+      }
+    },
+    "education": {
+      "subtitle": "Weiterbildung",
+      "title": "Lernwege für Einsteiger und Fortgeschrittene",
+      "button": "Alle Module",
+      "blocks": [
+        {
+          "title": "Assessment Module",
+          "buttonText": "Start Assessment",
+          "description": "Legen Sie das Fundament für Ihre Expertise in der Hypothekarfinanzierung – mit dem wichtigsten Basiswissen.",
+          "items": [
+            "Der Hypothekarmarkt",
+            "Regulatorische Vorgaben",
+            "Verkehrswertschätzung",
+            "Refinanzierungsgeschäft",
+            "Tragbarkeitsberechnung",
+            "Neufinanzierungsgeschäft",
+            "Unterlagen für Hypothekarfinanzierung",
+            "Plattform «Chamäleon – H»"
+          ]
+        },
+        {
+          "title": "Professional Module",
+          "buttonText": "Start Professional",
+          "description": "Erweitern Sie Ihre Kenntnisse systematisch bis zum Professional-Level mit unseren Aufbaumodulen.",
+          "items": [
+            "Renditeliegenschaften",
+            "Mehrfamilienhaus",
+            "Verpfändung & Vorsorgeguthaben",
+            "Kreditverträge & Produktvereinbarung",
+            "Bauland",
+            "Eigenmietwert & Grundstückgewinnsteuer"
+          ]
+        },
+        {
+          "title": "Expert Module",
+          "buttonText": "Start Expert",
+          "description": "Werden Sie nach dem Professional-Level zum Experten und erweitern Sie Ihr Fachwissen auf Expertenniveau.",
+          "items": [
+            "Eigenleistungen",
+            "Baurecht",
+            "Büro & Gewerbe",
+            "Schuldbriefe",
+            "Reservations- und Kaufvertrag",
+            "Schuldbriefe",
+            "Reservations- und Kaufvertrag",
+            "Renovationen & Umbau",
+            "Wohnrecht & Nutzniessung",
+            "Hypothekarmodelle & Strukturierung Hypothek"
+          ]
+        }
+      ]
+    },
+    "howItWorks": {
+      "subtitle": "Wie es funktioniert",
+      "title": "Wie es funktioniert",
+      "steps": {
+        "createAccount": {
+          "title": "Account erstellen",
+          "description": "Registriere dich in wenigen Schritten, um Zugriff auf dein personalisiertes Lern-Dashboard zu erhalten."
+        },
+        "chooseBlock": {
+          "title": "Lernmodule auswählen",
+          "description": "Finde deine Lernmodule, die dich interessieren und zu deinen Zielen passen."
+        },
+        "startLearning": {
+          "title": "Jetzt lernen",
+          "description": "Alles sofort verfügbar: Lektionen, Materialien und Fortschrittsübersicht – keine Wartezeiten!"
+        }
+      }
+    }
   }
 }

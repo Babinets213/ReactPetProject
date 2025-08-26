@@ -3,11 +3,10 @@ import React from "react";
 export function LeftGradient() {
   return (
     <svg
-      width="1396"
       height="1756"
       viewBox="0 0 1396 1756"
       fill="none"
-      className="absolute -top-135 -left-60 -z-10"
+      className="absolute -top-135 -left-60 -z-10 w-full"
       overflow="visible"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -22,9 +21,9 @@ export function LeftGradient() {
           width="1756"
           height="1756"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -44,11 +43,11 @@ export function LeftGradient() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(-35.2338 -790) rotate(64.1614) scale(2989.33 9011.91)"
         >
-          <stop offset="0.175497" stop-color="#D798E1" />
-          <stop offset="0.275566" stop-color="#9BFFA5" />
-          <stop offset="0.49892" stop-color="#AED3FF" />
-          <stop offset="0.565292" stop-color="#C9D4EF" />
-          <stop offset="0.656871" stop-color="#CACFFA" />
+          <stop offset="0.175497" stopColor="#D798E1" />
+          <stop offset="0.275566" stopColor="#9BFFA5" />
+          <stop offset="0.49892" stopColor="#AED3FF" />
+          <stop offset="0.565292" stopColor="#C9D4EF" />
+          <stop offset="0.656871" stopColor="#CACFFA" />
         </radialGradient>
       </defs>
     </svg>
@@ -58,8 +57,7 @@ export function LeftGradient() {
 export function RightGradient() {
   return (
     <svg
-      className="absolute -top-75 -right-50 -z-10"
-      width="1497"
+      className="absolute -top-75 -z-10 w-full sm:right-0 2xl:-right-50"
       height="1790"
       viewBox="0 0 1497 1790"
       fill="none"
@@ -77,9 +75,9 @@ export function RightGradient() {
           width="1790"
           height="1790"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -99,11 +97,11 @@ export function RightGradient() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(307.935 -875) rotate(64.1614) scale(3172.13 9563)"
         >
-          <stop offset="0.175497" stop-color="#D798E1" />
-          <stop offset="0.275566" stop-color="#9BFFA5" />
-          <stop offset="0.49892" stop-color="#AED3FF" />
-          <stop offset="0.565292" stop-color="#C9D4EF" />
-          <stop offset="0.656871" stop-color="#CACFFA" />
+          <stop offset="0.175497" stopColor="#D798E1" />
+          <stop offset="0.275566" stopColor="#9BFFA5" />
+          <stop offset="0.49892" stopColor="#AED3FF" />
+          <stop offset="0.565292" stopColor="#C9D4EF" />
+          <stop offset="0.656871" stopColor="#CACFFA" />
         </radialGradient>
       </defs>
     </svg>
@@ -113,9 +111,8 @@ export function RightGradient() {
 export function BlurGradient() {
   return (
     <svg
-      width="1545"
       height="1758"
-      className="absolute -top-130 -left-50 -z-10"
+      className="absolute -top-130 -left-50 -z-10 w-full"
       overflow="visible"
       viewBox="0 0 1545 1758"
       fill="none"
@@ -138,9 +135,9 @@ export function BlurGradient() {
           width="2545"
           height="1758"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -160,11 +157,11 @@ export function BlurGradient() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(-2001.13 -3615) rotate(53.5482) scale(9011.92 33099.6)"
         >
-          <stop offset="0.175497" stop-color="#D798E1" />
-          <stop offset="0.275566" stop-color="#9BFFA5" />
-          <stop offset="0.49892" stop-color="#D4F3FF" />
-          <stop offset="0.591346" stop-color="#C9EDEF" />
-          <stop offset="0.701923" stop-color="#CAFAE9" />
+          <stop offset="0.175497" stopColor="#D798E1" />
+          <stop offset="0.275566" stopColor="#9BFFA5" />
+          <stop offset="0.49892" stopColor="#D4F3FF" />
+          <stop offset="0.591346" stopColor="#C9EDEF" />
+          <stop offset="0.701923" stopColor="#CAFAE9" />
         </radialGradient>
       </defs>
     </svg>

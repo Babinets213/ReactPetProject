@@ -9,7 +9,7 @@ export default function MortgageProfessionalIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1074_1492)">
+      <g clipPath="url(#clip0_1074_1492)">
         <path
           d="M22.5726 15.8951C26.9425 15.8951 30.485 12.3526 30.485 7.98273C30.485 3.61282 26.9425 0.0703125 22.5726 0.0703125C18.2027 0.0703125 14.6602 3.61282 14.6602 7.98273C14.6602 12.3526 18.2027 15.8951 22.5726 15.8951Z"
           fill="#2A354F"

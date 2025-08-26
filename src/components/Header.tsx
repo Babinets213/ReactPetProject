@@ -1,51 +1,131 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { inter400 } from "@/styles/fonts";
 import Button from "./ui/Button";
+import Link from "next/link";
+import { useInView } from "react-intersection-observer";
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
 export default function Header() {
+  const [hasBeenInViewChecked, setHasBeenInViewChecked] = useState(false);
+
+  const t = useTranslations("HomePage.header");
+  const router = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale();
+
+  const { ref: sentinelRef, inView } = useInView({
+    threshold: 0,
+    rootMargin: "150px 0px 0px 0px",
+    triggerOnce: false,
+  });
+
+  useEffect(() => {
+    setHasBeenInViewChecked(true);
+  }, [inView]);
+
+  const headerBaseClasses =
+    "fixed top-0 z-50 flex w-full items-center justify-between py-4 transition-all duration-300 sm:px-5 lg:px-10 2xl:px-60";
+
+  const headerStyle = !hasBeenInViewChecked
+    ? "bg-transparent text-white"
+    : inView
+      ? "bg-transparent text-white"
+      : "bg-[#2A354F]";
+
+  const changeLanguage = function (locale: string) {
+    router.push(pathname, { locale });
+  };
+
   return (
-    <header className="relative mb-41 flex w-full items-center justify-between px-60 py-4">
-      <a href="#">
-        <Image
-          className="h-[50px]"
-          alt="Learning World logo"
-          src="/logo.png"
-          width={211}
-          height={50}
-        />
-      </a>
+    <>
+      <div ref={sentinelRef} className="h-[1px]"></div>
+      <header className={`${headerBaseClasses} ${headerStyle}`}>
+        <Link href="#">
+          <Image
+            className="h-[50px]"
+            alt="Learning World logo"
+            src="/images/logo.png"
+            width={211}
+            height={50}
+          />
+        </Link>
 
-      <nav className="absolute top-1/2 left-1/2 -translate-1/2">
-        <ul
-          className={`flex justify-center gap-5 text-base text-white ${inter400.className}`}
-        >
-          <li>
-            <a className="inline-block px-4 py-2" href="#why">
-              Benefit
-            </a>
-          </li>
-          <li>
-            <a className="inline-block px-4 py-2" href="#">
-              Learning Blocks
-            </a>
-          </li>
-          <li>
-            <a className="inline-block px-4 py-2" href="#">
-              How It Works
-            </a>
-          </li>
-          <li>
-            <a className="inline-block px-4 py-2" href="#">
-              Reviews
-            </a>
-          </li>
-        </ul>
-      </nav>
+        <nav className="absolute top-1/2 left-1/2 -translate-1/2 max-xl:hidden">
+          <ul
+            className={`flex justify-center text-base text-white sm:gap-0 lg:gap-3 2xl:gap-5 ${inter400.className}`}
+          >
+            <li>
+              <Button
+                className="text-white"
+                to="#why"
+                type="text_btn"
+                size="normal"
+                content="text"
+              >
+                {t("nav.benefit")}
+              </Button>
+            </li>
+            <li>
+              <Button
+                className="text-white"
+                to="#education"
+                type="text_btn"
+                size="normal"
+                content="text"
+              >
+                {t("nav.education")}
+              </Button>
+            </li>
+            <li>
+              <Button
+                className="text-white"
+                to="#how"
+                type="text_btn"
+                size="normal"
+                content="text"
+              >
+                {t("nav.howItWorks")}
+              </Button>
+            </li>
+            <li>
+              <Button
+                className="text-white"
+                to="#testimonial"
+                type="text_btn"
+                size="normal"
+                content="text"
+              >
+                {t("nav.reviews")}
+              </Button>
+            </li>
+          </ul>
+        </nav>
 
-      <Button type="primary" size="normal">
-        Login
-      </Button>
-    </header>
+        <div className="flex items-center gap-4">
+          <Button
+            className="bg-[rgba(255,255,255,0.3)] font-normal"
+            type="primary"
+            size="large"
+            content="text"
+          >
+            {t("buttons.explore")}
+          </Button>
+          <select
+            onChange={(e) => changeLanguage(e.target.value)}
+            value={locale}
+            className="rounded-sm px-4 py-2 text-xl text-white focus:outline-none"
+          >
+            <option value="de">{t("language.de")}</option>
+            <option value="en">{t("language.en")}</option>
+          </select>
+          <Button content="text" type="primary" size="normal">
+            {t("buttons.login")}
+          </Button>
+        </div>
+      </header>
+    </>
   );
 }

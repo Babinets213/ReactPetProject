@@ -77,7 +77,7 @@ export default function EducationCard({
         </ul>
       </div>
 
-      <div className="flex flex-col gap-6 px-22 pt-7 pb-10 text-center">
+      <div className="flex flex-col gap-6 pt-7 pb-10 text-center lg:px-10 xl:px-18 2xl:px-22">
         <span
           className={`${inter400.className} text-sm/[150%] text-[#2A354F] opacity-87`}
         >
@@ -88,6 +88,7 @@ export default function EducationCard({
             className={isHovering ? "bg-[#ECFDE6]! font-semibold" : ""}
             type="outline"
             size="large"
+            content="text"
           >
             {buttonText}
           </Button>

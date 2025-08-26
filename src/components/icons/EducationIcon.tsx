@@ -15,7 +15,7 @@ export default function EducationIcon({ type }: EducationSectionIcons) {
         cy="27"
         r="27"
         fill={type === "hover" ? "white" : "#A0F384"}
-        fill-opacity={type === "hover" ? "0.38" : "0.2"}
+        fillOpacity={type === "hover" ? "0.38" : "0.2"}
       />
       <path
         d="M19.5 38C17.0147 38 15 35.9853 15 33.5C15 31.0147 17.0147 29 19.5 29H25.5C27.9853 29 30 31.0147 30 33.5C30 35.9853 27.9853 38 25.5 38H19.5Z"
@@ -42,8 +42,8 @@ export default function EducationIcon({ type }: EducationSectionIcons) {
           y2="33.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#02C56A" />
-          <stop offset="1" stop-color="#008CB4" />
+          <stop stopColor="#02C56A" />
+          <stop offset="1" stopColor="#008CB4" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_292_616"
@@ -53,8 +53,8 @@ export default function EducationIcon({ type }: EducationSectionIcons) {
           y2="33.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#02C56A" />
-          <stop offset="1" stop-color="#008CB4" />
+          <stop stopColor="#02C56A" />
+          <stop offset="1" stopColor="#008CB4" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_292_616"
@@ -64,8 +64,8 @@ export default function EducationIcon({ type }: EducationSectionIcons) {
           y2="33.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#02C56A" />
-          <stop offset="1" stop-color="#008CB4" />
+          <stop stopColor="#02C56A" />
+          <stop offset="1" stopColor="#008CB4" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_292_616"
@@ -75,8 +75,8 @@ export default function EducationIcon({ type }: EducationSectionIcons) {
           y2="33.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#02C56A" />
-          <stop offset="1" stop-color="#008CB4" />
+          <stop stopColor="#02C56A" />
+          <stop offset="1" stopColor="#008CB4" />
         </linearGradient>
       </defs>
     </svg>

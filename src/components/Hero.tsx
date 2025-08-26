@@ -2,22 +2,27 @@ import { inter400, poppins700 } from "@/styles/fonts";
 import React from "react";
 import Button from "./ui/Button";
 import Image from "next/image";
+import GreenCircleIcon from "./icons/GreenCircleIcon";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+  const t = useTranslations("HomePage.hero");
+
   return (
-    <section className="flex flex-col items-center px-60 pb-50">
+    <section className="relative flex flex-col items-center pb-50">
       <div className="mb-23 flex flex-col items-center justify-center">
         <h1
           className={`text-center text-[70px] text-white ${poppins700.className} mb-3`}
         >
-          Welcome to Learning World
+          {t("welcome")}
         </h1>
-        <p className={`text-2xl ${inter400.className} mb-13 text-white`}>
-          The all-in-one learning platform for mortgage brokers: learn, certify,
-          and grow your career.
+        <p
+          className={`text-2xl ${inter400.className} mb-13 text-center text-white`}
+        >
+          {t("subtitle")}
         </p>
-        <Button type="primary" size="large">
-          Explore courses
+        <Button content="text" type="primary" size="large">
+          {t("getStarted")}
         </Button>
       </div>
       <Image
@@ -27,6 +32,8 @@ export default function Hero() {
         width={1440}
         height={660}
       />
+
+      <GreenCircleIcon />
     </section>
   );
 }
