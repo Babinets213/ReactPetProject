@@ -112,6 +112,58 @@
           "description": "Alles sofort verfügbar: Lektionen, Materialien und Fortschrittsübersicht – keine Wartezeiten!"
         }
       }
+    },
+    "testimonial": {
+      "title": "Erfahrungsberichte unserer Teilnehmenden",
+      "subtitle": "Kundenmeinungen",
+      "students": {
+        "luca": {
+          "name": "Luca Meier",
+          "title": "Independent Mortgage Broker",
+          "experience": "(5+ years experience)",
+          "rating": "4.9",
+          "quote": "The Learning World platform gave me exactly what I needed — up-to-date regulations, practical tools, and client-ready templates. The Assessment Block helped refresh my fundamentals in a structured way."
+        },
+        "anna": {
+          "name": "Anna Schneider",
+          "title": "Junior Broker at Raiffeisen Bank",
+          "rating": "4.8",
+          "quote": "As someone new to the industry, the modular approach made it easy to learn step-by-step. The Advanced modules gave me real confidence when discussing investment financing with clients."
+        },
+        "daniel": {
+          "name": "Daniel Frei",
+          "title": "Partnered Broker for UBS clients",
+          "rating": "5.0",
+          "quote": "The professional-level courses helped me deepen my understanding of SARON trends and build smarter financing strategies. I appreciated the Swiss-specific focus of each module."
+        }
+      }
+    },
+    "contactUs": {
+      "text": "Steigen Sie jetzt in die S.O.I. Lernwelt ein und bringen Sie Ihre Beratungskompetenz aufs nächste Level.",
+      "buttonText": "Jetzt anmelden"
+    },
+    "footer": {
+      "companyName": "S.O.I. Lernwelt",
+      "address": {
+        "street": "Industriestrasse 19,",
+        "city": "8112 Otelfingen"
+      },
+      "contact": {
+        "email": "info@soi-ag.ch",
+        "phone": "+41 79 728 91 86"
+      },
+      "information": {
+        "title": "Informationen",
+        "links": {
+          "home": "Startseite",
+          "benefit": "Benefit",
+          "learningBlocks": "Lernmodule",
+          "advantages": "So funktioniert's",
+          "contact": "Bewertungen"
+        }
+      },
+      "legal": "Datenschutzrichtlinie | Allgemeine Geschäftsbedingungen",
+      "copyright": "S.O.I. - Lernwelt 2025"
     }
   }
 }
