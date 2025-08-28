@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 type ButtonProps = {
   children: ReactNode;
   icon?: ReactNode;
+  iconPosition?: "left" | "right";
   disabled?: boolean;
   to?: string;
   content: "text" | "icon" | "text_icon";
@@ -16,6 +17,7 @@ type ButtonProps = {
 function Button({
   children,
   icon,
+  iconPosition,
   disabled,
   to,
   type,
@@ -48,7 +50,20 @@ function Button({
   if (to) {
     return (
       <Link className={combinedClassName} href={to}>
-        {children}
+        {content === "icon" && icon}
+        {content === "text" && children}
+        {content === "text_icon" && iconPosition === "right" && (
+          <>
+            {children}
+            {icon}
+          </>
+        )}
+        {content === "text_icon" && iconPosition === "left" && (
+          <>
+            {icon}
+            {children}
+          </>
+        )}
       </Link>
     );
   }

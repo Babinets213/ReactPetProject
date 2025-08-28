@@ -121,7 +121,7 @@ export default function Header() {
             <option value="de">{t("language.de")}</option>
             <option value="en">{t("language.en")}</option>
           </select>
-          <Button content="text" type="primary" size="normal">
+          <Button to="/auth" content="text" type="primary" size="normal">
             {t("buttons.login")}
           </Button>
         </div>
