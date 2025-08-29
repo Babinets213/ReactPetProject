@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Figma file: https://www.figma.com/design/ZJgOInYyBdphBk5uSTlWQo/Learning-World
+
 First, run the development server:
 
 ```bash
