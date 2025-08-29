@@ -58,12 +58,14 @@ export default function LoginForm({ toggleComponent }: LoginFormProps) {
           register={register("email", { required: "Email is required" })}
           labelText="Email"
           inputType="text"
+          error={errors.email}
           placeholder={"Enter your email"}
         />
         <Input
           register={register("password", { required: "Password is required" })}
           labelText="Password"
           inputType="password"
+          error={errors.password}
           icon
           placeholder={"Enter your password"}
         />

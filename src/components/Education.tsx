@@ -35,7 +35,7 @@ export default function Education() {
           {t("title")}
         </h2>
         <Button content="text" btnType="primary" size="large">
-          {t("button")}
+          All Courses
         </Button>
       </div>
 

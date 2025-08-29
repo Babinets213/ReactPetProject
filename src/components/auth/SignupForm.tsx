@@ -6,44 +6,62 @@ import Checkbox from "../ui/Checkbox";
 import Button from "../ui/Button";
 import CheckMarkIcon from "../icons/CheckMarkIcon";
 import { SubmitHandler, useForm } from "react-hook-form";
-import {
-  emailValidationRules,
-  passwordChecklist,
-  passwordValidationRules,
-  validatePasswordRules,
-} from "@/utils/validation";
 import SuccessfulSignUp from "./SuccessfulSignUp";
 import { useTranslations } from "next-intl";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createSignupSchema, SignupFormFields } from "@/schemas/signupSchema";
 
 type SignupFormProps = {
   toggleComponent: ReactNode;
 };
 
-type FormFields = {
-  email: string;
-  password: string;
-};
-
 export default function SignupForm({ toggleComponent }: SignupFormProps) {
+  const t = useTranslations("AuthPage.signup");
+  const commonT = useTranslations("common");
+
+  const signupSchema = createSignupSchema(t);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     watch,
     reset,
-  } = useForm<FormFields>();
-
-  const t = useTranslations("AuthPage.signup");
-  const commonT = useTranslations("common");
+  } = useForm<SignupFormFields>({
+    resolver: zodResolver(signupSchema),
+  });
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const password = watch("password") || "";
+  const email = watch("email") || "";
   const hasStartedTyping = password.length > 0;
-  const validationResults = validatePasswordRules(password);
 
-  const onSubmit: SubmitHandler<FormFields> = function (data) {
+  const passwordRules = {
+    hasMinLength: password.length >= 10,
+    hasNoSpaces: !/\s/.test(password),
+    hasLetter: /[a-zA-Z]/.test(password),
+    hasNumber: /\d/.test(password),
+    hasSpecialChar: /[^a-zA-Z0-9]/.test(password),
+  };
+
+  const validationResults = passwordRules;
+
+  type PasswordValidationKey = keyof typeof passwordRules;
+
+  const passwordChecklist: {
+    key: PasswordValidationKey;
+    label: string;
+  }[] = [
+    { key: "hasMinLength", label: t("validation.password.minLength") },
+    { key: "hasNoSpaces", label: t("validation.password.noSpaces") },
+    { key: "hasLetter", label: t("validation.password.letter") },
+    { key: "hasNumber", label: t("validation.password.number") },
+    { key: "hasSpecialChar", label: t("validation.password.specialChar") },
+  ];
+
+  const onSubmit: SubmitHandler<SignupFormFields> = function (data) {
     try {
       console.log(data);
       console.log(errors);
@@ -53,6 +71,14 @@ export default function SignupForm({ toggleComponent }: SignupFormProps) {
       console.error(e);
     }
   };
+
+  const isPasswordValid =
+    password.length >= 10 && Object.values(validationResults).every(Boolean);
+
+  const isEmailValid =
+    email.length > 0 &&
+    !errors.email &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   if (isRegistered) return <SuccessfulSignUp />;
 
@@ -75,9 +101,9 @@ export default function SignupForm({ toggleComponent }: SignupFormProps) {
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
         <Input
-          register={register("email", emailValidationRules)}
+          register={register("email")}
           error={errors.email}
-          success={!!watch("email") && !errors.email}
+          success={isEmailValid}
           icon
           labelText={commonT("emailInputLabel")}
           inputType="text"
@@ -85,9 +111,9 @@ export default function SignupForm({ toggleComponent }: SignupFormProps) {
         />
 
         <Input
-          register={register("password", passwordValidationRules)}
+          register={register("password")}
           error={errors.password}
-          success={!!watch("password") && !errors.password}
+          success={isPasswordValid}
           labelText={commonT("passwordInputLabel")}
           inputType="password"
           icon

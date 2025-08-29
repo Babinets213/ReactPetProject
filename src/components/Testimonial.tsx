@@ -61,7 +61,7 @@ export default function Testimonial() {
                 <span
                   className={`text-xl ${inter700.className} leading-[120%] tracking-[0.4px] text-[#1A2434] opacity-70`}
                 >
-                  <strong>{t("students.luca.rating")}</strong>  
+                  <strong>{t("students.luca.rating")}</strong>
                 </span>
               </div>
             </div>

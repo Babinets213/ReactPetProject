@@ -184,20 +184,25 @@
       "title": "Create Your Account",
       "paragraph": "Make a difference – create an account now and get started!",
       "terms": "I agree to terms & conditions",
-      "btnText": "Create account"
-    },
-    "validation": {
-      "password": {
-        "required": "Password is required",
-        "minLength": "10 characters minimum",
-        "noSpaces": "Cannot contain spaces",
-        "letter": "At least one letter",
-        "number": "At least one number",
-        "specialChar": "At least one special character"
+      "btnText": "Create account",
+      "validation": {
+        "password": {
+          "required": "Password is required",
+          "minLength": "10 characters minimum",
+          "noSpaces": "Cannot contain spaces",
+          "letter": "At least one letter",
+          "number": "At least one number",
+          "specialChar": "At least one special character"
+        },
+        "email": {
+          "required": "Email is required",
+          "invalid": "Invalid email address"
+        }
       },
-      "email": {
-        "required": "Email is required",
-        "invalid": "Invalid email address"
+      "successfulSignup": {
+        "title": "Account created successfully!",
+        "paragraph": "Glad to have you on board! Your professional growth starts here.",
+        "btnText": "Let's start"
       }
     }
   }

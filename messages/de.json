@@ -184,7 +184,26 @@
       "title": "Account erstellen",
       "paragraph": "Mach den Unterschied – jetzt Konto erstellen und durchstarten!",
       "terms": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB)",
-      "btnText": "Account erstellen"
+      "btnText": "Account erstellen",
+      "validation": {
+        "password": {
+          "required": "Passwort erforderlich",
+          "minLength": "Mindestens 10 Zeichen",
+          "noSpaces": "Keine Leerzeichen",
+          "letter": "Mindestens ein Buchstabe",
+          "number": "Mindestens eine Nummer",
+          "specialChar": "Mindestens ein Sonderzeichen"
+        },
+        "email": {
+          "required": "E-Mail-Adresse erforderlich",
+          "invalid": "Ungültige E-Mail-Adresse"
+        }
+      },
+      "successfulSignup": {
+        "title": "Account erfolgreich eingerichtet!",
+        "paragraph": "Willkommen im Team! Hiermit beginnt deine Erfolgsgeschichte!",
+        "btnText": "START"
+      }
     }
   }
 }
