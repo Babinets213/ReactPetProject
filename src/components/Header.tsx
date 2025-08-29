@@ -12,6 +12,7 @@ export default function Header() {
   const [hasBeenInViewChecked, setHasBeenInViewChecked] = useState(false);
 
   const t = useTranslations("HomePage.header");
+  const commonT = useTranslations("common");
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
@@ -47,7 +48,7 @@ export default function Header() {
           <Image
             className="h-[50px]"
             alt="Learning World logo"
-            src="/images/logo.png"
+            src={`/images/${commonT("logo")}`}
             width={211}
             height={50}
           />
@@ -61,7 +62,7 @@ export default function Header() {
               <Button
                 className="text-white"
                 to="#why"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >
@@ -72,7 +73,7 @@ export default function Header() {
               <Button
                 className="text-white"
                 to="#education"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >
@@ -83,7 +84,7 @@ export default function Header() {
               <Button
                 className="text-white"
                 to="#how"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >
@@ -94,7 +95,7 @@ export default function Header() {
               <Button
                 className="text-white"
                 to="#testimonial"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >
@@ -107,7 +108,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <Button
             className="bg-[rgba(255,255,255,0.3)] font-normal"
-            type="primary"
+            btnType="primary"
             size="large"
             content="text"
           >
@@ -121,7 +122,7 @@ export default function Header() {
             <option value="de">{t("language.de")}</option>
             <option value="en">{t("language.en")}</option>
           </select>
-          <Button content="text" type="primary" size="normal">
+          <Button to="/auth" content="text" btnType="primary" size="normal">
             {t("buttons.login")}
           </Button>
         </div>

@@ -74,7 +74,7 @@ export default function Footer() {
               <Button
                 className="pl-0 text-white"
                 to="#"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >
@@ -85,7 +85,7 @@ export default function Footer() {
               <Button
                 className="pl-0 text-white"
                 to="#why"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >
@@ -96,7 +96,7 @@ export default function Footer() {
               <Button
                 className="pl-0 text-white"
                 to="#education"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >
@@ -107,7 +107,7 @@ export default function Footer() {
               <Button
                 className="pl-0 text-white"
                 to="#how"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >
@@ -118,7 +118,7 @@ export default function Footer() {
               <Button
                 className="pl-0 text-white"
                 to="#contact"
-                type="text_btn"
+                btnType="text_btn"
                 size="normal"
                 content="text"
               >

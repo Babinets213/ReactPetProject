@@ -20,21 +20,3 @@ export default function Main() {
     </main>
   );
 }
-
-{
-  /*
-  <div className="flex items-center gap-4">
-  <div className="flex items-center gap-2 bg-[#CFE7E4] rounded px-3 py-1">
-    <MailIcon className="text-gray-500" />
-    <input
-      className="w-64 bg-transparent outline-none"
-      placeholder="name@email.com"
-      aria-label="Email address"
-    />
-  </div>
-  <Button size="normal" type="primary">
-    Join now
-  </Button>
-</div>
-  */
-}

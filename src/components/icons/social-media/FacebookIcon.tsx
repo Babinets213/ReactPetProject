@@ -12,8 +12,8 @@ export default function FacebookIcon() {
       <path
         d="M11.9998 1.3335H9.99984C9.11578 1.3335 8.26794 1.68469 7.64281 2.30981C7.01769 2.93493 6.6665 3.78277 6.6665 4.66683V6.66683H4.6665V9.3335H6.6665V14.6668H9.33317V9.3335H11.3332L11.9998 6.66683H9.33317V4.66683C9.33317 4.49002 9.40341 4.32045 9.52843 4.19543C9.65346 4.0704 9.82303 4.00016 9.99984 4.00016H11.9998V1.3335Z"
         stroke="white"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

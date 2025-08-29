@@ -21,7 +21,7 @@ export default function ContactUs() {
             className={`flex-1 bg-transparent text-xl leading-[120%] tracking-[0.4px] text-[#1A2434] opacity-100 outline-none ${inter400.className} placeholder:text-xl placeholder:leading-[120%] placeholder:tracking-[0.4px] placeholder:text-[#1A2434] placeholder:opacity-70 placeholder:${inter400.className} `}
             placeholder="name@email.com"
           />
-          <Button content="text" size="normal" type="primary">
+          <Button content="text" size="normal" btnType="primary">
             {t("buttonText")}
           </Button>
         </div>
