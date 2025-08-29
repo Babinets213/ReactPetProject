@@ -1,4 +1,5 @@
 import { inter600 } from "@/styles/fonts";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 type FormToggleProps = {
@@ -7,6 +8,8 @@ type FormToggleProps = {
 };
 
 export default function FormToggle({ activeForm, onToggle }: FormToggleProps) {
+  const t = useTranslations("AuthPage");
+
   return (
     <div
       className={`flex h-12 rounded-full ${inter600.className} bg-[#2A354F] p-1 text-lg leading-[120%]`}
@@ -15,13 +18,13 @@ export default function FormToggle({ activeForm, onToggle }: FormToggleProps) {
         onClick={() => onToggle("login")}
         className={`flex-1 rounded-full ${activeForm === "login" ? `bg-[#E1FFD5] text-[#2A354F]` : "text-white"} `}
       >
-        Login
+        {t("login.label")}
       </button>
       <button
         onClick={() => onToggle("signup")}
         className={`flex-1 rounded-full ${activeForm === "signup" ? `bg-[#E1FFD5] text-[#2A354F]` : "text-white"} `}
       >
-        Sign Up
+        {t("signup.label")}
       </button>
     </div>
   );

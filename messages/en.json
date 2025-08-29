@@ -1,4 +1,12 @@
 {
+  "common": {
+    "logo": "en_logo.png",
+    "backBtn": "Back",
+    "emailInputLabel": "Email",
+    "emailInputPlaceholder": "Enter your email",
+    "passwordInputLabel": "Password",
+    "passwordInputPlaceholder": "Enter your password"
+  },
   "HomePage": {
     "header": {
       "nav": {
@@ -164,6 +172,33 @@
       },
       "legal": "Privacy Policy | Terms & Conditions",
       "copyright": "Learning World 2025"
+    }
+  },
+  "AuthPage": {
+    "title": "Gain knowledge, <br /> certification, and <br /> support.",
+    "login": {
+      "label": "Login"
+    },
+    "signup": {
+      "label": "Sign Up",
+      "title": "Create Your Account",
+      "paragraph": "Make a difference – create an account now and get started!",
+      "terms": "I agree to terms & conditions",
+      "btnText": "Create account"
+    },
+    "validation": {
+      "password": {
+        "required": "Password is required",
+        "minLength": "10 characters minimum",
+        "noSpaces": "Cannot contain spaces",
+        "letter": "At least one letter",
+        "number": "At least one number",
+        "specialChar": "At least one special character"
+      },
+      "email": {
+        "required": "Email is required",
+        "invalid": "Invalid email address"
+      }
     }
   }
 }

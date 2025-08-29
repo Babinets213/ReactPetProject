@@ -21,7 +21,7 @@ export default function Hero() {
         >
           {t("subtitle")}
         </p>
-        <Button content="text" type="primary" size="large">
+        <Button content="text" btnType="primary" size="large">
           {t("getStarted")}
         </Button>
       </div>

@@ -1,4 +1,12 @@
 {
+  "common": {
+    "logo": "de_logo.png",
+    "backBtn": "Zurück",
+    "emailInputLabel": "E-Mail",
+    "emailInputPlaceholder": "E-Mail-Adresse eingeben",
+    "passwordInputLabel": "Password",
+    "passwordInputPlaceholder": "Passwort eingeben"
+  },
   "HomePage": {
     "header": {
       "nav": {
@@ -164,6 +172,19 @@
       },
       "legal": "Datenschutzrichtlinie | Allgemeine Geschäftsbedingungen",
       "copyright": "S.O.I. - Lernwelt 2025"
+    }
+  },
+  "AuthPage": {
+    "title": "Fachkompetenzen <br /> erweitern, Zertifikate <br /> erwerben und auf <br /> professionelle <br /> Unterstützung zählen.",
+    "login": {
+      "label": "Login"
+    },
+    "signup": {
+      "label": "Registrieren",
+      "title": "Account erstellen",
+      "paragraph": "Mach den Unterschied – jetzt Konto erstellen und durchstarten!",
+      "terms": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB)",
+      "btnText": "Account erstellen"
     }
   }
 }

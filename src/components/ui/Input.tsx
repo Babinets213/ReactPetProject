@@ -6,20 +6,24 @@ import clsx from "clsx";
 import SuccessIcon from "../icons/input-icons/SuccessIcon";
 import ErrorIcon from "../icons/input-icons/ErrorIcon";
 import EyeIcon from "../icons/input-icons/EyeIcon";
+import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
 type InputProps = {
-  error?: boolean;
+  id?: string;
+  error?: FieldError | undefined;
   success?: boolean;
   labelText?: string;
   icon?: boolean;
   placeholder: string;
-  value: string;
+  value?: string;
   inputType: "text" | "password";
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  register?: UseFormRegisterReturn;
 };
 
 export default function Input({
-  error = false,
+  id,
+  error,
   success = false,
   labelText,
   inputType = "text",
@@ -27,17 +31,18 @@ export default function Input({
   placeholder,
   value,
   onChange,
+  register,
 }: InputProps) {
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   const getBorderColor = function () {
-    if (error) return "border-[#F75555]";
-    if (success) return "border-[#27AE60]";
+    if (error?.message) return "border-[#F75555] focus-within:border-[#F75555]";
+    if (success) return "border-[#27AE60] focus-within:border-[#27AE60]";
     return "border-[#C2C2C2]";
   };
 
   const getHoverBorderColor = function () {
-    if (error) return "hover:border-[#F75555]";
+    if (error?.message) return "hover:border-[#F75555]";
     if (success) return "hover:border-[#27AE60]";
     return "hover:border-[#2A354F]";
   };
@@ -79,6 +84,7 @@ export default function Input({
         )}
       >
         <input
+          id={id}
           value={value}
           onChange={onChange}
           type={
@@ -88,6 +94,7 @@ export default function Input({
                 : "password"
               : "text"
           }
+          {...register}
           className={clsx(
             inter400.className,
             "w-full outline-none placeholder:text-base placeholder:leading-[120%] placeholder:text-[#757575]",
@@ -98,6 +105,13 @@ export default function Input({
         />
         {icon && <span>{renderIcon()}</span>}
       </div>
+      {error && "message" in error && (
+        <span
+          className={`${inter400.className} text-base leading-[120%] text-[#F75555]`}
+        >
+          {error.message}
+        </span>
+      )}
     </div>
   );
 }

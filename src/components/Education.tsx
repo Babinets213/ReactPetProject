@@ -34,7 +34,7 @@ export default function Education() {
         <h2 className="text-[56px] leading-[120%] font-bold text-[#2A354F]">
           {t("title")}
         </h2>
-        <Button content="text" type="primary" size="large">
+        <Button content="text" btnType="primary" size="large">
           {t("button")}
         </Button>
       </div>

@@ -14,7 +14,7 @@ export default function ChevronLeftIcon() {
         stroke="#687083"
         strokeWidth="2"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

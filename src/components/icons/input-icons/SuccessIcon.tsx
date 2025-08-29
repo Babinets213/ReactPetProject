@@ -13,7 +13,7 @@ export default function SuccessIcon() {
         d="M13.3337 4.5L6.00033 11.8333L2.66699 8.5"
         stroke="#27AE60"
         strokeLinecap="round"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
