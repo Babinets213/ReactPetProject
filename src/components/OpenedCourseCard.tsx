@@ -1,0 +1,67 @@
+import { inter400, inter600, inter700 } from "@/styles/fonts";
+import React from "react";
+import Button from "./ui/Button";
+import Tag from "./ui/Tag";
+import { Course } from "@/app/[locale]/courses/page";
+
+type OpenedCourseCardProps = {
+  course: Course;
+};
+
+export default function OpenedCourseCard({ course }: OpenedCourseCardProps) {
+  const { title, description, price, categories, tags } = course;
+
+  return (
+    <div className="flex flex-col rounded-sm border border-[#F1F1F3] px-10 pt-10 pb-5">
+      {/* Title and description */}
+      <div className="mb-3 flex items-center gap-[50px]">
+        <div>
+          <h3
+            className={`${inter700.className} mb-[10px] text-[23px] leading-[120%] text-[#2A354F]`}
+          >
+            {title}
+          </h3>
+          <p
+            className={`${inter400.className} text-base leading-[120%] text-[#2A354F]`}
+          >
+            {description}
+          </p>
+        </div>
+
+        <span
+          className={`text-lg whitespace-nowrap uppercase ${inter600.className} leading-[120%] text-[#2A354F]`}
+        >
+          {price} chf
+        </span>
+
+        <Button
+          className="whitespace-nowrap"
+          size="large"
+          content="text"
+          btnType="outline"
+        >
+          Add to Cart
+        </Button>
+      </div>
+
+      {/* Tag Container */}
+      <div className="flex gap-[10px]">
+        <Tag text={tags[0]} type="time" />
+        <Tag text={tags[1]} type="complexity" />
+      </div>
+
+      {/* Category Button Container */}
+      <div className="flex flex-wrap gap-3 py-3">
+        {categories.map((category, i) => (
+          <div key={i} className="rounded-sm bg-[#F3F3F3] px-3 py-2">
+            <span
+              className={`${inter400.className} leading-[120%] text-[#2A354F]`}
+            >
+              {category}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
