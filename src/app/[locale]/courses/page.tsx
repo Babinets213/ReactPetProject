@@ -2,7 +2,8 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import OpenedCourseCard from "@/components/OpenedCourseCard";
-import { inter700 } from "@/styles/fonts";
+import Button from "@/components/ui/Button";
+import { inter400, inter600, inter700 } from "@/styles/fonts";
 import React, { useState } from "react";
 
 export type Course = {
@@ -76,6 +77,8 @@ export default function Courses() {
     });
   };
 
+  const totalCartPrice = cart.reduce((red, cur) => red + cur.price, 0);
+
   return (
     <div className="relative min-h-screen">
       <Header />
@@ -98,6 +101,35 @@ export default function Courses() {
           ))}
         </div>
       </main>
+
+      {cart.length > 0 && (
+        <div className="flex items-center justify-between border-t border-t-[#F1F1F3] sm:px-5 lg:px-10 2xl:px-60">
+          <p
+            className={`${inter700.className} text-[23px] leading-[120%] text-[#2A354F]`}
+          >
+            You have selected {cart.length} courses
+          </p>
+
+          <div className="flex items-center">
+            <div className="mr-7 flex w-50 flex-col items-start justify-center py-4">
+              <span
+                className={`${inter400.className} max-w-[380px] items-center self-stretch text-base leading-[120%] text-[#687083]`}
+              >
+                Total
+              </span>
+              <span
+                className={`${inter600.className} text-lg leading-[120%] text-[#2A354F]`}
+              >
+                {totalCartPrice}.00 CHF
+              </span>
+            </div>
+            <Button content="text" btnType="primary" size="normal">
+              Proceed to Checkout
+            </Button>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </div>
   );
