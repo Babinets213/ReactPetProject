@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import Button from "./ui/Button";
 import Tag from "./ui/Tag";
 import { Course } from "@/app/[locale]/courses/page";
-import CheckMarkIcon from "./icons/CheckMarkIcon";
 import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
 
 type OpenedCourseCardProps = {
