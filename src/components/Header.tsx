@@ -107,6 +107,7 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <Button
+            to={`${locale}/courses`}
             className="bg-[rgba(255,255,255,0.3)] font-normal"
             btnType="primary"
             size="large"
