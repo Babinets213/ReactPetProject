@@ -29,7 +29,7 @@ export default function OpenedCourseCard({
     <div
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className="flex flex-col rounded-sm border border-[#F1F1F3] px-10 pt-10 pb-5"
+      className={`flex flex-col rounded-sm border ${isInCart ? "border-2 border-[#E1FFD5]" : "border-[#F1F1F3]"} px-10 pt-10 pb-5`}
     >
       {/* Title and description */}
       <div className="mb-3 flex items-center gap-[50px]">
@@ -53,7 +53,7 @@ export default function OpenedCourseCard({
         </span>
 
         <Button
-          className={`${isHovering ? "bg-[#ECFDE6]! font-semibold" : ""} whitespace-nowrap`}
+          className={`${isHovering || isInCart ? "bg-[#ECFDE6]! font-semibold" : ""} whitespace-nowrap`}
           size="large"
           content={isInCart ? "text_icon" : "text"}
           icon={<GeneralCheckMarkIcon />}
