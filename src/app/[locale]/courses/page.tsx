@@ -83,7 +83,7 @@ export default function Courses() {
           ))}
         </div>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

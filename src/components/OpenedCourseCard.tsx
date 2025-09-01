@@ -1,5 +1,7 @@
+"use client";
+
 import { inter400, inter600, inter700 } from "@/styles/fonts";
-import React from "react";
+import React, { useState } from "react";
 import Button from "./ui/Button";
 import Tag from "./ui/Tag";
 import { Course } from "@/app/[locale]/courses/page";
@@ -11,13 +13,19 @@ type OpenedCourseCardProps = {
 export default function OpenedCourseCard({ course }: OpenedCourseCardProps) {
   const { title, description, price, categories, tags } = course;
 
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
-    <div className="flex flex-col rounded-sm border border-[#F1F1F3] px-10 pt-10 pb-5">
+    <div
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      className="flex flex-col rounded-sm border border-[#F1F1F3] px-10 pt-10 pb-5"
+    >
       {/* Title and description */}
       <div className="mb-3 flex items-center gap-[50px]">
         <div>
           <h3
-            className={`${inter700.className} mb-[10px] text-[23px] leading-[120%] text-[#2A354F]`}
+            className={`${inter700.className} mb-[10px] text-[23px] leading-[120%] ${isHovering ? "text-[#00AC8E]" : "text-[#2A354F]"}`}
           >
             {title}
           </h3>
@@ -35,7 +43,7 @@ export default function OpenedCourseCard({ course }: OpenedCourseCardProps) {
         </span>
 
         <Button
-          className="whitespace-nowrap"
+          className={`${isHovering ? "bg-[#ECFDE6]! font-semibold" : ""} whitespace-nowrap`}
           size="large"
           content="text"
           btnType="outline"
