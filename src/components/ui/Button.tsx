@@ -2,7 +2,7 @@ import { inter400, inter600 } from "@/styles/fonts";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-type ButtonProps = {
+interface CustomProps {
   children?: ReactNode;
   icon?: ReactNode;
   iconPosition?: "left" | "right";
@@ -13,7 +13,9 @@ type ButtonProps = {
   size: "normal" | "large";
   className?: string;
   type?: "button" | "submit" | "reset" | undefined;
-};
+}
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & CustomProps;
 
 function Button({
   children,
@@ -26,6 +28,7 @@ function Button({
   size,
   content,
   className,
+  onClick,
 }: ButtonProps) {
   const base = `inline-flex justify-center items-center px-4 py-2 rounded-sm cursor-pointer transition-all duration-300`;
 
@@ -71,7 +74,12 @@ function Button({
   }
 
   return (
-    <button type={type} className={combinedClassName} disabled={disabled}>
+    <button
+      onClick={onClick}
+      type={type}
+      className={combinedClassName}
+      disabled={disabled}
+    >
       {content === "icon" && icon}
       {content === "text" && children}
       {content === "text_icon" && (

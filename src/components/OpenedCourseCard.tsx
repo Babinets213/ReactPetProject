@@ -5,15 +5,25 @@ import React, { useState } from "react";
 import Button from "./ui/Button";
 import Tag from "./ui/Tag";
 import { Course } from "@/app/[locale]/courses/page";
+import CheckMarkIcon from "./icons/CheckMarkIcon";
+import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
 
 type OpenedCourseCardProps = {
   course: Course;
+  cart: Course[];
+  onHandleAddCard: (course: Course) => void;
 };
 
-export default function OpenedCourseCard({ course }: OpenedCourseCardProps) {
+export default function OpenedCourseCard({
+  course,
+  cart,
+  onHandleAddCard,
+}: OpenedCourseCardProps) {
   const { title, description, price, categories, tags } = course;
 
   const [isHovering, setIsHovering] = useState(false);
+
+  const isInCart = cart.some((item) => item.title === course.title);
 
   return (
     <div
@@ -45,10 +55,14 @@ export default function OpenedCourseCard({ course }: OpenedCourseCardProps) {
         <Button
           className={`${isHovering ? "bg-[#ECFDE6]! font-semibold" : ""} whitespace-nowrap`}
           size="large"
-          content="text"
+          content={isInCart ? "text_icon" : "text"}
+          icon={<GeneralCheckMarkIcon />}
           btnType="outline"
+          onClick={() => {
+            if (!isInCart) onHandleAddCard(course);
+          }}
         >
-          Add to Cart
+          {isInCart ? "Added" : "Add to Cart"}
         </Button>
       </div>
 

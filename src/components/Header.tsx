@@ -41,6 +41,8 @@ export default function Header() {
     router.push(pathname, { locale });
   };
 
+  const linkStyle = inView && isCoursesPage ? "text-[#2A354F]" : "text-white";
+
   return (
     <>
       <div ref={sentinelRef} className="h-[1px]"></div>
@@ -61,7 +63,7 @@ export default function Header() {
           >
             <li>
               <Button
-                className={`${isCoursesPage ? "text-[#2A354F]" : "text-white"}`}
+                className={linkStyle}
                 to="#why"
                 btnType="text_btn"
                 size="normal"
@@ -72,7 +74,7 @@ export default function Header() {
             </li>
             <li>
               <Button
-                className={`${isCoursesPage ? "text-[#2A354F]" : "text-white"}`}
+                className={linkStyle}
                 to="#education"
                 btnType="text_btn"
                 size="normal"
@@ -83,7 +85,7 @@ export default function Header() {
             </li>
             <li>
               <Button
-                className={`${isCoursesPage ? "text-[#2A354F]" : "text-white"}`}
+                className={linkStyle}
                 to="#how"
                 btnType="text_btn"
                 size="normal"
@@ -94,7 +96,7 @@ export default function Header() {
             </li>
             <li>
               <Button
-                className={`${isCoursesPage ? "text-[#2A354F]" : "text-white"}`}
+                className={linkStyle}
                 to="#testimonial"
                 btnType="text_btn"
                 size="normal"
@@ -129,7 +131,7 @@ export default function Header() {
           <select
             onChange={(e) => changeLanguage(e.target.value)}
             value={locale}
-            className={`rounded-sm px-4 py-2 text-xl ${isCoursesPage ? "text-[#2A354F]" : "text-white"} focus:outline-none`}
+            className={`rounded-sm px-4 py-2 text-xl ${inView && isCoursesPage ? "text-[#2A354F]" : "text-white"} focus:outline-none`}
           >
             <option value="de">{t("language.de")}</option>
             <option value="en">{t("language.en")}</option>

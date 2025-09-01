@@ -1,8 +1,9 @@
+"use client";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import OpenedCourseCard from "@/components/OpenedCourseCard";
 import { inter700 } from "@/styles/fonts";
-import React from "react";
+import React, { useState } from "react";
 
 export type Course = {
   title: string;
@@ -66,6 +67,15 @@ const courses: Course[] = [
 ];
 
 export default function Courses() {
+  const [cart, setCart] = useState<Course[]>([]);
+
+  const handleAddCard = function (course: Course) {
+    setCart((prevCart) => {
+      if (prevCart.some((item) => item.title === course.title)) return prevCart;
+      return [...prevCart, course];
+    });
+  };
+
   return (
     <div className="relative min-h-screen">
       <Header />
@@ -79,7 +89,12 @@ export default function Courses() {
         <div className="flex flex-col gap-6">
           {/* Courses */}
           {courses.map((course, i) => (
-            <OpenedCourseCard key={i} course={course} />
+            <OpenedCourseCard
+              onHandleAddCard={handleAddCard}
+              key={i}
+              course={course}
+              cart={cart}
+            />
           ))}
         </div>
       </main>
