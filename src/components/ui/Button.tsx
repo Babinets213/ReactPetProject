@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 type ButtonProps = {
-  children: ReactNode;
+  children?: ReactNode;
   icon?: ReactNode;
   iconPosition?: "left" | "right";
   disabled?: boolean;
@@ -44,7 +44,7 @@ function Button({
   const contentStyles = {
     text_icon: `gap-[4px]`,
     text: "",
-    icon: "",
+    icon: "p-2!",
   };
 
   const combinedClassName = `${base} ${btnTypeStyles[btnType]} ${sizeStyles[size]} ${contentStyles[content]} ${className}`;

@@ -68,7 +68,7 @@ const courses: Course[] = [
 export default function Courses() {
   return (
     <div className="relative min-h-screen">
-      {/* <Header /> */}
+      <Header />
       <main className="mt-22 sm:px-5 lg:px-10 2xl:px-60">
         <h2
           className={`${inter700.className} mb-8 text-[28px] leading-[120%] text-[#2A354F]`}
