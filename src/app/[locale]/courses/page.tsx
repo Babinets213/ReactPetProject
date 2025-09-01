@@ -7,6 +7,7 @@ import { inter400, inter600, inter700 } from "@/styles/fonts";
 import React, { useState } from "react";
 
 export type Course = {
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -16,6 +17,7 @@ export type Course = {
 
 const courses: Course[] = [
   {
+    id: 1,
     title: "Assessment Block",
     description: `Provides a focused overview of the mortgage market, including
     property valuation, regulatory requirements, and affordability
@@ -36,6 +38,7 @@ const courses: Course[] = [
     tags: ["4 Weeks", "Beginner"],
   },
   {
+    id: 2,
     title: "Professional Block",
     description: `Offer in-depth knowledge on specialized real estate topics such as investment properties, multi-family houses, renovations, and financing. Additional subjects include land acquisition, pledging, pension funds, and key elements of purchase agreements.`,
     price: 345,
@@ -50,6 +53,7 @@ const courses: Course[] = [
     tags: ["3 Weeks", "Advanced"],
   },
   {
+    id: 3,
     title: "Expert Block",
     description: `Offers advanced knowledge in property valuation, building rights, and commercial real estate financing. It covers mortgage models, loan structuring, legal frameworks, and tax implications such as usufruct, debt certificates, and property gains tax.`,
     price: 534,
@@ -72,9 +76,13 @@ export default function Courses() {
 
   const handleAddCard = function (course: Course) {
     setCart((prevCart) => {
-      if (prevCart.some((item) => item.title === course.title)) return prevCart;
+      if (prevCart.some((item) => item.id === course.id)) return prevCart;
       return [...prevCart, course];
     });
+  };
+
+  const handleDeleteCard = function (courseId: number) {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== courseId));
   };
 
   const totalCartPrice = cart.reduce((red, cur) => red + cur.price, 0);
@@ -93,6 +101,7 @@ export default function Courses() {
           {/* Courses */}
           {courses.map((course, i) => (
             <OpenedCourseCard
+              onHandleDeleteCard={handleDeleteCard}
               onHandleAddCard={handleAddCard}
               key={i}
               course={course}

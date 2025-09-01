@@ -12,18 +12,20 @@ type OpenedCourseCardProps = {
   course: Course;
   cart: Course[];
   onHandleAddCard: (course: Course) => void;
+  onHandleDeleteCard: (courseId: number) => void;
 };
 
 export default function OpenedCourseCard({
   course,
   cart,
   onHandleAddCard,
+  onHandleDeleteCard,
 }: OpenedCourseCardProps) {
   const { title, description, price, categories, tags } = course;
 
   const [isHovering, setIsHovering] = useState(false);
 
-  const isInCart = cart.some((item) => item.title === course.title);
+  const isInCart = cart.some((item) => item.id === course.id);
 
   return (
     <div
@@ -59,7 +61,11 @@ export default function OpenedCourseCard({
           icon={<GeneralCheckMarkIcon />}
           btnType="outline"
           onClick={() => {
-            if (!isInCart) onHandleAddCard(course);
+            if (!isInCart) {
+              onHandleAddCard(course);
+            } else {
+              onHandleDeleteCard(course.id);
+            }
           }}
         >
           {isInCart ? "Added" : "Add to Cart"}
