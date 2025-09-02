@@ -205,5 +205,32 @@
         "btnText": "Let's start"
       }
     }
+  },
+  "AllCoursesPage": {
+    "title": "Available Courses",
+    "course": {
+      "btnText": {
+        "before": "Add to Cart",
+        "after": "Added"
+      },
+      "tags": {
+        "4weeks": "4 Weeks",
+        "3weeks": "3 Weeks",
+        "beginner": "Beginner",
+        "advanced": "Advanced"
+      },
+      "assessment": {
+        "title": "Assessment Block",
+        "description": "Provides a focused overview of the mortgage market, including property valuation, regulatory requirements, and affordability calculations. It also covers refinancing and new financing processes, along with access to the 'Chamäleon - H' platform and necessary documentation."
+      },
+      "professional": {
+        "title": "Professional Block",
+        "description": "Offer in-depth knowledge on specialized real estate topics such as investment properties, multi-family houses, renovations, and financing. Additional subjects include land acquisition, pledging, pension funds, and key elements of purchase agreements."
+      },
+      "expert": {
+        "title": "Expert Block",
+        "description": "Offers advanced knowledge in property valuation, building rights, and commercial real estate financing. It covers mortgage models, loan structuring, legal frameworks, and tax implications such as usufruct, debt certificates, and property gains tax."
+      }
+    }
   }
 }

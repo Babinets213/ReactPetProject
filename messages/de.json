@@ -205,5 +205,32 @@
         "btnText": "START"
       }
     }
+  },
+  "AllCoursesPage": {
+    "title": "Kursübersicht",
+    "course": {
+      "btnText": {
+        "before": "Hinzufügen",
+        "after": "Hinzugefügt"
+      },
+      "tags": {
+        "4weeks": "4 Wochen",
+        "3weeks": "3 Wochen",
+        "beginner": "Einsteiger",
+        "advanced": "Fortgeschrittener"
+      },
+      "assessment": {
+        "title": "Assessment Module",
+        "description": "Im Assessment Block erwerben die Teilnehmenden grundlegende Kenntnisse über Hypothekarfinanzierungen in der Schweiz. Der Fokus liegt auf dem Verständnis der wichtigsten Begriffe, Finanzierungsformen, Bewertungsmethoden sowie den regulatorischen Rahmenbedingungen. Ziel ist es, eine solide fachliche Grundlage zu schaffen, um Kunden kompetent beraten und Finanzierungslösungen sachgerecht beurteilen zu können."
+      },
+      "professional": {
+        "title": "Professional Module",
+        "description": "Die Module Professional richten sich an Personen die den Assessment Block absolviert und bestanden, sowie bereits Grundkenntnissen im Bereich Hypothekarfinanzierung aufgebaut haben. Im Fokus stehen anspruchsvollere Finanzierungssituationen, komplexere Objektarten sowie steuerliche Einflussfaktoren. Die Teilnehmenden lernen, Hypothekargeschäfte ganzheitlich zu analysieren, Risiken differenziert zu beurteilen und individuelle Finanzierungslösungen kompetent zu erarbeiten."
+      },
+      "expert": {
+        "title": "Expert Module",
+        "description": "Die Module Expert vermittelt vertieftes Fachwissen für Expertinnen und Experten im Bereich Hypothekarfinanzierung. Der Fokus liegt auf der strukturierten Analyse und Begleitung komplexer Finanzierungsvorhaben, wie sie bei vermögenden Privatpersonen, institutionellen Investoren oder Bauträgern auftreten. Die Teilnehmenden setzen sich mit anspruchsvollen Kundenbedürfnissen, regulatorischen Rahmenbedingungen und strategischen Finanzierungslösungen auseinander. Dabei stehen Risikobeurteilung, Portfoliobetrachtung sowie eigentumsrechtliche Aspekte im Zentrum."
+      }
+    }
   }
 }
