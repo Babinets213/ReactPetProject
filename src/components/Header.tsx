@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import ShoppingCartIcon from "./icons/ShoppingCartIcon";
 
 export default function Header() {
   const [hasBeenInViewChecked, setHasBeenInViewChecked] = useState(false);
@@ -16,6 +17,7 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
+  const isCoursesPage = pathname.includes("/courses");
 
   const { ref: sentinelRef, inView } = useInView({
     threshold: 0,
@@ -30,15 +32,16 @@ export default function Header() {
   const headerBaseClasses =
     "fixed top-0 z-50 flex w-full items-center justify-between py-4 transition-all duration-300 sm:px-5 lg:px-10 2xl:px-60";
 
-  const headerStyle = !hasBeenInViewChecked
-    ? "bg-transparent text-white"
-    : inView
+  const headerStyle =
+    !hasBeenInViewChecked || inView
       ? "bg-transparent text-white"
       : "bg-[#2A354F]";
 
   const changeLanguage = function (locale: string) {
     router.push(pathname, { locale });
   };
+
+  const linkStyle = inView && isCoursesPage ? "text-[#2A354F]" : "text-white";
 
   return (
     <>
@@ -60,7 +63,7 @@ export default function Header() {
           >
             <li>
               <Button
-                className="text-white"
+                className={linkStyle}
                 to="#why"
                 btnType="text_btn"
                 size="normal"
@@ -71,7 +74,7 @@ export default function Header() {
             </li>
             <li>
               <Button
-                className="text-white"
+                className={linkStyle}
                 to="#education"
                 btnType="text_btn"
                 size="normal"
@@ -82,7 +85,7 @@ export default function Header() {
             </li>
             <li>
               <Button
-                className="text-white"
+                className={linkStyle}
                 to="#how"
                 btnType="text_btn"
                 size="normal"
@@ -93,7 +96,7 @@ export default function Header() {
             </li>
             <li>
               <Button
-                className="text-white"
+                className={linkStyle}
                 to="#testimonial"
                 btnType="text_btn"
                 size="normal"
@@ -106,19 +109,29 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button
-            to={`${locale}/courses`}
-            className="bg-[rgba(255,255,255,0.3)] font-normal"
-            btnType="primary"
-            size="large"
-            content="text"
-          >
-            {t("buttons.explore")}
-          </Button>
+          {!isCoursesPage ? (
+            <Button
+              to={`${locale}/courses`}
+              className="bg-[rgba(255,255,255,0.3)] font-normal"
+              btnType="primary"
+              size="large"
+              content="text"
+            >
+              {t("buttons.explore")}
+            </Button>
+          ) : (
+            <Button
+              size="normal"
+              btnType="outline"
+              content="icon"
+              icon={<ShoppingCartIcon />}
+            />
+          )}
+
           <select
             onChange={(e) => changeLanguage(e.target.value)}
             value={locale}
-            className="rounded-sm px-4 py-2 text-xl text-white focus:outline-none"
+            className={`rounded-sm px-4 py-2 text-xl ${inView && isCoursesPage ? "text-[#2A354F]" : "text-white"} focus:outline-none`}
           >
             <option value="de">{t("language.de")}</option>
             <option value="en">{t("language.en")}</option>
