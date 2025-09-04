@@ -4,12 +4,13 @@ import { inter400, inter600, inter700 } from "@/styles/fonts";
 import React, { useState } from "react";
 import Button from "./ui/Button";
 import Tag from "./ui/Tag";
-import { Course } from "@/app/[locale]/courses/page";
+import { CartItem, Course } from "@/app/[locale]/courses/page";
 import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
+import { useTranslations } from "next-intl";
 
 type OpenedCourseCardProps = {
   course: Course;
-  cart: Course[];
+  cart: CartItem[];
   onHandleAddCard: (course: Course) => void;
   onHandleDeleteCard: (courseId: number) => void;
 };
@@ -20,6 +21,7 @@ export default function OpenedCourseCard({
   onHandleAddCard,
   onHandleDeleteCard,
 }: OpenedCourseCardProps) {
+  const t = useTranslations("AllCoursesPage");
   const { title, description, price, categories, tags } = course;
 
   const [isHovering, setIsHovering] = useState(false);
@@ -67,7 +69,7 @@ export default function OpenedCourseCard({
             }
           }}
         >
-          {isInCart ? "Added" : "Add to Cart"}
+          {isInCart ? t("course.btnText.after") : t("course.btnText.before")}
         </Button>
       </div>
 
