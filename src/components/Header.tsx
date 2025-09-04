@@ -8,6 +8,8 @@ import { useInView } from "react-intersection-observer";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import ShoppingCartIcon from "./icons/ShoppingCartIcon";
+import NotificationIcon from "./icons/profile/NotificationIcon";
+import MenuIcon from "./icons/profile/MenuIcon";
 
 export default function Header() {
   const [hasBeenInViewChecked, setHasBeenInViewChecked] = useState(false);
@@ -18,6 +20,7 @@ export default function Header() {
   const pathname = usePathname();
   const locale = useLocale();
   const isCoursesPage = pathname.includes("/courses");
+  const isProfilePage = pathname.includes("/profile");
 
   const { ref: sentinelRef, inView } = useInView({
     threshold: 0,
@@ -43,6 +46,47 @@ export default function Header() {
 
   const linkStyle = inView && isCoursesPage ? "text-[#2A354F]" : "text-white";
 
+  if (isProfilePage) {
+    return (
+      <header className={`${headerBaseClasses} bg-[#2A354F]`}>
+        <Link href="#">
+          <Image
+            className="h-[50px]"
+            alt="Learning World logo"
+            src={`/images/${commonT("logo")}`}
+            width={211}
+            height={50}
+          />
+        </Link>
+
+        <nav className="flex items-center gap-4">
+          <Button
+            to={`${locale}/courses`}
+            className="bg-[rgba(255,255,255,0.3)] font-normal"
+            btnType="primary"
+            size="large"
+            content="text"
+          >
+            {t("buttons.explore")}
+          </Button>
+
+          <Button
+            size="normal"
+            content="icon"
+            btnType="text_btn"
+            icon={<NotificationIcon />}
+          />
+
+          <Button
+            size="normal"
+            content="icon"
+            btnType="outline"
+            icon={<MenuIcon />}
+          />
+        </nav>
+      </header>
+    );
+  }
   return (
     <>
       <div ref={sentinelRef} className="h-[1px]"></div>
@@ -137,7 +181,7 @@ export default function Header() {
             <option value="en">{t("language.en")}</option>
           </select>
           <Button
-            to={`${locale}/auth`}
+            to={`/${locale}/auth`}
             content="text"
             btnType="primary"
             size="normal"
