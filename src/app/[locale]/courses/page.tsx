@@ -1,9 +1,13 @@
 "use client";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import CoursesGradient from "@/components/icons/CoursesGradient";
 import OpenedCourseCard from "@/components/OpenedCourseCard";
+import SmallCourseCards, { SmallCourse } from "@/components/SmallCourseCards";
 import Button from "@/components/ui/Button";
+import { expertBlock, getCourses, professionalBlock } from "@/data/coursesData";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 
 export type Course = {
@@ -15,66 +19,16 @@ export type Course = {
   tags: string[];
 };
 
-const courses: Course[] = [
-  {
-    id: 1,
-    title: "Assessment Block",
-    description: `Provides a focused overview of the mortgage market, including
-    property valuation, regulatory requirements, and affordability
-    calculations. It also covers refinancing and new financing
-    processes, along with access to the "Chamäleon - H" platform and
-    necessary documentation.`,
-    price: 499,
-    categories: [
-      "Der Hypothekarmarkt",
-      "Verkehrswertschätzung",
-      "Regulatorische Vorgaben",
-      "Tragbarkeitsberechnung",
-      "Refinanzierungsgeschäft",
-      "Neufinanzierungsgeschäft",
-      "Unterlagen für Hypothekarfinanzierung",
-      "Plattform «Chamäleon - H»",
-    ],
-    tags: ["4 Weeks", "Beginner"],
-  },
-  {
-    id: 2,
-    title: "Professional Block",
-    description: `Offer in-depth knowledge on specialized real estate topics such as investment properties, multi-family houses, renovations, and financing. Additional subjects include land acquisition, pledging, pension funds, and key elements of purchase agreements.`,
-    price: 345,
-    categories: [
-      "Renditeliegenschaften",
-      "Mehrfamilienhaus",
-      "Verpfändung & Vorsorgeguthaben",
-      "Kreditverträge & Produktvereinbarung",
-      "Bauland",
-      "Eigenmietwert & Grundstückgewinnsteuer",
-    ],
-    tags: ["3 Weeks", "Advanced"],
-  },
-  {
-    id: 3,
-    title: "Expert Block",
-    description: `Offers advanced knowledge in property valuation, building rights, and commercial real estate financing. It covers mortgage models, loan structuring, legal frameworks, and tax implications such as usufruct, debt certificates, and property gains tax.`,
-    price: 534,
-    categories: [
-      "Hypothekarmodelle & Strukturierung Hypothek",
-      "Baurecht",
-      "Büro & Gewerbe",
-      "Schuldbriefe",
-      "Reservations- und Kaufvertrag",
-      "Renovationen & Umbau",
-      "Wohnrecht & Nutzniessung",
-      "Eigenleistungen",
-    ],
-    tags: ["4 Weeks", "Advanced"],
-  },
-];
+export type CartItem = Course | SmallCourse;
 
 export default function Courses() {
-  const [cart, setCart] = useState<Course[]>([]);
+  const t = useTranslations("AllCoursesPage");
 
-  const handleAddCard = function (course: Course) {
+  const courses = getCourses(t);
+
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  const handleAddCard = function (course: CartItem) {
     setCart((prevCart) => {
       if (prevCart.some((item) => item.id === course.id)) return prevCart;
       return [...prevCart, course];
@@ -94,11 +48,11 @@ export default function Courses() {
         <h2
           className={`${inter700.className} mb-8 text-[28px] leading-[120%] text-[#2A354F]`}
         >
-          Available Courses
+          {t("title")}
         </h2>
 
-        <div className="flex flex-col gap-6">
-          {/* Courses */}
+        <div className="mb-15 flex flex-col gap-6">
+          {/* Large Courses */}
           {courses.map((course, i) => (
             <OpenedCourseCard
               onHandleDeleteCard={handleDeleteCard}
@@ -109,6 +63,24 @@ export default function Courses() {
             />
           ))}
         </div>
+
+        <SmallCourseCards
+          title={t("course.professional.title")}
+          onHandleDeleteCard={handleDeleteCard}
+          onHandleAddCard={handleAddCard}
+          courses={professionalBlock}
+          cart={cart}
+          className="mb-15"
+        />
+
+        <SmallCourseCards
+          title={t("course.expert.title")}
+          onHandleDeleteCard={handleDeleteCard}
+          onHandleAddCard={handleAddCard}
+          courses={expertBlock}
+          cart={cart}
+          className="mb-21"
+        />
       </main>
 
       {cart.length > 0 && (
@@ -138,7 +110,9 @@ export default function Courses() {
           </div>
         </div>
       )}
-
+      <div className="absolute top-100 -left-100 -z-100">
+        <CoursesGradient />
+      </div>
       <Footer />
     </div>
   );
