@@ -3,3 +3,18 @@
 .bg-education-hover {
   background: linear-gradient(176deg, #d7e7f9 13.12%, #d5f4ec 96.48%);
 }
+
+input[type="date"].custom-date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="date"].custom-date-input::-moz-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+
+input[type="date"].custom-date-input {
+  background: none;
+}

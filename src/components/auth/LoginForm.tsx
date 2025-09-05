@@ -6,6 +6,7 @@ import Input from "../ui/Input";
 import Button from "../ui/Button";
 import Checkbox from "../ui/Checkbox";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 type LoginFormProps = {
   toggleComponent: ReactNode;
@@ -25,6 +26,7 @@ export default function LoginForm({ toggleComponent }: LoginFormProps) {
     reset,
   } = useForm<FormFields>();
 
+  const router = useRouter();
   const [remember, setRemember] = useState(false);
 
   const password = watch("password") || "";
@@ -34,6 +36,7 @@ export default function LoginForm({ toggleComponent }: LoginFormProps) {
   const onSubmit: SubmitHandler<FormFields> = function (data) {
     console.log(data);
     console.log(errors);
+    router.push("/profile");
     reset();
   };
   return (

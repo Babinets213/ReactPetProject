@@ -1,12 +1,13 @@
 "use client";
 
 import { inter400, inter600 } from "@/styles/fonts";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, ReactNode, useRef, useState } from "react";
 import clsx from "clsx";
 import SuccessIcon from "../icons/input-icons/SuccessIcon";
 import ErrorIcon from "../icons/input-icons/ErrorIcon";
 import EyeIcon from "../icons/input-icons/EyeIcon";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
+import CalendarIcon from "../icons/profile/CalendarIcon";
 
 type InputProps = {
   id?: string;
@@ -14,9 +15,10 @@ type InputProps = {
   success?: boolean;
   labelText?: string;
   icon?: boolean;
+  iconComponent?: ReactNode;
   placeholder: string;
   value?: string;
-  inputType: "text" | "password";
+  inputType: "text" | "password" | "date";
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   register?: UseFormRegisterReturn;
 };
@@ -28,12 +30,14 @@ export default function Input({
   labelText,
   inputType = "text",
   icon,
+  iconComponent,
   placeholder,
   value,
   onChange,
   register,
 }: InputProps) {
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const getBorderColor = function () {
     if (error?.message) return "border-[#F75555] focus-within:border-[#F75555]";
@@ -47,11 +51,21 @@ export default function Input({
     return "hover:border-[#2A354F]";
   };
 
+  const openDatePicker = () => {
+    if (inputRef.current && inputRef.current.showPicker) {
+      inputRef.current.showPicker();
+    } else if (inputRef.current) {
+      // fallback: focus input (works in some browsers)
+      inputRef.current.focus();
+    }
+  };
+
   const renderIcon = function () {
     if (!icon) return null;
 
     if (success) return <SuccessIcon />;
     if (error) return <ErrorIcon />;
+    if (iconComponent) return <>{iconComponent}</>;
     if (inputType === "password") {
       return (
         <button
@@ -64,7 +78,20 @@ export default function Input({
         </button>
       );
     }
+
+    if (inputType === "date") {
+      return (
+        <span className="text-[#687083]">
+          <CalendarIcon />
+        </span>
+      );
+    }
+
+    return null;
   };
+
+  const splitLabel = labelText?.split("*") ?? [];
+  const [labelMain, labelRest] = splitLabel;
 
   return (
     <div className="flex flex-col gap-1">
@@ -72,12 +99,13 @@ export default function Input({
         <label
           className={`${inter600.className} text-base leading-[120%] text-[#424242]`}
         >
-          {labelText}
+          {labelMain}
+          {labelRest !== undefined && <span className="text-[#F75555]">*</span>}
         </label>
       )}
       <div
         className={clsx(
-          "flex items-center rounded-sm border px-4 py-3",
+          "relative flex items-center rounded-sm border px-4 py-3",
           getBorderColor(),
           getHoverBorderColor(),
           "focus-within:border-[#2A354F]",
@@ -85,6 +113,7 @@ export default function Input({
       >
         <input
           id={id}
+          ref={inputRef}
           value={value}
           onChange={onChange}
           type={
@@ -92,18 +121,34 @@ export default function Input({
               ? isShowPassword
                 ? "text"
                 : "password"
-              : "text"
+              : inputType
           }
           {...register}
           className={clsx(
             inter400.className,
             "w-full outline-none placeholder:text-base placeholder:leading-[120%] placeholder:text-[#757575]",
-            icon && "pr-4",
+            icon && "pr-10",
             getHoverBorderColor(),
+            inputType === "date" && "custom-date-input appearance-none",
           )}
-          placeholder={placeholder}
+          placeholder={inputType !== "date" ? placeholder : undefined}
         />
-        {icon && <span>{renderIcon()}</span>}
+        {icon && (
+          <>
+            {inputType === "date" ? (
+              <button
+                type="button"
+                onClick={openDatePicker}
+                className="absolute top-1/2 right-4 -translate-y-1/2 text-[#687083] focus:outline-none"
+                aria-label="Open calendar"
+              >
+                <CalendarIcon />
+              </button>
+            ) : (
+              renderIcon()
+            )}
+          </>
+        )}
       </div>
       {error && "message" in error && (
         <span
