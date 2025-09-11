@@ -9,7 +9,7 @@ interface CustomProps {
   disabled?: boolean;
   to?: string;
   content: "text" | "icon" | "text_icon";
-  btnType: "primary" | "outline" | "text_btn";
+  btnType: "primary" | "secondary" | "outline" | "text_btn";
   size: "normal" | "large";
   className?: string;
   type?: "button" | "submit" | "reset" | undefined;
@@ -37,6 +37,8 @@ function Button({
     outline: `bg-[#F4F5F6] border border-[#2A354F] text-[#2A354F] hover:bg-[#ECFDE6] hover:font-semibold active:bg-[#ECFDE6] active:font-semibold focus:font-semibold focus:outline-none focus:ring focus:ring-offset-2 focus:ring-[#E1FFD5] disabled:text-[#C2C2C2] disabled:border-[#F5F5F5] disabled:bg-[#F5F5F5]`,
     text_btn:
       "text-[#2A354F] hover:text-[#A0F384] active:text-[#96E57B] focus:font-semibold focus:outline-none focus:ring focus:ring-offset-2 focus:ring-[#E1FFD5] focus:text-[#96E57B] disabled:text-[#C2C2C2]",
+    secondary:
+      "bg-[#F4F5F6] text-[#2A354F] hover:font-semibold hover:bg-[#ECFDE6] active:font-semibold active:bg-[#ECFDE6] focus:font-semibold focus:outline-none focus:ring focus:ring-offset-2 focus:ring-[#E1FFD5] disabled:text-[#C2C2C2] disabled:border-[#F5F5F5] disabled:bg-[#F5F5F5]",
   };
 
   const sizeStyles = {
