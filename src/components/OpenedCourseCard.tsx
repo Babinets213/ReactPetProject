@@ -22,6 +22,7 @@ export default function OpenedCourseCard({
   onHandleDeleteCard,
 }: OpenedCourseCardProps) {
   const t = useTranslations("AllCoursesPage");
+
   const { title, description, price, categories, tags } = course;
 
   const [isHovering, setIsHovering] = useState(false);

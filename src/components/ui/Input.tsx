@@ -21,6 +21,8 @@ type InputProps = {
   inputType: "text" | "password" | "date";
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   register?: UseFormRegisterReturn;
+  isTextarea?: boolean;
+  className?: string;
 };
 
 export default function Input({
@@ -35,9 +37,12 @@ export default function Input({
   value,
   onChange,
   register,
+  isTextarea,
+  className,
 }: InputProps) {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const getBorderColor = function () {
     if (error?.message) return "border-[#F75555] focus-within:border-[#F75555]";
@@ -55,7 +60,6 @@ export default function Input({
     if (inputRef.current && inputRef.current.showPicker) {
       inputRef.current.showPicker();
     } else if (inputRef.current) {
-      // fallback: focus input (works in some browsers)
       inputRef.current.focus();
     }
   };
@@ -109,30 +113,48 @@ export default function Input({
           getBorderColor(),
           getHoverBorderColor(),
           "focus-within:border-[#2A354F]",
+          isTextarea ? "items-start" : "items-center",
+          className,
         )}
       >
-        <input
-          id={id}
-          ref={inputRef}
-          value={value}
-          onChange={onChange}
-          type={
-            inputType === "password"
-              ? isShowPassword
-                ? "text"
-                : "password"
-              : inputType
-          }
-          {...register}
-          className={clsx(
-            inter400.className,
-            "w-full outline-none placeholder:text-base placeholder:leading-[120%] placeholder:text-[#757575]",
-            icon && "pr-10",
-            getHoverBorderColor(),
-            inputType === "date" && "custom-date-input appearance-none",
-          )}
-          placeholder={inputType !== "date" ? placeholder : undefined}
-        />
+        {isTextarea ? (
+          <textarea
+            id={id}
+            ref={textareaRef}
+            {...register}
+            placeholder={placeholder}
+            rows={4}
+            className={clsx(
+              inter400.className,
+              "max-h-[57px] w-full resize-none outline-none placeholder:text-base placeholder:leading-[120%] placeholder:text-[#757575]",
+              getHoverBorderColor(),
+            )}
+          />
+        ) : (
+          <input
+            id={id}
+            ref={inputRef}
+            value={value}
+            onChange={onChange}
+            type={
+              inputType === "password"
+                ? isShowPassword
+                  ? "text"
+                  : "password"
+                : inputType
+            }
+            {...register}
+            className={clsx(
+              inter400.className,
+              "w-full outline-none placeholder:text-base placeholder:leading-[120%] placeholder:text-[#757575]",
+              icon && "pr-10",
+              getHoverBorderColor(),
+              inputType === "date" && "custom-date-input appearance-none",
+            )}
+            placeholder={inputType !== "date" ? placeholder : undefined}
+          />
+        )}
+
         {icon && (
           <>
             {inputType === "date" ? (

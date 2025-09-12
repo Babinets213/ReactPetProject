@@ -232,5 +232,97 @@
         "description": "Offers advanced knowledge in property valuation, building rights, and commercial real estate financing. It covers mortgage models, loan structuring, legal frameworks, and tax implications such as usufruct, debt certificates, and property gains tax."
       }
     }
+  },
+  "ProfilePage": {
+    "title": "My Profile",
+    "description": "Here you can view or edit your profile information",
+    "personalInformation": {
+      "title": "Personal information",
+      "description": "Your basic personal data",
+      "firstNameInput": {
+        "label": "First Name*",
+        "placeholder": "Your First Name"
+      },
+      "lastNameInput": {
+        "label": "Last Name*",
+        "placeholder": "Your Last Name"
+      },
+      "emailInput": {
+        "label": "Email*",
+        "placeholder": "your.email@example.com"
+      },
+      "phoneInput": {
+        "label": "Phone number*",
+        "placeholder": "+49 123 456 7890"
+      },
+      "dateInput": {
+        "label": "Date of birth*",
+        "placeholder": "dd.mm.yyyy"
+      },
+      "curPasswordInput": {
+        "label": "Current Password",
+        "placeholder": "Your Current Password"
+      },
+      "newPasswordInput": {
+        "label": "New Password",
+        "placeholder": "Your New Password"
+      },
+      "confirmPasswordInput": {
+        "label": "Confirm New Password",
+        "placeholder": "Your New Password"
+      }
+    },
+    "professionalInformation": {
+      "title": "Professional Information",
+      "description": "Details about your career and qualifications",
+      "jobTitleInput": {
+        "label": "Job title",
+        "placeholder": "Your Job"
+      },
+      "finmaInput": {
+        "label": "FINMA number",
+        "placeholder": "F01234567"
+      },
+      "educationInput": {
+        "label": "Education",
+        "placeholder": "Describe your education"
+      },
+      "languages": {
+        "label": "Languages"
+      },
+      "experienceInput": {
+        "label": "How long have you been working in your industry:",
+        "placeholder": "e.g. Since 2018 or 5 years"
+      }
+    },
+    "currentEmployment": {
+      "title": "Current Employment",
+      "description": "Information about your current workplace",
+      "companyInput": {
+        "label": "Company/employer:",
+        "placeholder": "Name of your company"
+      },
+      "positionInput": {
+        "label": "Position",
+        "placeholder": "Your current position/role"
+      }
+    },
+    "address": {
+      "title": "Address",
+      "description": "Your contact address",
+      "addressInput": {
+        "label": "Address",
+        "placeholder": "Street, House Number\nZIP Code, City\nCountry"
+      }
+    },
+    "cv": {
+      "title": "CV",
+      "description": "Your CV must be a .doc, .pdf, .docx, and not bigger than 1MB",
+      "uploadLabel": "Upload your CV"
+    },
+    "paymentHistory": {
+      "title": "Payment History"
+    },
+    "saveBtn": "Save"
   }
 }

@@ -232,5 +232,97 @@
         "description": "Die Module Expert vermittelt vertieftes Fachwissen für Expertinnen und Experten im Bereich Hypothekarfinanzierung. Der Fokus liegt auf der strukturierten Analyse und Begleitung komplexer Finanzierungsvorhaben, wie sie bei vermögenden Privatpersonen, institutionellen Investoren oder Bauträgern auftreten. Die Teilnehmenden setzen sich mit anspruchsvollen Kundenbedürfnissen, regulatorischen Rahmenbedingungen und strategischen Finanzierungslösungen auseinander. Dabei stehen Risikobeurteilung, Portfoliobetrachtung sowie eigentumsrechtliche Aspekte im Zentrum."
       }
     }
+  },
+  "ProfilePage": {
+    "title": "Mein Profil",
+    "description": "Profilinformationen anzeigen oder bearbeiten",
+    "personalInformation": {
+      "title": "Persönliche Informationen",
+      "description": "Ihre persönlichen Angaben",
+      "firstNameInput": {
+        "label": "Vorname*",
+        "placeholder": "Your First Name"
+      },
+      "lastNameInput": {
+        "label": "Nachname*",
+        "placeholder": "Your Last Name"
+      },
+      "emailInput": {
+        "label": "Email*",
+        "placeholder": "your.email@example.com"
+      },
+      "phoneInput": {
+        "label": "Telefonnummer*",
+        "placeholder": "+49 123 456 7890"
+      },
+      "dateInput": {
+        "label": "Geburtsdatum*",
+        "placeholder": "dd.mm.yyyy"
+      },
+      "curPasswordInput": {
+        "label": "Aktuelles Passwort",
+        "placeholder": "Your Current Password"
+      },
+      "newPasswordInput": {
+        "label": "Neues Passwort",
+        "placeholder": "Your New Password"
+      },
+      "confirmPasswordInput": {
+        "label": "Passwort bestätigen",
+        "placeholder": "Your New Password"
+      }
+    },
+    "professionalInformation": {
+      "title": "Berufliche Informationen",
+      "description": "Beruflicher Werdegang und Qualifikationen",
+      "jobTitleInput": {
+        "label": "Berufsbezeichnung",
+        "placeholder": "Your Job"
+      },
+      "finmaInput": {
+        "label": "FINMA Nummer",
+        "placeholder": "F01234567"
+      },
+      "educationInput": {
+        "label": "Ausbildung",
+        "placeholder": "Describe your education"
+      },
+      "languages": {
+        "label": "Sprachen"
+      },
+      "experienceInput": {
+        "label": "Wie lange arbeiten Sie schon im Finanz- und/oder Versicherungsbereich?",
+        "placeholder": "e.g. Since 2018 or 5 years"
+      }
+    },
+    "currentEmployment": {
+      "title": "Aktuelle Anstellung",
+      "description": "Informationen über Ihren Arbeitgeber",
+      "companyInput": {
+        "label": "Firmenname",
+        "placeholder": "Name of your company"
+      },
+      "positionInput": {
+        "label": "Position",
+        "placeholder": "Your current position/role"
+      }
+    },
+    "address": {
+      "title": "Adresse",
+      "description": "Ihre Kontaktdaten",
+      "addressInput": {
+        "label": "Adresse",
+        "placeholder": "Strasse,\nHausnummer - PLZ\nOrt - Schweiz"
+      }
+    },
+    "cv": {
+      "title": "CV",
+      "description": "Ihr Lebenslauf muss im Format doc., pdf., docx. sein und darf die Grösse von 1MB nicht überschreiten.",
+      "uploadLabel": "CV hochladen"
+    },
+    "paymentHistory": {
+      "title": "Zahlungsverlauf"
+    },
+    "saveBtn": "Speichern"
   }
 }
