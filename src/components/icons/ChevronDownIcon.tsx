@@ -13,8 +13,8 @@ export default function ChevronDownIcon() {
       <path
         d="M12.6663 6.5L7.99967 11.1667L3.33301 6.5"
         stroke="#3F3F46"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

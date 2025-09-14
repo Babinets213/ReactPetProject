@@ -10,9 +10,11 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import ShoppingCartIcon from "./icons/ShoppingCartIcon";
 import NotificationIcon from "./icons/profile/NotificationIcon";
 import MenuIcon from "./icons/profile/MenuIcon";
+import HeaderMenuModal from "./HeaderMenuModal";
 
 export default function Header() {
   const [hasBeenInViewChecked, setHasBeenInViewChecked] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const t = useTranslations("HomePage.header");
   const commonT = useTranslations("common");
@@ -21,6 +23,7 @@ export default function Header() {
   const locale = useLocale();
   const isCoursesPage = pathname.includes("/courses");
   const isProfilePage = pathname.includes("/profile");
+  const isDashboardPage = pathname.includes("/dashboard");
 
   const { ref: sentinelRef, inView } = useInView({
     threshold: 0,
@@ -46,7 +49,7 @@ export default function Header() {
 
   const linkStyle = inView && isCoursesPage ? "text-[#2A354F]" : "text-white";
 
-  if (isProfilePage) {
+  if (isProfilePage || isDashboardPage) {
     return (
       <header className={`${headerBaseClasses} bg-[#2A354F]`}>
         <Link href="#">
@@ -59,9 +62,9 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="flex items-center gap-4">
+        <nav className="relative flex items-center gap-4">
           <Button
-            to={`${locale}/courses`}
+            onClick={() => router.replace("/courses")}
             className="bg-[rgba(255,255,255,0.3)] font-normal"
             btnType="primary"
             size="large"
@@ -81,7 +84,13 @@ export default function Header() {
             size="normal"
             content="icon"
             btnType="outline"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             icon={<MenuIcon />}
+          />
+
+          <HeaderMenuModal
+            isOpen={isMenuOpen}
+            onClose={() => setIsMenuOpen(false)}
           />
         </nav>
       </header>
@@ -155,7 +164,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           {!isCoursesPage ? (
             <Button
-              to={`${locale}/courses`}
+              onClick={() => router.replace("/courses")}
               className="bg-[rgba(255,255,255,0.3)] font-normal"
               btnType="primary"
               size="large"

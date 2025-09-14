@@ -12,14 +12,14 @@ export default function MailIcon() {
       <path
         d="M2.66634 3.16797H13.333C14.0663 3.16797 14.6663 3.76797 14.6663 4.5013V12.5013C14.6663 13.2346 14.0663 13.8346 13.333 13.8346H2.66634C1.93301 13.8346 1.33301 13.2346 1.33301 12.5013V4.5013C1.33301 3.76797 1.93301 3.16797 2.66634 3.16797Z"
         stroke="#687083"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M14.6663 4.5L7.99967 9.16667L1.33301 4.5"
         stroke="#687083"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
