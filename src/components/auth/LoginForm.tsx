@@ -6,7 +6,8 @@ import Input from "../ui/Input";
 import Button from "../ui/Button";
 import Checkbox from "../ui/Checkbox";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 type LoginFormProps = {
   toggleComponent: ReactNode;
@@ -26,6 +27,8 @@ export default function LoginForm({ toggleComponent }: LoginFormProps) {
     reset,
   } = useForm<FormFields>();
 
+  const { login } = useAuth();
+
   const router = useRouter();
   const [remember, setRemember] = useState(false);
 
@@ -36,7 +39,8 @@ export default function LoginForm({ toggleComponent }: LoginFormProps) {
   const onSubmit: SubmitHandler<FormFields> = function (data) {
     console.log(data);
     console.log(errors);
-    router.push("/profile");
+    login(data.email, data.password);
+    router.replace(`/profile`);
     reset();
   };
   return (

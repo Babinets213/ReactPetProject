@@ -17,14 +17,14 @@ export default function TimerIcon() {
       <path
         d="M11 11L14.4031 7.59686"
         stroke="#2A354F"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M8.9375 0.6875H13.0625"
         stroke="#2A354F"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

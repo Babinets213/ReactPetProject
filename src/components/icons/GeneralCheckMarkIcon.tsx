@@ -13,8 +13,8 @@ export default function GeneralCheckMarkIcon() {
         d="M4.16602 10.8333L7.49935 14.1667L15.8327 5.83334"
         stroke="#3F3F46"
         stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
