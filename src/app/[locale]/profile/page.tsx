@@ -2,13 +2,8 @@
 import FileUploader from "@/components/FileUploader";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import DocumentIcon from "@/components/icons/profile/DocumentIcon";
-import GeoIcon from "@/components/icons/profile/GeoIcon";
-import MailIcon from "@/components/icons/profile/MailIcon";
-import PhoneIcon from "@/components/icons/profile/PhoneIcon";
-import SuitCaseIcon from "@/components/icons/profile/SuitCaseIcon";
-import UploadIcon from "@/components/icons/profile/UploadIcon";
-import UserIcon from "@/components/icons/profile/UserIcon";
+import withAuth from "@/components/hoc/withAuth";
+import { profileIcons } from "@/components/icons";
 import LanguagesSelect from "@/components/LanguagesSelect";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -16,7 +11,7 @@ import { inter400, inter600, inter700, poppins400 } from "@/styles/fonts";
 import { useTranslations } from "next-intl";
 import React from "react";
 
-export default function ProfilePage() {
+function ProfilePage() {
   const t = useTranslations("ProfilePage");
 
   return (
@@ -38,7 +33,7 @@ export default function ProfilePage() {
         <section className="flex flex-col gap-6 border-t border-t-[#D0D0D0] pt-6 pb-[38px]">
           <div>
             <div className="mb-1 flex items-center gap-2">
-              <UserIcon />
+              {profileIcons.user()}
               <h3
                 className={`${inter700.className} text-[23px] leading-[120%] text-black`}
               >
@@ -73,7 +68,7 @@ export default function ProfilePage() {
               inputType="text"
               labelText={t("personalInformation.emailInput.label")}
               icon
-              iconComponent={<MailIcon />}
+              iconComponent={profileIcons.mail()}
             />
 
             <Input
@@ -82,7 +77,7 @@ export default function ProfilePage() {
               inputType="text"
               labelText={t("personalInformation.phoneInput.label")}
               icon
-              iconComponent={<PhoneIcon />}
+              iconComponent={profileIcons.phone()}
             />
 
             <Input
@@ -129,7 +124,7 @@ export default function ProfilePage() {
         <section className="flex flex-col gap-6 border-t border-t-[#D0D0D0] pt-6 pb-[38px]">
           <div>
             <div className="mb-1 flex items-center gap-2">
-              <SuitCaseIcon />
+              {profileIcons.suitCase()}
               <h3
                 className={`${inter700.className} text-[23px] leading-[120%] text-black`}
               >
@@ -194,7 +189,7 @@ export default function ProfilePage() {
         <section className="flex flex-col gap-6 border-t border-t-[#D0D0D0] pt-6 pb-[38px]">
           <div>
             <div className="mb-1 flex items-center gap-2">
-              <SuitCaseIcon />
+              {profileIcons.suitCase()}
               <h3
                 className={`${inter700.className} text-[23px] leading-[120%] text-black`}
               >
@@ -229,7 +224,7 @@ export default function ProfilePage() {
         <section className="flex flex-col gap-6 border-t border-t-[#D0D0D0] pt-6 pb-[38px]">
           <div>
             <div className="mb-1 flex items-center gap-2">
-              <GeoIcon />
+              {profileIcons.geo()}
               <h3
                 className={`${inter700.className} text-[23px] leading-[120%] text-black`}
               >
@@ -258,7 +253,7 @@ export default function ProfilePage() {
         <section className="flex flex-col gap-6 border-t border-t-[#D0D0D0] pt-6 pb-[38px]">
           <div>
             <div className="mb-1 flex items-center gap-2">
-              <DocumentIcon />
+              {profileIcons.document()}
               <h3
                 className={`${inter700.className} text-[23px] leading-[120%] text-black`}
               >
@@ -281,7 +276,7 @@ export default function ProfilePage() {
         <section className="flex flex-col gap-6 border-t border-t-[#D0D0D0] pt-6 pb-15">
           <div>
             <div className="mb-1 flex items-center gap-2">
-              <SuitCaseIcon />
+              {profileIcons.suitCase()}
               <h3
                 className={`${inter700.className} text-[23px] leading-[120%] text-black`}
               >
@@ -366,7 +361,7 @@ export default function ProfilePage() {
                     </td>
                     <td className="border-b border-b-[#E9ECEF] px-4 py-3 text-center">
                       <button className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#CED4DA] bg-white px-[10px]">
-                        <UploadIcon />
+                        {profileIcons.download()}
                       </button>
                     </td>
                   </tr>
@@ -392,3 +387,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+export default withAuth(ProfilePage);

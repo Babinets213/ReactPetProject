@@ -4,9 +4,9 @@ import { inter400, inter600, inter700 } from "@/styles/fonts";
 import React, { useState } from "react";
 import Button from "./ui/Button";
 import Tag from "./ui/Tag";
-import { CartItem, Course } from "@/app/[locale]/courses/page";
 import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
 import { useTranslations } from "next-intl";
+import { CartItem, Course } from "@/types/courses";
 
 type OpenedCourseCardProps = {
   course: Course;

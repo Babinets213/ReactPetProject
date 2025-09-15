@@ -1,12 +1,6 @@
 import { inter700 } from "@/styles/fonts";
 import SmallCourseCard from "./SmallCourseCard";
-import { Course } from "@/app/[locale]/courses/page";
-
-export type SmallCourse = {
-  id: number;
-  title: string;
-  price: number;
-};
+import { CartItem, SmallCourse } from "@/types/courses";
 
 type SmallCourseCardsProps = {
   title: string;
@@ -14,7 +8,7 @@ type SmallCourseCardsProps = {
   className?: string;
   onHandleAddCard: (course: SmallCourse) => void;
   onHandleDeleteCard: (courseId: number) => void;
-  cart: (Course | SmallCourse)[];
+  cart: CartItem[];
 };
 
 export default function SmallCourseCards({

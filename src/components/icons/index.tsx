@@ -7,6 +7,18 @@ import LineTenItemsIcon from "./horizontal-lines/LineTenItemsIcon";
 import LearnAnytimeIcon from "./LearnAnytimeIcon";
 import LiveSupportIcon from "./LiveSupportIcon";
 import MortgageProfessionalIcon from "./MortgageProfessionalIcon";
+import CalendarIcon from "./profile/CalendarIcon";
+import DeleteIcon from "./profile/DeleteIcon";
+import DocumentIcon from "./profile/DocumentIcon";
+import DownloadIcon from "./profile/DownloadIcon";
+import GeoIcon from "./profile/GeoIcon";
+import MailIcon from "./profile/MailIcon";
+import MenuIcon from "./profile/MenuIcon";
+import NotificationIcon from "./profile/NotificationIcon";
+import PhoneIcon from "./profile/PhoneIcon";
+import SuitCaseIcon from "./profile/SuitCaseIcon";
+import UploadIcon from "./profile/UploadIcon";
+import UserIcon from "./profile/UserIcon";
 
 export type Icons = {
   bankCertificate: () => React.JSX.Element;
@@ -40,4 +52,41 @@ export type EducationIcon = {
 
 export const educationIcon: EducationIcon = {
   education: EducationIcon,
+};
+
+type DocumentIconProps = {
+  color?: string;
+};
+
+type NotificationIconProps = {
+  color?: string;
+};
+export type ProfileIcons = {
+  calendar: () => React.JSX.Element;
+  delete: () => React.JSX.Element;
+  document: (props?: DocumentIconProps) => React.JSX.Element;
+  download: () => React.JSX.Element;
+  geo: () => React.JSX.Element;
+  mail: () => React.JSX.Element;
+  menu: () => React.JSX.Element;
+  notification: (props?: NotificationIconProps) => React.JSX.Element;
+  phone: () => React.JSX.Element;
+  suitCase: () => React.JSX.Element;
+  upload: () => React.JSX.Element;
+  user: () => React.JSX.Element;
+};
+
+export const profileIcons: ProfileIcons = {
+  calendar: CalendarIcon,
+  delete: DeleteIcon,
+  document: (props) => <DocumentIcon {...props} />,
+  download: DownloadIcon,
+  geo: GeoIcon,
+  mail: MailIcon,
+  menu: MenuIcon,
+  notification: (props) => <NotificationIcon {...props} />,
+  phone: PhoneIcon,
+  suitCase: SuitCaseIcon,
+  upload: UploadIcon,
+  user: UserIcon,
 };
