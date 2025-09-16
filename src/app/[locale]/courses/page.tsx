@@ -3,40 +3,28 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import CoursesGradient from "@/components/icons/CoursesGradient";
 import OpenedCourseCard from "@/components/OpenedCourseCard";
-import SmallCourseCards, { SmallCourse } from "@/components/SmallCourseCards";
+import SmallCourseCards from "@/components/SmallCourseCards";
 import Button from "@/components/ui/Button";
+import { useCart } from "@/context/CartContext";
 import { expertBlock, getCourses, professionalBlock } from "@/data/coursesData";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
+import { CartItem } from "@/types/courses";
 import { useTranslations } from "next-intl";
-import React, { useState } from "react";
-
-export type Course = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  categories: string[];
-  tags: string[];
-};
-
-export type CartItem = Course | SmallCourse;
+import React from "react";
 
 export default function Courses() {
   const t = useTranslations("AllCoursesPage");
 
   const courses = getCourses(t);
 
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const { cart, addToCart, deleteFromCart } = useCart();
 
   const handleAddCard = function (course: CartItem) {
-    setCart((prevCart) => {
-      if (prevCart.some((item) => item.id === course.id)) return prevCart;
-      return [...prevCart, course];
-    });
+    addToCart(course);
   };
 
   const handleDeleteCard = function (courseId: number) {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== courseId));
+    deleteFromCart(courseId);
   };
 
   const totalCartPrice = cart.reduce((red, cur) => red + cur.price, 0);

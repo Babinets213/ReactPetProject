@@ -15,6 +15,7 @@ import HeaderMenuModal from "./HeaderMenuModal";
 export default function Header() {
   const [hasBeenInViewChecked, setHasBeenInViewChecked] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
   const t = useTranslations("HomePage.header");
   const commonT = useTranslations("common");
@@ -35,6 +36,11 @@ export default function Header() {
     setHasBeenInViewChecked(true);
   }, [inView]);
 
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+
+    setIsAuthenticated(!!user);
+  }, []);
   const headerBaseClasses =
     "fixed top-0 z-50 flex w-full items-center justify-between py-4 transition-all duration-300 sm:px-5 lg:px-10 2xl:px-60";
 
@@ -49,10 +55,12 @@ export default function Header() {
 
   const linkStyle = inView && isCoursesPage ? "text-[#2A354F]" : "text-white";
 
-  if (isProfilePage || isDashboardPage) {
+  if (isAuthenticated === null) return null;
+
+  if (isAuthenticated && (isProfilePage || isDashboardPage)) {
     return (
       <header className={`${headerBaseClasses} bg-[#2A354F]`}>
-        <Link href="#">
+        <Link href="/">
           <Image
             className="h-[50px]"
             alt="Learning World logo"
@@ -96,11 +104,12 @@ export default function Header() {
       </header>
     );
   }
+
   return (
     <>
       <div ref={sentinelRef} className="h-[1px]"></div>
       <header className={`${headerBaseClasses} ${headerStyle}`}>
-        <Link href="#">
+        <Link href="/">
           <Image
             className="h-[50px]"
             alt="Learning World logo"
@@ -161,7 +170,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="relative flex items-center gap-4">
           {!isCoursesPage ? (
             <Button
               onClick={() => router.replace("/courses")}
@@ -189,14 +198,40 @@ export default function Header() {
             <option value="de">{t("language.de")}</option>
             <option value="en">{t("language.en")}</option>
           </select>
-          <Button
-            to={`/${locale}/auth`}
-            content="text"
-            btnType="primary"
-            size="normal"
-          >
-            {t("buttons.login")}
-          </Button>
+          {isAuthenticated ? (
+            <>
+              <Button
+                btnType="text_btn"
+                size="normal"
+                content="icon"
+                icon={
+                  <NotificationIcon
+                    color={inView && isCoursesPage ? "#2A354F" : "white"}
+                  />
+                }
+              />
+              <Button
+                size="normal"
+                content="icon"
+                btnType="outline"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                icon={<MenuIcon />}
+              />
+              <HeaderMenuModal
+                isOpen={isMenuOpen}
+                onClose={() => setIsMenuOpen(false)}
+              />
+            </>
+          ) : (
+            <Button
+              to={`/${locale}/auth`}
+              content="text"
+              btnType="primary"
+              size="normal"
+            >
+              {t("buttons.login")}
+            </Button>
+          )}
         </div>
       </header>
     </>

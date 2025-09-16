@@ -71,6 +71,8 @@ export default function HeaderMenuModal({
       <DropdownItem
         onClick={() => {
           logout();
+          router.replace("/");
+          router.refresh();
           onClose(false);
         }}
       >

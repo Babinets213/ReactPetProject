@@ -1,17 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { SmallCourse } from "./SmallCourseCards";
 import { inter400, inter600 } from "@/styles/fonts";
 import Button from "./ui/Button";
 import ShoppingBagIcon from "./icons/ShoppingBagIcon";
-import { Course } from "@/app/[locale]/courses/page";
 import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
+import { CartItem, SmallCourse } from "@/types/courses";
 
 type SmallCourseCardProps = {
   course: SmallCourse;
   onHandleAddCard: (course: SmallCourse) => void;
   onHandleDeleteCard: (courseId: number) => void;
-  cart: (Course | SmallCourse)[];
+  cart: CartItem[];
 };
 
 export default function SmallCourseCard({
