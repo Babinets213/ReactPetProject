@@ -324,5 +324,14 @@
       "title": "Payment History"
     },
     "saveBtn": "Save"
+  },
+  "DashboardPage": {
+    "title": "My Courses",
+    "coursesBtnTexts": {
+      "resume": "Resume Course",
+      "start": "Start Course",
+      "completed": "Download Certicate"
+    },
+    "exploreBtn": "Explore All Courses"
   }
 }

@@ -324,5 +324,14 @@
       "title": "Zahlungsverlauf"
     },
     "saveBtn": "Speichern"
+  },
+  "DashboardPage": {
+    "title": "Mein Dashboard",
+    "coursesBtnTexts": {
+      "resume": "Kurs fortsetzen",
+      "start": "Kurs starten",
+      "completed": "Zertifikat herunterladen"
+    },
+    "exploreBtn": "Zeige alle Kurse"
   }
 }
