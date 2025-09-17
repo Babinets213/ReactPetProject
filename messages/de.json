@@ -204,6 +204,15 @@
         "paragraph": "Willkommen im Team! Hiermit beginnt deine Erfolgsgeschichte!",
         "btnText": "START"
       }
+    },
+    "forgotPassword": {
+      "title": "Passwort zurücksetzen",
+      "paragraph": "Bitte geben Sie Ihre E-Mail-Adresse ein, um einen Link zum Zurücksetzen Ihres Passworts zu erhalten.",
+      "emailInput": {
+        "label": "E-Mail",
+        "placeholder": "E-Mail-Adresse eingeben"
+      },
+      "btnText": "Passwort zurücksetzen"
     }
   },
   "AllCoursesPage": {
@@ -324,5 +333,14 @@
       "title": "Zahlungsverlauf"
     },
     "saveBtn": "Speichern"
+  },
+  "DashboardPage": {
+    "title": "Mein Dashboard",
+    "coursesBtnTexts": {
+      "resume": "Kurs fortsetzen",
+      "start": "Kurs starten",
+      "completed": "Zertifikat herunterladen"
+    },
+    "exploreBtn": "Zeige alle Kurse"
   }
 }

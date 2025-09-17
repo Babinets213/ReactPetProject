@@ -204,6 +204,15 @@
         "paragraph": "Glad to have you on board! Your professional growth starts here.",
         "btnText": "Let's start"
       }
+    },
+    "forgotPassword": {
+      "title": "Reset Your Password",
+      "paragraph": "Enter your login email address to receive a link to reset your password.",
+      "emailInput": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "btnText": "Reset Password"
     }
   },
   "AllCoursesPage": {
@@ -324,5 +333,14 @@
       "title": "Payment History"
     },
     "saveBtn": "Save"
+  },
+  "DashboardPage": {
+    "title": "My Courses",
+    "coursesBtnTexts": {
+      "resume": "Resume Course",
+      "start": "Start Course",
+      "completed": "Download Certicate"
+    },
+    "exploreBtn": "Explore All Courses"
   }
 }
