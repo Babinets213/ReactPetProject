@@ -3,8 +3,8 @@ import { useTranslations } from "next-intl";
 import React from "react";
 
 type FormToggleProps = {
-  activeForm: "login" | "signup";
-  onToggle: (form: "login" | "signup") => void;
+  activeForm: "login" | "signup" | "forgot";
+  onToggle: (form: "login" | "signup" | "forgot") => void;
 };
 
 export default function FormToggle({ activeForm, onToggle }: FormToggleProps) {

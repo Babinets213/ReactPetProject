@@ -10,6 +10,9 @@ import SuccessfulSignUp from "./SuccessfulSignUp";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createSignupSchema, SignupFormFields } from "@/schemas/signupSchema";
+import Image from "next/image";
+import Link from "next/link";
+import ChevronLeftIcon from "../icons/ChevronLeftIcon";
 
 type SignupFormProps = {
   toggleComponent: ReactNode;
@@ -83,88 +86,110 @@ export default function SignupForm({ toggleComponent }: SignupFormProps) {
   if (isRegistered) return <SuccessfulSignUp />;
 
   return (
-    <>
-      {toggleComponent}
-
-      <div className="flex flex-col gap-2">
-        <h2
-          className={`${poppins700.className} text-[32px] leading-[120%] tracking-[0.32px] text-[#171717]`}
-        >
-          {t("title")}
-        </h2>
-        <p
-          className={`${inter400.className} text-base leading-[120%] text-[#525252]`}
-        >
-          {t("paragraph")}
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-        <Input
-          register={register("email")}
-          error={errors.email}
-          success={isEmailValid}
-          icon
-          labelText={commonT("emailInputLabel")}
-          inputType="text"
-          placeholder={commonT("emailInputPlaceholder")}
-        />
-
-        <Input
-          register={register("password")}
-          error={errors.password}
-          success={isPasswordValid}
-          labelText={commonT("passwordInputLabel")}
-          inputType="password"
-          icon
-          placeholder={commonT("passwordInputPlaceholder")}
-        />
-
-        <div className="flex flex-col gap-2">
-          {passwordChecklist.map(({ key, label }) => {
-            const isValid = validationResults[key];
-            return (
-              <div className="flex items-center gap-[9px]" key={key}>
-                <CheckMarkIcon
-                  isSuccess={isValid}
-                  isUntouched={!hasStartedTyping}
-                />
-                <span
-                  className={`${inter400.className} text-sm leading-[120%] ${
-                    isValid && hasStartedTyping
-                      ? "text-[#27AE60]"
-                      : hasStartedTyping
-                        ? "text-[#F75555]"
-                        : "text-[#8B8B8B]"
-                  }`}
-                >
-                  {label}
-                </span>
-              </div>
-            );
-          })}
+    <div className="z-10 -ml-20 w-full rounded-bl-[80px] bg-white sm:px-5 sm:pt-[5px] md:w-1/2 lg:px-10 lg:pt-[15px] lg:pb-20 2xl:px-60 2xl:pt-[90px] 2xl:pb-40">
+      <div className="flex flex-col sm:gap-4 lg:gap-6 2xl:gap-8">
+        <div className="flex items-center gap-1 pt-2 pr-4">
+          <ChevronLeftIcon />
+          <Link
+            className={`${inter400.className} text-base leading-[120%] text-[#687083]`}
+            href={".."}
+          >
+            {commonT("backBtn")}
+          </Link>
         </div>
 
-        <div className="sm:mb-0 lg:mb-1 2xl:mb-2">
-          <Checkbox
-            disabled={false}
-            status={acceptedTerms ? "active" : "inactive"}
-            showLabel
-            label={t("terms")}
-            onChange={() => setAcceptedTerms(!acceptedTerms)}
+        <div>
+          <Image
+            className="h-[50px]"
+            alt="Learning World logo"
+            src={`/images/${commonT("logo")}`}
+            width={211}
+            height={50}
           />
         </div>
+        {toggleComponent}
 
-        <Button
-          disabled={!acceptedTerms || isSubmitting}
-          type="submit"
-          btnType="primary"
-          size="large"
-          content="text"
-        >
-          {t("btnText")}
-        </Button>
-      </form>
-    </>
+        <div className="flex flex-col gap-2">
+          <h2
+            className={`${poppins700.className} text-[32px] leading-[120%] tracking-[0.32px] text-[#171717]`}
+          >
+            {t("title")}
+          </h2>
+          <p
+            className={`${inter400.className} text-base leading-[120%] text-[#525252]`}
+          >
+            {t("paragraph")}
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+          <Input
+            register={register("email")}
+            error={errors.email}
+            success={isEmailValid}
+            icon
+            labelText={commonT("emailInputLabel")}
+            inputType="text"
+            placeholder={commonT("emailInputPlaceholder")}
+          />
+
+          <Input
+            register={register("password")}
+            error={errors.password}
+            success={isPasswordValid}
+            labelText={commonT("passwordInputLabel")}
+            inputType="password"
+            icon
+            placeholder={commonT("passwordInputPlaceholder")}
+          />
+
+          <div className="flex flex-col gap-2">
+            {passwordChecklist.map(({ key, label }) => {
+              const isValid = validationResults[key];
+              return (
+                <div className="flex items-center gap-[9px]" key={key}>
+                  <CheckMarkIcon
+                    isSuccess={isValid}
+                    isUntouched={!hasStartedTyping}
+                  />
+                  <span
+                    className={`${inter400.className} text-sm leading-[120%] ${
+                      isValid && hasStartedTyping
+                        ? "text-[#27AE60]"
+                        : hasStartedTyping
+                          ? "text-[#F75555]"
+                          : "text-[#8B8B8B]"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="sm:mb-0 lg:mb-1 2xl:mb-2">
+            <Checkbox
+              disabled={false}
+              status={acceptedTerms ? "active" : "inactive"}
+              showLabel
+              label={t("terms")}
+              onChange={() => setAcceptedTerms(!acceptedTerms)}
+            />
+          </div>
+
+          <Button
+            disabled={!acceptedTerms || isSubmitting}
+            type="submit"
+            btnType="primary"
+            size="large"
+            content="text"
+          >
+            {t("btnText")}
+          </Button>
+        </form>
+        <div />
+      </div>
+    </div>
   );
 }
