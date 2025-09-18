@@ -35,7 +35,7 @@ export default function LoginForm({
     reset,
   } = useForm<FormFields>();
 
-  const { login } = useAuth();
+  const { signIn, loading } = useAuth();
 
   const router = useRouter();
   const commonT = useTranslations("common");
@@ -46,12 +46,19 @@ export default function LoginForm({
   const email = watch("email") || "";
   const hasStartedTyping = password.length > 0 && email.length > 0;
 
-  const onSubmit: SubmitHandler<FormFields> = function (data) {
-    console.log(data);
-    console.log(errors);
-    login(data.email, data.password);
-    router.replace(`/profile`);
-    reset();
+  const onSubmit: SubmitHandler<FormFields> = async function (data) {
+    try {
+      await signIn(data.email, data.password);
+
+      // Show success message briefly before redirect
+      console.log("Login successful, redirecting...");
+
+      // Redirect to profile
+      router.replace(`/profile`);
+      reset();
+    } catch (err) {
+      console.error("Login error:", err);
+    }
   };
   return (
     <div className="z-10 -ml-20 w-full rounded-bl-[80px] bg-white sm:px-5 sm:pt-[5px] md:w-1/2 lg:px-10 lg:pt-[15px] lg:pb-20 2xl:px-60 2xl:pt-[90px] 2xl:pb-40">
@@ -123,6 +130,7 @@ export default function LoginForm({
               btnType="text_btn"
               size="normal"
               content="text"
+              disabled={loading}
             >
               Forgot password?
             </Button>
@@ -133,9 +141,9 @@ export default function LoginForm({
             btnType="primary"
             size="large"
             content="text"
-            disabled={!hasStartedTyping || isSubmitting}
+            disabled={!hasStartedTyping || isSubmitting || loading}
           >
-            Login
+            {loading || isSubmitting ? "Signing in..." : "Login"}
           </Button>
         </form>
       </div>

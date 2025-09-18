@@ -12,8 +12,24 @@ const languagesOptions = [
   { value: "pl", label: "Polski" },
 ];
 
-export default function LanguagesSelect() {
-  const [selected, setSelected] = useState("");
+interface LanguagesSelectProps {
+  value?: string[];
+  onChange?: (languages: string[]) => void;
+}
+
+export default function LanguagesSelect({
+  value = [],
+  onChange,
+}: LanguagesSelectProps) {
+  const [selected, setSelected] = useState(value.join(","));
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newValue = e.target.value;
+    setSelected(newValue);
+    if (onChange) {
+      onChange(newValue ? [newValue] : []); // For now, supporting single selection
+    }
+  };
 
   return (
     <div
@@ -24,7 +40,7 @@ export default function LanguagesSelect() {
     >
       <select
         value={selected}
-        onChange={(e) => setSelected(e.target.value)}
+        onChange={handleChange}
         className={clsx(
           inter400.className,
           "w-full appearance-none bg-transparent outline-none",

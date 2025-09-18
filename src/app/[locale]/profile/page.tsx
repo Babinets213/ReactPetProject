@@ -7,16 +7,112 @@ import { profileIcons } from "@/components/icons";
 import LanguagesSelect from "@/components/LanguagesSelect";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import { profileService, UserProfile } from "@/services/profile";
 import { inter400, inter600, inter700, poppins400 } from "@/styles/fonts";
 import { useTranslations } from "next-intl";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function ProfilePage() {
   const t = useTranslations("ProfilePage");
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [updating, setUpdating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Form state for all profile fields
+  const [formData, setFormData] = useState<Partial<UserProfile>>({});
+
+  // Console log for debugging (this uses the profile variable)
+  console.log("Current profile:", profile);
+
+  // Fetch profile data on component mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        setLoading(true);
+        const data = await profileService.getProfile();
+        setProfile(data);
+        setFormData({
+          firstName: data.firstName || "",
+          lastName: data.lastName || "",
+          email: data.email || "",
+          phoneNumber: data.phoneNumber || "",
+          birthDate: data.birthDate || "",
+          jobTitle: data.jobTitle || "",
+          firmNumber: data.firmNumber || "",
+          education: data.education || "",
+          languages: data.languages || [],
+          experienceDuration: data.experienceDuration || "",
+          companyName: data.companyName || "",
+          position: data.position || "",
+          address: data.address || "",
+        });
+      } catch (err) {
+        setError("Failed to load profile data");
+        console.error("Error fetching profile:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  // Handle form field changes
+  const handleFieldChange =
+    (field: keyof UserProfile) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData((prev) => ({
+        ...prev,
+        [field]: e.target.value,
+      }));
+    };
+
+  // Handle languages field changes
+  const handleLanguagesChange = (languages: string[]) => {
+    setFormData((prev) => ({
+      ...prev,
+      languages: languages,
+    }));
+  };
+
+  // Handle form submission
+  const handleSave = async () => {
+    try {
+      setUpdating(true);
+      setError(null);
+
+      const updateData = {
+        ...formData,
+      };
+
+      const updatedProfile = await profileService.updateProfile(updateData);
+      setProfile(updatedProfile);
+
+      // You could show a success message here
+    } catch (err) {
+      setError("Failed to update profile");
+      console.error("Error updating profile:", err);
+    } finally {
+      setUpdating(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#F5F7FA]">
+        <p>Loading profile...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen">
       <Header />
+      {error && (
+        <div className="mx-4 my-2 rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700">
+          {error}
+        </div>
+      )}
       <main className="bg-[#F9F9F9] pt-30 sm:px-5 lg:px-10 2xl:px-60">
         <h2
           className={`text-black ${inter700.className} mb-3 text-[35px] leading-[120%]`}
@@ -53,6 +149,8 @@ function ProfilePage() {
               placeholder={t("personalInformation.firstNameInput.placeholder")}
               inputType="text"
               labelText={t("personalInformation.firstNameInput.label")}
+              value={formData.firstName || ""}
+              onChange={handleFieldChange("firstName")}
             />
 
             <Input
@@ -60,6 +158,8 @@ function ProfilePage() {
               placeholder={t("personalInformation.lastNameInput.placeholder")}
               inputType="text"
               labelText={t("personalInformation.lastNameInput.label")}
+              value={formData.lastName || ""}
+              onChange={handleFieldChange("lastName")}
             />
 
             <Input
@@ -69,6 +169,9 @@ function ProfilePage() {
               labelText={t("personalInformation.emailInput.label")}
               icon
               iconComponent={profileIcons.mail()}
+              value={formData.email || ""}
+              disabled={true}
+              onChange={handleFieldChange("email")}
             />
 
             <Input
@@ -78,6 +181,8 @@ function ProfilePage() {
               labelText={t("personalInformation.phoneInput.label")}
               icon
               iconComponent={profileIcons.phone()}
+              value={formData.phoneNumber || ""}
+              onChange={handleFieldChange("phoneNumber")}
             />
 
             <Input
@@ -86,36 +191,8 @@ function ProfilePage() {
               inputType="date"
               labelText={t("personalInformation.dateInput.label")}
               icon
-            />
-
-            <Input
-              className="bg-white"
-              placeholder={t(
-                "personalInformation.curPasswordInput.placeholder",
-              )}
-              inputType="password"
-              labelText={t("personalInformation.curPasswordInput.label")}
-              icon
-            />
-
-            <Input
-              className="bg-white"
-              placeholder={t(
-                "personalInformation.newPasswordInput.placeholder",
-              )}
-              inputType="password"
-              labelText={t("personalInformation.newPasswordInput.label")}
-              icon
-            />
-
-            <Input
-              className="bg-white"
-              placeholder={t(
-                "personalInformation.confirmPasswordInput.placeholder",
-              )}
-              inputType="password"
-              labelText={t("personalInformation.confirmPasswordInput.label")}
-              icon
+              value={formData.birthDate || ""}
+              onChange={handleFieldChange("birthDate")}
             />
           </div>
         </section>
@@ -146,6 +223,8 @@ function ProfilePage() {
               )}
               inputType="text"
               labelText={t("professionalInformation.jobTitleInput.label")}
+              value={formData.jobTitle || ""}
+              onChange={handleFieldChange("jobTitle")}
             />
 
             <Input
@@ -153,6 +232,8 @@ function ProfilePage() {
               placeholder={t("professionalInformation.finmaInput.placeholder")}
               inputType="text"
               labelText={t("professionalInformation.finmaInput.label")}
+              value={formData.firmNumber || ""}
+              onChange={handleFieldChange("firmNumber")}
             />
 
             <div className="col-span-2">
@@ -163,6 +244,8 @@ function ProfilePage() {
                 )}
                 inputType="text"
                 labelText={t("professionalInformation.educationInput.label")}
+                value={formData.education || ""}
+                onChange={handleFieldChange("education")}
               />
             </div>
 
@@ -172,7 +255,10 @@ function ProfilePage() {
               >
                 {t("professionalInformation.languages.label")}
               </label>
-              <LanguagesSelect />
+              <LanguagesSelect
+                value={formData.languages || []}
+                onChange={handleLanguagesChange}
+              />
             </div>
 
             <Input
@@ -182,6 +268,8 @@ function ProfilePage() {
               )}
               inputType="text"
               labelText={t("professionalInformation.experienceInput.label")}
+              value={formData.experienceDuration || ""}
+              onChange={handleFieldChange("experienceDuration")}
             />
           </div>
         </section>
@@ -209,6 +297,8 @@ function ProfilePage() {
               placeholder={t("currentEmployment.companyInput.placeholder")}
               inputType="text"
               labelText={t("currentEmployment.companyInput.label")}
+              value={formData.companyName || ""}
+              onChange={handleFieldChange("companyName")}
             />
 
             <Input
@@ -216,6 +306,8 @@ function ProfilePage() {
               placeholder={t("currentEmployment.positionInput.placeholder")}
               inputType="text"
               labelText={t("currentEmployment.positionInput.label")}
+              value={formData.position || ""}
+              onChange={handleFieldChange("position")}
             />
           </div>
         </section>
@@ -245,6 +337,8 @@ function ProfilePage() {
               placeholder={t("address.addressInput.placeholder")}
               inputType="text"
               labelText={t("address.addressInput.label")}
+              value={formData.address || ""}
+              onChange={handleFieldChange("address")}
             />
           </div>
         </section>
@@ -379,8 +473,10 @@ function ProfilePage() {
           content="text"
           size="normal"
           className="mb-35 w-118"
+          onClick={handleSave}
+          disabled={updating}
         >
-          {t("saveBtn")}
+          {updating ? "Saving..." : t("saveBtn")}
         </Button>
       </main>
       <Footer />
