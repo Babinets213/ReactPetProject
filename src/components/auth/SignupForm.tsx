@@ -13,6 +13,7 @@ import { createSignupSchema, SignupFormFields } from "@/schemas/signupSchema";
 import Image from "next/image";
 import Link from "next/link";
 import ChevronLeftIcon from "../icons/ChevronLeftIcon";
+import { useAuth } from "@/context/AuthContext";
 
 type SignupFormProps = {
   toggleComponent: ReactNode;
@@ -23,6 +24,7 @@ export default function SignupForm({ toggleComponent }: SignupFormProps) {
   const commonT = useTranslations("common");
 
   const signupSchema = createSignupSchema(t);
+  const { signUp, signIn, loading } = useAuth();
 
   const {
     register,
@@ -64,14 +66,22 @@ export default function SignupForm({ toggleComponent }: SignupFormProps) {
     { key: "hasSpecialChar", label: t("validation.password.specialChar") },
   ];
 
-  const onSubmit: SubmitHandler<SignupFormFields> = function (data) {
+  const onSubmit: SubmitHandler<SignupFormFields> = async function (data) {
     try {
-      console.log(data);
-      console.log(errors);
+      // First, create the account
+      await signUp(data.email, data.password);
+      console.log("Signup successful, now signing in...");
+
+      // TODO: add more checks and error handling here
+      // Then automatically sign in the user
+      await signIn(data.email, data.password);
+      console.log("Auto-signin successful, redirecting...");
+
+      // Show success screen
       setIsRegistered(true);
       reset();
     } catch (e) {
-      console.error(e);
+      console.error("Signup/signin error:", e);
     }
   };
 
@@ -179,13 +189,13 @@ export default function SignupForm({ toggleComponent }: SignupFormProps) {
           </div>
 
           <Button
-            disabled={!acceptedTerms || isSubmitting}
+            disabled={!acceptedTerms || isSubmitting || loading}
             type="submit"
             btnType="primary"
             size="large"
             content="text"
           >
-            {t("btnText")}
+            {loading || isSubmitting ? "Creating account..." : t("btnText")}
           </Button>
         </form>
         <div />

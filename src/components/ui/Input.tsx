@@ -23,6 +23,7 @@ type InputProps = {
   register?: UseFormRegisterReturn;
   isTextarea?: boolean;
   className?: string;
+  disabled?: boolean;
 };
 
 export default function Input({
@@ -39,6 +40,7 @@ export default function Input({
   register,
   isTextarea,
   className,
+  disabled = false,
 }: InputProps) {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -114,6 +116,7 @@ export default function Input({
           getHoverBorderColor(),
           "focus-within:border-[#2A354F]",
           isTextarea ? "items-start" : "items-center",
+          disabled && "bg-gray-100 opacity-60",
           className,
         )}
       >
@@ -124,10 +127,12 @@ export default function Input({
             {...register}
             placeholder={placeholder}
             rows={4}
+            disabled={disabled}
             className={clsx(
               inter400.className,
               "max-h-[57px] w-full resize-none outline-none placeholder:text-base placeholder:leading-[120%] placeholder:text-[#757575]",
               getHoverBorderColor(),
+              disabled && "cursor-not-allowed bg-gray-100",
             )}
           />
         ) : (
@@ -136,6 +141,7 @@ export default function Input({
             ref={inputRef}
             value={value}
             onChange={onChange}
+            disabled={disabled}
             type={
               inputType === "password"
                 ? isShowPassword
@@ -149,6 +155,7 @@ export default function Input({
               "w-full outline-none placeholder:text-base placeholder:leading-[120%] placeholder:text-[#757575]",
               icon && "pr-10",
               getHoverBorderColor(),
+              disabled && "cursor-not-allowed bg-gray-100",
               inputType === "date" && "custom-date-input appearance-none",
             )}
             placeholder={inputType !== "date" ? placeholder : undefined}
