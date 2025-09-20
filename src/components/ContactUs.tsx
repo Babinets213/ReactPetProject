@@ -8,7 +8,7 @@ export default function ContactUs() {
   const t = useTranslations("HomePage.contactUs");
 
   return (
-    <section id="contact" className="pb-61">
+    <section id="contact" className="scroll-mt-24 pb-61">
       <div className="flex items-center justify-between gap-40 rounded-sm bg-[#00AC8E] px-20 py-[3.125rem]">
         <h3
           className={`${poppins700.className} w-1/2 text-2xl leading-[120%] text-white`}

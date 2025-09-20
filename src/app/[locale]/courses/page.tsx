@@ -72,29 +72,31 @@ export default function Courses() {
       </main>
 
       {cart.length > 0 && (
-        <div className="flex items-center justify-between border-t border-t-[#F1F1F3] sm:px-5 lg:px-10 2xl:px-60">
-          <p
-            className={`${inter700.className} text-[23px] leading-[120%] text-[#2A354F]`}
-          >
-            You have selected {cart.length} courses
-          </p>
+        <div className="fixed right-0 bottom-0 left-0 z-50 border-t border-t-[#F1F1F3] bg-white shadow-md sm:px-5 lg:px-10 2xl:px-60">
+          <div className="flex items-center justify-between">
+            <p
+              className={`${inter700.className} text-[23px] leading-[120%] text-[#2A354F]`}
+            >
+              You have selected {cart.length} courses
+            </p>
 
-          <div className="flex items-center">
-            <div className="mr-7 flex w-50 flex-col items-start justify-center py-4">
-              <span
-                className={`${inter400.className} max-w-[380px] items-center self-stretch text-base leading-[120%] text-[#687083]`}
-              >
-                Total
-              </span>
-              <span
-                className={`${inter600.className} text-lg leading-[120%] text-[#2A354F]`}
-              >
-                {totalCartPrice}.00 CHF
-              </span>
+            <div className="flex items-center">
+              <div className="mr-7 flex w-50 flex-col items-start justify-center py-4">
+                <span
+                  className={`${inter400.className} max-w-[380px] items-center self-stretch text-base leading-[120%] text-[#687083]`}
+                >
+                  Total
+                </span>
+                <span
+                  className={`${inter600.className} text-lg leading-[120%] text-[#2A354F]`}
+                >
+                  {totalCartPrice}.00 CHF
+                </span>
+              </div>
+              <Button content="text" btnType="primary" size="normal">
+                Proceed to Checkout
+              </Button>
             </div>
-            <Button content="text" btnType="primary" size="normal">
-              Proceed to Checkout
-            </Button>
           </div>
         </div>
       )}

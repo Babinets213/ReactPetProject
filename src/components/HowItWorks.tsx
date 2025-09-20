@@ -11,7 +11,7 @@ export default function HowItWorks() {
   const t = useTranslations("HomePage.howItWorks");
 
   return (
-    <section id="how" className="pb-50">
+    <section id="how" className="scroll-mt-24 pb-50">
       <div className="mb-26 flex flex-col items-center gap-4">
         <div className="flex items-center gap-6">
           <div>

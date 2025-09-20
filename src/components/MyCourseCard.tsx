@@ -1,5 +1,5 @@
 import { inter400, inter700 } from "@/styles/fonts";
-import React from "react";
+import React, { useState } from "react";
 import Button from "./ui/Button";
 import ProgressBar from "./ui/ProgressBar";
 import { useTranslations } from "next-intl";
@@ -16,9 +16,12 @@ type MyCourseCardProps = {
 
 export default function MyCourseCard({ course }: MyCourseCardProps) {
   const t = useTranslations("DashboardPage.coursesBtnTexts");
+  const [isHovering, setIsHovering] = useState(false);
 
   return (
     <div
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
       key={course.id}
       className="flex items-center justify-between rounded-sm border border-[#C2C2C2] px-10 pt-7 pb-4"
     >
@@ -35,7 +38,11 @@ export default function MyCourseCard({ course }: MyCourseCardProps) {
           {course.progress}% complete
         </span>
       </div>
-      <Button btnType="outline" content="text" size="large">
+      <Button
+        btnType={isHovering ? "primary" : "outline"}
+        content="text"
+        size="large"
+      >
         {course.progress > 0 && course.progress < 100 && `${t("resume")}`}
         {course.progress === 0 && `${t("start")}`}
         {course.progress === 100 && `${t("completed")}`}

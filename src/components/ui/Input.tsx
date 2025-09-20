@@ -111,7 +111,7 @@ export default function Input({
       )}
       <div
         className={clsx(
-          "relative flex items-center rounded-sm border px-4 py-3",
+          "relative flex items-center rounded-sm border px-4 py-2",
           getBorderColor(),
           getHoverBorderColor(),
           "focus-within:border-[#2A354F]",
@@ -152,7 +152,7 @@ export default function Input({
             {...register}
             className={clsx(
               inter400.className,
-              "w-full outline-none placeholder:text-base placeholder:leading-[120%] placeholder:text-[#757575]",
+              "w-full outline-none placeholder:text-base placeholder:text-[#757575]",
               icon && "pr-10",
               getHoverBorderColor(),
               disabled && "cursor-not-allowed bg-gray-100",

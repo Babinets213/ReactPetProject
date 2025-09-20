@@ -249,7 +249,7 @@ function ProfilePage() {
               />
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="mt-auto flex flex-col gap-1">
               <label
                 className={`${inter600.className} text-base leading-[120%] text-[#424242]`}
               >

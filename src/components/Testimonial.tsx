@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 export default function Testimonial() {
   const t = useTranslations("HomePage.testimonial");
   return (
-    <section className="pb-43" id="testimonial">
+    <section className="scroll-mt-24 pb-43" id="testimonial">
       <div className="mb-20 flex flex-col items-center gap-4">
         <div className="flex items-center gap-6">
           <div>

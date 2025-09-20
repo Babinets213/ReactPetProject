@@ -21,7 +21,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale}>
       <html lang={locale}>
-        <body>
+        <body className="scroll-smooth">
           <AuthProvider>
             <CartProvider>{children}</CartProvider>
           </AuthProvider>

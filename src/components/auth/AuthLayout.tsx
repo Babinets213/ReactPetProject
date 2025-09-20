@@ -21,7 +21,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
             className="object-cover mix-blend-overlay"
           />
 
-          <div className="text-center">
+          <div className="-ml-20 text-center">
             <h1
               dangerouslySetInnerHTML={{ __html: t("title") }}
               className={`${poppins700.className} leading-[120%] text-[#A0F384] sm:text-3xl lg:text-4xl 2xl:text-[56px]`}
