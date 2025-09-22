@@ -25,6 +25,8 @@ export default function Header() {
   const isCoursesPage = pathname.includes("/courses");
   const isProfilePage = pathname.includes("/profile");
   const isDashboardPage = pathname.includes("/dashboard");
+  const isCoursePage = pathname.includes("/course");
+  const isCartPage = pathname.includes("/cart");
 
   const { ref: sentinelRef, inView } = useInView({
     threshold: 0,
@@ -53,11 +55,12 @@ export default function Header() {
     router.push(pathname, { locale });
   };
 
-  const linkStyle = inView && isCoursesPage ? "text-[#2A354F]" : "text-white";
+  const linkStyle =
+    inView && (isCoursesPage || isCartPage) ? "text-[#2A354F]" : "text-white";
 
   if (isAuthenticated === null) return null;
 
-  if (isAuthenticated && (isProfilePage || isDashboardPage)) {
+  if (isAuthenticated && (isProfilePage || isDashboardPage || isCoursePage)) {
     return (
       <header className={`${headerBaseClasses} bg-[#2A354F]`}>
         <Link href="/">
@@ -183,6 +186,7 @@ export default function Header() {
             </Button>
           ) : (
             <Button
+              onClick={() => router.replace("/cart")}
               size="normal"
               btnType="outline"
               content="icon"
@@ -193,7 +197,7 @@ export default function Header() {
           <select
             onChange={(e) => changeLanguage(e.target.value)}
             value={locale}
-            className={`rounded-sm px-4 py-2 text-xl ${inView && isCoursesPage ? "text-[#2A354F]" : "text-white"} focus:outline-none`}
+            className={`rounded-sm px-4 py-2 text-xl ${inView && (isCoursesPage || isCartPage) ? "text-[#2A354F]" : "text-white"} focus:outline-none`}
           >
             <option value="de">{t("language.de")}</option>
             <option value="en">{t("language.en")}</option>
@@ -206,7 +210,11 @@ export default function Header() {
                 content="icon"
                 icon={
                   <NotificationIcon
-                    color={inView && isCoursesPage ? "#2A354F" : "white"}
+                    color={
+                      inView && (isCoursesPage || isCartPage)
+                        ? "#2A354F"
+                        : "white"
+                    }
                   />
                 }
               />

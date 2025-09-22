@@ -7,6 +7,7 @@ import SmallCourseCards from "@/components/SmallCourseCards";
 import Button from "@/components/ui/Button";
 import { useCart } from "@/context/CartContext";
 import { expertBlock, getCourses, professionalBlock } from "@/data/coursesData";
+import { useRouter } from "@/i18n/navigation";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import { CartItem } from "@/types/courses";
 import { useTranslations } from "next-intl";
@@ -14,6 +15,7 @@ import React from "react";
 
 export default function Courses() {
   const t = useTranslations("AllCoursesPage");
+  const router = useRouter();
 
   const courses = getCourses(t);
 
@@ -97,6 +99,14 @@ export default function Courses() {
                 Proceed to Checkout
               </Button>
             </div>
+            <Button
+              onClick={() => router.replace("/cart")}
+              content="text"
+              btnType="primary"
+              size="normal"
+            >
+              Proceed to Checkout
+            </Button>
           </div>
         </div>
       )}

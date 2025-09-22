@@ -342,5 +342,16 @@
       "completed": "Zertifikat herunterladen"
     },
     "exploreBtn": "Zeige alle Kurse"
+  },
+  "AboutCoursePage": {
+    "header": {
+      "title": "Assessment Module",
+      "time": "2 Wochen",
+      "level": "Alle Level",
+      "lessons": "20 Lektionen",
+      "test": "1 Test",
+      "btnText": "Kurs kaufen"
+    },
+    "descriptionTitle": "Modul Beschreibung"
   }
 }

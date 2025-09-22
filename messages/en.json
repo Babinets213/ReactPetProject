@@ -342,5 +342,16 @@
       "completed": "Download Certicate"
     },
     "exploreBtn": "Explore All Courses"
+  },
+  "AboutCoursePage": {
+    "header": {
+      "title": "Assessment Block",
+      "time": "2 Weeks",
+      "level": "All levels",
+      "lessons": "20 Lessons",
+      "test": "1 Test",
+      "btnText": "Buy Course"
+    },
+    "descriptionTitle": "Course description"
   }
 }
