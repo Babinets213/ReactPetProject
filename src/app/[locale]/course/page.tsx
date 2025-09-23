@@ -1,11 +1,11 @@
 "use client";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import CertificateIcon from "@/components/icons/cart/CertificateIcon";
-import FileIcon from "@/components/icons/cart/FileIcon";
-import LevelIcon from "@/components/icons/cart/LevelIcon";
-import QuestionIcon from "@/components/icons/cart/QuestionIcon";
-import TimeIcon from "@/components/icons/cart/TimeIcon";
+import CertificateIcon from "@/components/icons/aboutCourse/CertificateIcon";
+import FileIcon from "@/components/icons/aboutCourse/FileIcon";
+import LevelIcon from "@/components/icons/aboutCourse/LevelIcon";
+import QuestionIcon from "@/components/icons/aboutCourse/QuestionIcon";
+import TimeIcon from "@/components/icons/aboutCourse/TimeIcon";
 import TopicsAccordion from "@/components/TopicsAccordion";
 import Button from "@/components/ui/Button";
 import { inter400, inter700 } from "@/styles/fonts";

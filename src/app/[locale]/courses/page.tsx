@@ -100,18 +100,15 @@ export default function CoursesPage() {
                   {totalCartPrice}.00 CHF
                 </span>
               </div>
-              <Button content="text" btnType="primary" size="normal">
+              <Button
+                onClick={() => router.replace("/cart")}
+                content="text"
+                btnType="primary"
+                size="normal"
+              >
                 Proceed to Checkout
               </Button>
             </div>
-            <Button
-              onClick={() => router.replace("/cart")}
-              content="text"
-              btnType="primary"
-              size="normal"
-            >
-              Proceed to Checkout
-            </Button>
           </div>
         </div>
       )}

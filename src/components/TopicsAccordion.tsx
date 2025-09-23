@@ -1,7 +1,7 @@
 "use client";
 import { inter400 } from "@/styles/fonts";
 import React, { useState } from "react";
-import ArrowDownIcon from "./icons/cart/ArrowDownIcon";
+import ArrowDownIcon from "./icons/aboutCourse/ArrowDownIcon";
 
 const topics = [
   {
