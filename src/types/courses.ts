@@ -13,7 +13,7 @@ export type Course = {
   tags: string[];
 };
 
-export type CartItem = ApiCourse | SmallCourse;
+export type CartItem = ApiCourse;
 
 export enum CourseComplexity {
   BEGINNER = "beginner",

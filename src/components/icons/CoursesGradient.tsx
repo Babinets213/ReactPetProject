@@ -28,9 +28,9 @@ export default function CoursesGradient() {
           width="2696"
           height="1958"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -50,11 +50,11 @@ export default function CoursesGradient() {
           gradientTransform="matrix(5239.58 7248.8 -10820 40740.4 -1975.88 -3531)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.175497" stop-color="#A0F384" />
-          <stop offset="0.275566" stop-color="#9BFFA5" />
-          <stop offset="0.49892" stop-color="#D4F3FF" />
-          <stop offset="0.591346" stop-color="#C9EDEF" />
-          <stop offset="0.701923" stop-color="#CAFAE9" />
+          <stop offset="0.175497" stopColor="#A0F384" />
+          <stop offset="0.275566" stopColor="#9BFFA5" />
+          <stop offset="0.49892" stopColor="#D4F3FF" />
+          <stop offset="0.591346" stopColor="#C9EDEF" />
+          <stop offset="0.701923" stopColor="#CAFAE9" />
         </radialGradient>
       </defs>
     </svg>

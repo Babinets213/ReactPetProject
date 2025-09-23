@@ -2,9 +2,9 @@
 
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import React, { useState } from "react";
-import Button from "./ui/Button";
+// import Button from "./ui/Button";
 import Tag from "./ui/Tag";
-import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
+// import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
 import { useTranslations, useLocale } from "next-intl";
 import { ApiCourse, CartItem } from "@/types/courses";
 
@@ -21,7 +21,7 @@ export default function OpenedCourseCard({
   onHandleAddCard,
   onHandleDeleteCard,
 }: Omit<OpenedCourseCardProps, "locale">) {
-  const t = useTranslations("AllCoursesPage");
+  // const t = useTranslations("AllCoursesPage");
   const locale = useLocale();
 
   const { price, modules, complexity } = course;
@@ -64,7 +64,19 @@ export default function OpenedCourseCard({
         >
           {price} chf
         </span>
-
+        <span
+          onClick={() => {
+            if (!isInCart) {
+              onHandleAddCard(course);
+            } else {
+              onHandleDeleteCard(course.id);
+            }
+          }}
+        >
+          Buy
+        </span>
+        {/* 
+        // TODO: fix button error
         <Button
           className={`${isHovering || isInCart ? "bg-[#ECFDE6]! font-semibold" : ""} whitespace-nowrap`}
           size="large"
@@ -80,7 +92,7 @@ export default function OpenedCourseCard({
           }}
         >
           {isInCart ? t("course.btnText.after") : t("course.btnText.before")}
-        </Button>
+        </Button> */}
       </div>
 
       {/* Tag Container */}

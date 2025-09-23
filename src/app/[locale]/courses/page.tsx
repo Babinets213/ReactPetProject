@@ -9,16 +9,17 @@ import { inter400, inter600, inter700 } from "@/styles/fonts";
 import { useCart } from "@/context/CartContext";
 import { ApiCourse } from "@/types/courses";
 // import SmallCourseCards from "@/components/SmallCourseCards";
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 import CoursesGradient from "@/components/icons/CoursesGradient";
 import Button from "@/components/ui/Button";
-import router from "next/router";
+import { useRouter } from "@/i18n/navigation";
 
 export default function CoursesPage() {
   const [publicCourses, setPublicCourses] = useState<ApiCourse[]>([]);
   const [error, setError] = useState<string | null>(null);
   const { cart, addToCart, deleteFromCart } = useCart();
-  const t = useTranslations("AllCoursesPage");
+  // const t = useTranslations("AllCoursesPage");
+  const router = useRouter();
 
   useEffect(() => {
     CoursesService.fetchPublicCourses()
