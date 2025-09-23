@@ -9,7 +9,7 @@ export default function Hero() {
   const t = useTranslations("HomePage.hero");
 
   return (
-    <section className="relative flex flex-col items-center pb-50">
+    <section className="relative flex scroll-mt-24 flex-col items-center pb-50">
       <div className="mb-23 flex flex-col items-center justify-center">
         <h1
           className={`text-center text-[70px] text-white ${poppins700.className} mb-3`}

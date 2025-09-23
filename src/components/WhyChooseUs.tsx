@@ -28,7 +28,10 @@ export default function WhyChooseUs() {
   );
 
   return (
-    <section id="why" className="flex flex-col items-center gap-20 pb-68">
+    <section
+      id="why"
+      className="flex scroll-mt-24 flex-col items-center gap-20 pb-68"
+    >
       <div className="flex flex-col items-center gap-4">
         <div className="flex items-center gap-6">
           <div>

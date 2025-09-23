@@ -5,6 +5,7 @@ import EducationIcon from "./icons/EducationIcon";
 import { inter400, poppins700 } from "@/styles/fonts";
 import Button from "./ui/Button";
 import { lineIcons } from "./icons";
+import { useRouter } from "@/i18n/navigation";
 
 type EducationCard = {
   title: string;
@@ -20,7 +21,7 @@ export default function EducationCard({
   items,
 }: EducationCard) {
   const [isHovering, setIsHovering] = useState(false);
-
+  const router = useRouter();
   let LineIcon;
 
   switch (items.length) {
@@ -89,6 +90,7 @@ export default function EducationCard({
             btnType="outline"
             size="large"
             content="text"
+            onClick={() => router.push("/course")}
           >
             {buttonText}
           </Button>

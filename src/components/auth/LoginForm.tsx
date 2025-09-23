@@ -54,7 +54,7 @@ export default function LoginForm({
       console.log("Login successful, redirecting...");
 
       // Redirect to profile
-      router.replace(`/profile`);
+      router.replace(`/dashboard`);
       reset();
     } catch (err) {
       console.error("Login error:", err);
@@ -83,7 +83,7 @@ export default function LoginForm({
           />
         </div>
         {toggleComponent}
-
+        
         <div className="flex flex-col gap-2">
           <h2
             className={`${poppins700.className} text-[32px] leading-[120%] tracking-[0.32px] text-[#171717]`}
