@@ -21,7 +21,7 @@ export default function SmallCourseCard({
 }: SmallCourseCardProps) {
   const [isHovering, setIsHovering] = useState(false);
 
-  const isInCart = cart.some((item) => item.id === course.id);
+  const isInCart = cart.some((item) => item.id === course.id.toString());
 
   return (
     <div
