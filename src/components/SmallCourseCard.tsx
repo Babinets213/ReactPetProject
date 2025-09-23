@@ -9,7 +9,7 @@ import { CartItem, SmallCourse } from "@/types/courses";
 type SmallCourseCardProps = {
   course: SmallCourse;
   onHandleAddCard: (course: SmallCourse) => void;
-  onHandleDeleteCard: (courseId: number) => void;
+  onHandleDeleteCard: (courseId: string) => void;
   cart: CartItem[];
 };
 
@@ -50,7 +50,9 @@ export default function SmallCourseCard({
           content="icon"
           icon={isInCart ? <GeneralCheckMarkIcon /> : <ShoppingBagIcon />}
           onClick={() =>
-            isInCart ? onHandleDeleteCard(course.id) : onHandleAddCard(course)
+            isInCart
+              ? onHandleDeleteCard(course.id.toString())
+              : onHandleAddCard(course)
           }
         />
       </div>

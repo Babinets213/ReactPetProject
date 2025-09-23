@@ -6,7 +6,7 @@ import { createContext, useContext, useState } from "react";
 type CartContextType = {
   cart: CartItem[];
   addToCart: (course: CartItem) => void;
-  deleteFromCart: (courseId: number) => void;
+  deleteFromCart: (courseId: string) => void;
 };
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -20,7 +20,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  const deleteFromCart = function (courseId: number) {
+  const deleteFromCart = function (courseId: string) {
     setCart((prevCart) => prevCart.filter((item) => item.id !== courseId));
   };
   return (
