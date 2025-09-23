@@ -12,6 +12,7 @@ export default function CourseTest() {
     "Verkehrswertschätzung",
     "Regulatorische Vorgaben",
     "Tragbarkeitberechnung",
+
     "Refinanzierungsgeschäft",
     "Neufinanzierungsgeschäft",
     "Unterlagen für Hypothekfinanzierung",

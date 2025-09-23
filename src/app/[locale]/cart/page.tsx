@@ -7,11 +7,6 @@ import TrashIcon from "@/components/icons/cart/TrashIcon";
 import Button from "@/components/ui/Button";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import Image from "next/image";
-import TwintIcon from "@/components/icons/cart/twint.png";
-import CardIcon from "@/components/icons/cart/card.png";
-
-// 👇 бекграунд
-import BlurGradient from "@/components/icons/dashboard/Blur_Gradient.png";
 
 const CourseItem = ({ title, price }: { title: string; price: number }) => {
   return (
@@ -66,7 +61,7 @@ export default function Cart() {
       {/* 👇 Background */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src={BlurGradient}
+          src="/Blur_Gradient.png"
           alt="Background"
           fill
           priority
@@ -168,7 +163,12 @@ export default function Cart() {
                   onChange={() => setPaymentMethod("twint")}
                   className="hidden"
                 />
-                <Image src={TwintIcon} alt="Twint" width={36} height={36} />
+                <Image
+                  src="/twint.png"
+                  alt="/twint.png"
+                  width={36}
+                  height={36}
+                />
                 <span
                   className={`${inter600.className} text-base text-[#2A354F]`}
                 >
@@ -191,7 +191,7 @@ export default function Cart() {
                   onChange={() => setPaymentMethod("card")}
                   className="hidden"
                 />
-                <Image src={CardIcon} alt="Card" width={36} height={36} />
+                <Image src="/card.png" alt="Card" width={36} height={36} />
                 <span
                   className={`${inter600.className} text-base text-[#2A354F]`}
                 >
