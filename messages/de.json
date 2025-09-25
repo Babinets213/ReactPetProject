@@ -215,6 +215,22 @@
       "btnText": "Passwort zurücksetzen"
     }
   },
+  "tests": {
+    "title": "Hypotheken und Immobilienmarkt Schweiz",
+    "progress": "{current}/{total}",
+    "question": "Wie gross ist das Marktvolumen des Hypothekarmarkts in der Schweiz (Stand ca. 2025)?",
+    "singleChoice": "Single Choice Question",
+    "answers": [
+      "Ca. 500 Millionen CHF",
+      "Ca. 500 Milliarden CHF",
+      "Ca. 1’200 Millionen CHF",
+      "Ca. 1’200 Milliarden CHF"
+    ],
+    "next": "Nächste Frage",
+    "assessmentBlock": "Assessment Block",
+    "test": "Test",
+    "certificate": "Zertifikat"
+  },
   "AllCoursesPage": {
     "title": "Kursübersicht",
     "course": {

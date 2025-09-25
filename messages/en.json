@@ -215,6 +215,22 @@
       "btnText": "Reset Password"
     }
   },
+  "tests": {
+    "title": "Hypothecs and Real Estate Market Switzerland",
+    "progress": "{current}/{total}",
+    "question": "How large is the volume of the mortgage market in Switzerland (as of ~2025)?",
+    "singleChoice": "Single Choice Question",
+    "answers": [
+      "Approx. 500 million CHF",
+      "Approx. 500 billion CHF",
+      "Approx. 1,200 million CHF",
+      "Approx. 1,200 billion CHF"
+    ],
+    "next": "Next Question",
+    "assessmentBlock": "Assessment Block",
+    "test": "Test",
+    "certificate": "Certificate"
+  },
   "AllCoursesPage": {
     "title": "Available Courses",
     "course": {

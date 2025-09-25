@@ -66,32 +66,26 @@ export default function CourseTest() {
     "Ca. 1’200 Milliarden CHF",
   ];
 
-  // Визначимо загальний стиль для елементів списку уроків/тестів
   const listItemClasses =
     "flex items-center gap-4 py-2 px-1 hover:bg-gray-50 rounded-md transition-colors";
   const iconWrapperClasses =
     "flex h-7 w-7 items-center justify-center rounded-md text-white";
 
-  // Функція для обробки натискання на відповідь
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswer(answer);
-    // Тут можна додати логіку для перевірки відповіді, якщо вона потрібна
   };
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
-      {/* Header */}
       <Header />
-      {/* Main content with fixed top margin */}
       <main className="mx-auto mt-24 w-full max-w-7xl flex-1 px-4 py-8 lg:px-8">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-          {/* Sidebar with lessons and test buttons - Recreated Structure */}
+          {/* Sidebar */}
           <aside className="space-y-3 rounded-xl bg-white p-4 shadow lg:col-span-3">
-            {/* Header Block */}
             <h2 className="flex items-center gap-3 border-b border-gray-100 pb-2 font-semibold text-gray-900">
               <div className={`${iconWrapperClasses} bg-gray-800`}>
                 <Image
-                  src="/book_icon.png" // Приклад шляху для іконки книги
+                  src="/book_icon.png"
                   alt="Book icon"
                   width={46}
                   height={46}
@@ -100,7 +94,7 @@ export default function CourseTest() {
               Assessment Block
               <span className="ml-auto cursor-pointer text-gray-400">
                 <Image
-                  src="/arrow_left.png" // Приклад шляху для іконки стрілки
+                  src="/arrow_left.png"
                   alt="Collapse icon"
                   width={44}
                   height={44}
@@ -108,13 +102,12 @@ export default function CourseTest() {
               </span>
             </h2>
 
-            {/* Lessons Navigation */}
             <nav className="space-y-1">
               {lessons.map((lesson, idx) => (
                 <li key={idx} className={listItemClasses}>
                   <div className={`${iconWrapperClasses} bg-green-500`}>
                     <Image
-                      src="/check.png" // Приклад шляху для іконки галочки
+                      src="/check.png"
                       alt="Completed icon"
                       width={44}
                       height={44}
@@ -130,7 +123,7 @@ export default function CourseTest() {
                   </div>
                   {lesson.showDownload && (
                     <Image
-                      src="/icn_download.png" // Приклад шляху для іконки завантаження
+                      src="/icn_download.png"
                       alt="Download icon"
                       width={46}
                       height={46}
@@ -140,27 +133,23 @@ export default function CourseTest() {
                 </li>
               ))}
 
-              {/* Test Button (styled as a list item) */}
               <li className={`${listItemClasses} mt-4`}>
                 <Image
-                  src="/edit_icon.png" // Приклад шляху для іконки тесту (редагування)
+                  src="/edit_icon.png"
                   alt="Test icon"
                   width={46}
                   height={46}
                 />
-
                 <span className="flex-grow text-sm text-gray-800">Test</span>
               </li>
 
-              {/* Certificate Button (styled as a list item) */}
               <li className={listItemClasses}>
                 <Image
-                  src="/file_icon.png" // Приклад шляху для іконки сертифіката
+                  src="/file_icon.png"
                   alt="Certificate icon"
                   width={46}
                   height={46}
                 />
-
                 <span className="flex-grow text-sm text-gray-800">
                   Certificate
                 </span>
@@ -168,10 +157,9 @@ export default function CourseTest() {
             </nav>
           </aside>
 
-          {/* Question block with green timer background - Збільшена висота секції */}
+          {/* Question Section */}
           <section className="relative max-h-[calc(100vh-250px)] overflow-hidden rounded-xl bg-white shadow lg:col-span-9">
             <div className="grid h-full grid-cols-1 lg:grid-cols-3">
-              {/* Question content */}
               <div className="p-6 lg:col-span-2">
                 <h1 className="mb-2 text-xl font-semibold text-gray-900">
                   Hypotheken und Immobilienmarkt Schweiz
@@ -184,7 +172,6 @@ export default function CourseTest() {
                 <p className="mb-4 text-sm text-gray-500">
                   Single Choice Question
                 </p>
-                {/* Відповіді в один стовпець */}
                 <div className="space-y-3">
                   {answers.map((answer, idx) => (
                     <button
@@ -192,7 +179,7 @@ export default function CourseTest() {
                       onClick={() => handleAnswerSelect(answer)}
                       className={`w-full rounded-md border px-4 py-3 text-left text-sm font-medium transition-colors ${
                         selectedAnswer === answer
-                          ? "border-green-600 bg-green-600 text-white" // Зелений колір при виборі
+                          ? "border-green-600 bg-green-600 text-white"
                           : "border-gray-300 bg-gray-50 text-gray-700 hover:bg-gray-100"
                       }`}
                     >
@@ -204,7 +191,6 @@ export default function CourseTest() {
                   ))}
                 </div>
 
-                {/* Next Question Button (Умовно відображається після вибору відповіді) */}
                 {selectedAnswer && (
                   <button className="mt-6 w-full rounded-md border border-gray-800 bg-gray-800 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-700">
                     Next Question
@@ -212,7 +198,6 @@ export default function CourseTest() {
                 )}
               </div>
 
-              {/* Green Timer block - now fills full height */}
               <div className="flex h-full items-center justify-center bg-teal-50 p-6 lg:col-span-1">
                 <div className="flex h-40 w-40 items-center justify-center rounded-full border-4 border-teal-500 text-5xl font-bold text-teal-600">
                   20
@@ -222,7 +207,6 @@ export default function CourseTest() {
           </section>
         </div>
       </main>
-      {/* Footer */}
       <Footer />
     </div>
   );
