@@ -7,7 +7,7 @@ import TrashIcon from "@/components/icons/cart/TrashIcon";
 import Button from "@/components/ui/Button";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import Image from "next/image";
-
+// Fix
 const CourseItem = ({ title, price }: { title: string; price: number }) => {
   return (
     <div className="flex items-center justify-between border-b border-[#D5E4E9] py-4">
@@ -57,25 +57,23 @@ export default function Cart() {
   ];
 
   return (
-    <div className="relative flex min-h-screen flex-col">
-      {/* 👇 Background */}
-      <div className="absolute inset-0 -z-10">
+    <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+      {/* 👇 Фон на всю сторінку (поза main і footer) */}
+      <div className="fixed inset-0 right-150 -z-10">
         <Image
           src="/Blur_Gradient.png"
           alt="Background"
           fill
+          className="object-cover"
           priority
-          className="object-cover object-top opacity-90"
         />
-        {/* нижня половина — білий фон */}
-        <div className="absolute bottom-0 h-1/2 w-full bg-white" />
       </div>
 
       {/* Header */}
       <Header />
 
       {/* Main Content */}
-      <main className="flex-grow pt-8 pb-16 sm:px-5 lg:px-10 2xl:px-60">
+      <main className="mt-[100px] flex-grow pb-16 sm:px-5 lg:px-10 2xl:px-60">
         <h2
           className={`${inter700.className} mb-11 text-[28px] leading-[120%] text-[#2A354F]`}
         >
@@ -215,6 +213,7 @@ export default function Cart() {
         </div>
       </main>
 
+      {/* Footer */}
       <Footer />
     </div>
   );
