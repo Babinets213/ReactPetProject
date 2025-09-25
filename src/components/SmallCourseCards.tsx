@@ -7,7 +7,7 @@ type SmallCourseCardsProps = {
   courses: SmallCourse[];
   className?: string;
   onHandleAddCard: (course: SmallCourse) => void;
-  onHandleDeleteCard: (courseId: number) => void;
+  onHandleDeleteCard: (courseId: string) => void;
   cart: CartItem[];
 };
 

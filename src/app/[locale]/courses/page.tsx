@@ -1,35 +1,41 @@
 "use client";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import CoursesGradient from "@/components/icons/CoursesGradient";
-import OpenedCourseCard from "@/components/OpenedCourseCard";
-import SmallCourseCards from "@/components/SmallCourseCards";
-import Button from "@/components/ui/Button";
-import { useCart } from "@/context/CartContext";
-import { expertBlock, getCourses, professionalBlock } from "@/data/coursesData";
-import { useRouter } from "@/i18n/navigation";
-import { inter400, inter600, inter700 } from "@/styles/fonts";
-import { CartItem } from "@/types/courses";
-import { useTranslations } from "next-intl";
-import React from "react";
 
-export default function Courses() {
-  const t = useTranslations("AllCoursesPage");
+import { useEffect, useState } from "react";
+import { CoursesService } from "@/services/courses";
+import OpenedCourseCard from "@/components/OpenedCourseCard";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { inter400, inter600, inter700 } from "@/styles/fonts";
+import { useCart } from "@/context/CartContext";
+import { ApiCourse } from "@/types/courses";
+// import SmallCourseCards from "@/components/SmallCourseCards";
+// import { useTranslations } from "next-intl";
+import CoursesGradient from "@/components/icons/CoursesGradient";
+import Button from "@/components/ui/Button";
+import { useRouter } from "@/i18n/navigation";
+
+export default function CoursesPage() {
+  const [publicCourses, setPublicCourses] = useState<ApiCourse[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const { cart, addToCart, deleteFromCart } = useCart();
+  // const t = useTranslations("AllCoursesPage");
   const router = useRouter();
 
-  const courses = getCourses(t);
+  useEffect(() => {
+    CoursesService.fetchPublicCourses()
+      .then(setPublicCourses)
+      .catch(() => setError("Failed to fetch courses"));
+  }, []);
 
-  const { cart, addToCart, deleteFromCart } = useCart();
+  // const handleAddCard = function (course: CartItem) {
+  //   addToCart(course);
+  // };
 
-  const handleAddCard = function (course: CartItem) {
-    addToCart(course);
-  };
+  // const handleDeleteCard = function (courseId: string) {
+  //   deleteFromCart(courseId);
+  // };
 
-  const handleDeleteCard = function (courseId: number) {
-    deleteFromCart(courseId);
-  };
-
-  const totalCartPrice = cart.reduce((red, cur) => red + cur.price, 0);
+  const totalCartPrice = cart.reduce((red, cur) => red, 0);
 
   return (
     <div className="relative min-h-screen">
@@ -38,23 +44,24 @@ export default function Courses() {
         <h2
           className={`${inter700.className} mb-8 text-[28px] leading-[120%] text-[#2A354F]`}
         >
-          {t("title")}
+          Courses
         </h2>
-
-        <div className="mb-15 flex flex-col gap-6">
-          {/* Large Courses */}
-          {courses.map((course, i) => (
-            <OpenedCourseCard
-              onHandleDeleteCard={handleDeleteCard}
-              onHandleAddCard={handleAddCard}
-              key={i}
-              course={course}
-              cart={cart}
-            />
-          ))}
-        </div>
-
-        <SmallCourseCards
+        {error ? (
+          <div className="text-red-500">{error}</div>
+        ) : (
+          <div className="mb-15 flex flex-col gap-6">
+            {publicCourses.map((course) => (
+              <OpenedCourseCard
+                key={course.id}
+                course={course}
+                cart={cart}
+                onHandleAddCard={addToCart}
+                onHandleDeleteCard={deleteFromCart}
+              />
+            ))}
+          </div>
+        )}
+        {/* <SmallCourseCards
           title={t("course.professional.title")}
           onHandleDeleteCard={handleDeleteCard}
           onHandleAddCard={handleAddCard}
@@ -70,9 +77,8 @@ export default function Courses() {
           courses={expertBlock}
           cart={cart}
           className="mb-21"
-        />
+        /> */}
       </main>
-
       {cart.length > 0 && (
         <div className="fixed right-0 bottom-0 left-0 z-50 border-t border-t-[#F1F1F3] bg-white shadow-md sm:px-5 lg:px-10 2xl:px-60">
           <div className="flex items-center justify-between">

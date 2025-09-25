@@ -2,17 +2,17 @@
 
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import React, { useState } from "react";
-import Button from "./ui/Button";
+// import Button from "./ui/Button";
 import Tag from "./ui/Tag";
-import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
-import { useTranslations } from "next-intl";
-import { CartItem, Course } from "@/types/courses";
+// import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
+import { useTranslations, useLocale } from "next-intl";
+import { ApiCourse, CartItem } from "@/types/courses";
 
 type OpenedCourseCardProps = {
-  course: Course;
+  course: ApiCourse;
   cart: CartItem[];
-  onHandleAddCard: (course: Course) => void;
-  onHandleDeleteCard: (courseId: number) => void;
+  onHandleAddCard: (course: ApiCourse) => void;
+  onHandleDeleteCard: (courseId: string) => void;
 };
 
 export default function OpenedCourseCard({
@@ -20,14 +20,23 @@ export default function OpenedCourseCard({
   cart,
   onHandleAddCard,
   onHandleDeleteCard,
-}: OpenedCourseCardProps) {
-  const t = useTranslations("AllCoursesPage");
+}: Omit<OpenedCourseCardProps, "locale">) {
+  // const t = useTranslations("AllCoursesPage");
+  const locale = useLocale();
 
-  const { title, description, price, categories, tags } = course;
+  const { price, modules, complexity } = course;
+
+  const title = course.title[locale] || Object.values(course.title)[0] || "";
+  const description = course.shortDescription?.[locale] || "";
 
   const [isHovering, setIsHovering] = useState(false);
 
   const isInCart = cart.some((item) => item.id === course.id);
+
+  const durationText =
+    typeof course.duration === "object" && course.duration !== null
+      ? course.duration[locale] || Object.values(course.duration)[0] || ""
+      : course.duration || "";
 
   return (
     <div
@@ -55,7 +64,19 @@ export default function OpenedCourseCard({
         >
           {price} chf
         </span>
-
+        <span
+          onClick={() => {
+            if (!isInCart) {
+              onHandleAddCard(course);
+            } else {
+              onHandleDeleteCard(course.id);
+            }
+          }}
+        >
+          Buy
+        </span>
+        {/* 
+        // TODO: fix button error
         <Button
           className={`${isHovering || isInCart ? "bg-[#ECFDE6]! font-semibold" : ""} whitespace-nowrap`}
           size="large"
@@ -71,23 +92,23 @@ export default function OpenedCourseCard({
           }}
         >
           {isInCart ? t("course.btnText.after") : t("course.btnText.before")}
-        </Button>
+        </Button> */}
       </div>
 
       {/* Tag Container */}
       <div className="flex gap-[10px]">
-        <Tag text={tags[0]} type="time" />
-        <Tag text={tags[1]} type="complexity" />
+        <Tag text={durationText} type="time" />
+        <Tag text={complexity} type="complexity" />
       </div>
 
       {/* Category Button Container */}
       <div className="flex flex-wrap gap-3 py-3">
-        {categories.map((category, i) => (
+        {modules.map((module, i) => (
           <div key={i} className="rounded-sm bg-[#F3F3F3] px-3 py-2">
             <span
               className={`${inter400.className} leading-[120%] text-[#2A354F]`}
             >
-              {category}
+              {module.title[locale] || Object.values(module.title)[0] || ""}
             </span>
           </div>
         ))}

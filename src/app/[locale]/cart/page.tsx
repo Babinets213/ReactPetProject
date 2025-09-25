@@ -7,7 +7,7 @@ import TrashIcon from "@/components/icons/cart/TrashIcon";
 import Button from "@/components/ui/Button";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import Image from "next/image";
-// Fix
+
 const CourseItem = ({ title, price }: { title: string; price: number }) => {
   return (
     <div className="flex items-center justify-between border-b border-[#D5E4E9] py-4">
@@ -58,7 +58,7 @@ export default function Cart() {
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-x-hidden">
-      {/* 👇 Фон на всю сторінку (поза main і footer) */}
+      {/* Background */}
       <div className="fixed inset-0 right-150 -z-10">
         <Image
           src="/Blur_Gradient.png"
