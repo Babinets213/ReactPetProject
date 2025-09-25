@@ -9,7 +9,6 @@ import { useCart } from "@/context/CartContext";
 import { expertBlock, getCourses, professionalBlock } from "@/data/coursesData";
 import { useRouter } from "@/i18n/navigation";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
-
 import { CartItem } from "@/types/courses";
 import { useTranslations } from "next-intl";
 import React from "react";
