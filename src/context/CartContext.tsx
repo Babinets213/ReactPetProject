@@ -1,7 +1,7 @@
 "use client";
 
 import { CartItem } from "@/types/courses";
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useMemo } from "react";
 
 const CART_STORAGE_KEY = "cart";
 
@@ -10,6 +10,7 @@ type CartContextType = {
   addToCart: (course: CartItem) => void;
   deleteFromCart: (courseId: string) => void;
   clearCart: () => void;
+  totalCartPrice: number;
 };
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -43,9 +44,16 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = () => setCart([]);
 
+  const totalCartPrice = useMemo(() => {
+    return cart.reduce((total, item) => {
+      const price = Number(item.price) || 0;
+      return total + price;
+    }, 0);
+  }, [cart]);
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, deleteFromCart, clearCart }}
+      value={{ cart, addToCart, deleteFromCart, clearCart, totalCartPrice }}
     >
       {children}
     </CartContext.Provider>

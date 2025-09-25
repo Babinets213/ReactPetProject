@@ -19,7 +19,7 @@ import SmallCourseCards from "@/components/SmallCourseCards";
 export default function CoursesPage() {
   const [publicCourses, setPublicCourses] = useState<ApiCourse[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const { cart, addToCart, deleteFromCart } = useCart();
+  const { cart, addToCart, deleteFromCart, totalCartPrice } = useCart();
   // const t = useTranslations("AllCoursesPage");
   const router = useRouter();
   const locale = useLocale();
@@ -43,7 +43,7 @@ export default function CoursesPage() {
     courseId: string;
     modules: ApiCourseModule[];
   };
-  const totalCartPrice = cart.reduce((red, cur) => red, 0);
+
   const getSmallCards = (publicCourses: ApiCourse[]) => {
     const smallCards: SmallCard[] = publicCourses.map((course) => ({
       courseTitle: course.title[locale] || Object.values(course.title)[0] || "",
@@ -133,7 +133,7 @@ export default function CoursesPage() {
                 <span
                   className={`${inter600.className} text-lg leading-[120%] text-[#2A354F]`}
                 >
-                  {totalCartPrice}.00 CHF
+                  {Number(totalCartPrice).toFixed(2)} CHF
                 </span>
               </div>
               <Button
