@@ -7,7 +7,7 @@ import TrashIcon from "@/components/icons/cart/TrashIcon";
 import Button from "@/components/ui/Button";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import Image from "next/image";
-
+// Fix
 const CourseItem = ({ title, price }: { title: string; price: number }) => {
   return (
     <div className="flex items-center justify-between border-b border-[#D5E4E9] py-4">
