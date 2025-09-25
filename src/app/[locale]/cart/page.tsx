@@ -10,6 +10,10 @@ import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+
+// Tax rate constant (8.1% tax)
+const TAX_MULTIPLIER = 1.081;
+
 // Fix
 const CourseItem = ({
   title,
@@ -52,7 +56,6 @@ export default function Cart() {
   const { cart, deleteFromCart, totalCartPrice, clearCart } = useCart();
   const locale = useLocale();
 
-
   // Return loading state while cart is loading to prevent hydration mismatch
   if (cart === null) {
     return (
@@ -87,9 +90,9 @@ export default function Cart() {
     checkoutNote: "You won't be charged yet",
   };
 
-  // Calculate tax from total (15% tax is already included in totalCartPrice)
-  // If total includes 15% tax: total = subtotal * 1.15, so subtotal = total / 1.15
-  const subtotalWithoutTax = totalCartPrice / 1.15;
+  // Calculate tax from total (8.1% tax is already included in totalCartPrice)
+  // If total includes 8.1% tax: total = subtotal * 1.081, so subtotal = total / 1.081
+  const subtotalWithoutTax = totalCartPrice / TAX_MULTIPLIER;
   const taxAmount = totalCartPrice - subtotalWithoutTax;
 
   return (
