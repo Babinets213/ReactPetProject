@@ -6,7 +6,7 @@ import { createContext, useContext, useState, useEffect, useMemo } from "react";
 const CART_STORAGE_KEY = "cart";
 
 type CartContextType = {
-  cart: CartItem[];
+  cart: CartItem[] | null;
   addToCart: (course: CartItem) => void;
   deleteFromCart: (courseId: string) => void;
   clearCart: () => void;
@@ -15,12 +15,22 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[] | null>(null);
 
   // Load cart from localStorage on mount
   useEffect(() => {
-    const stored = localStorage.getItem(CART_STORAGE_KEY);
-    if (stored) setCart(JSON.parse(stored));
+    try {
+      const stored = localStorage.getItem(CART_STORAGE_KEY);
+      if (stored && stored !== "null") {
+        const parsedCart = JSON.parse(stored);
+        setCart(Array.isArray(parsedCart) ? parsedCart : []);
+      } else {
+        setCart([]);
+      }
+    } catch (error) {
+      console.error("Error loading cart from localStorage:", error);
+      setCart([]);
+    }
   }, []);
 
   // Save cart to localStorage whenever it changes
@@ -30,6 +40,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addToCart = function (course: CartItem) {
     setCart((prevCart) => {
+      if (!prevCart) return [course];
       if (prevCart.some((item) => String(item.id) === String(course.id)))
         return prevCart;
       return [...prevCart, course];
@@ -38,13 +49,16 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const deleteFromCart = function (courseId: string) {
     setCart((prevCart) =>
-      prevCart.filter((item) => String(item.id) !== String(courseId)),
+      prevCart
+        ? prevCart.filter((item) => String(item.id) !== String(courseId))
+        : null,
     );
   };
 
   const clearCart = () => setCart([]);
 
   const totalCartPrice = useMemo(() => {
+    if (!cart) return 0;
     return cart.reduce((total, item) => {
       const price = Number(item.price) || 0;
       return total + price;

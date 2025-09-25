@@ -65,7 +65,7 @@ export default function CoursesPage() {
         onHandleDeleteCard={deleteFromCart}
         onHandleAddCard={addToCart}
         courseModules={card.modules}
-        cart={cart}
+        cart={cart || []}
         className="mb-15"
       />
     ));
@@ -88,7 +88,7 @@ export default function CoursesPage() {
               <OpenedCourseCard
                 key={course.id}
                 course={course}
-                cart={cart}
+                cart={cart || []}
                 onHandleAddCard={addToCart}
                 onHandleDeleteCard={deleteFromCart}
               />
@@ -114,7 +114,7 @@ export default function CoursesPage() {
           className="mb-21"
         /> */}
       </main>
-      {cart.length > 0 && (
+      {cart && cart.length > 0 && (
         <div className="fixed right-0 bottom-0 left-0 z-50 border-t border-t-[#F1F1F3] bg-white shadow-md sm:px-5 lg:px-10 2xl:px-60">
           <div className="flex items-center justify-between">
             <p
