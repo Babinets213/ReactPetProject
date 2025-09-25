@@ -21,12 +21,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(CART_STORAGE_KEY);
-      if (stored && stored !== "null") {
-        const parsedCart = JSON.parse(stored);
-        setCart(Array.isArray(parsedCart) ? parsedCart : []);
-      } else {
-        setCart([]);
-      }
+      const parsedCart = stored ? JSON.parse(stored) : [];
+      setCart(Array.isArray(parsedCart) ? parsedCart : []);
     } catch (error) {
       console.error("Error loading cart from localStorage:", error);
       setCart([]);
