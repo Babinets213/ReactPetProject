@@ -5,13 +5,13 @@ import React, { useState } from "react";
 // import Button from "./ui/Button";
 import Tag from "./ui/Tag";
 // import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
 import { ApiCourse, CartItem } from "@/types/courses";
 
 type OpenedCourseCardProps = {
   course: ApiCourse;
   cart: CartItem[];
-  onHandleAddCard: (course: ApiCourse) => void;
+  onHandleAddCard: (course: CartItem) => void;
   onHandleDeleteCard: (courseId: string) => void;
 };
 
@@ -67,7 +67,7 @@ export default function OpenedCourseCard({
         <span
           onClick={() => {
             if (!isInCart) {
-              onHandleAddCard(course);
+              onHandleAddCard({ ...course, type: "course" });
             } else {
               onHandleDeleteCard(course.id);
             }

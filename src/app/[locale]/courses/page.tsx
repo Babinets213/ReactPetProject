@@ -7,12 +7,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import { useCart } from "@/context/CartContext";
-import { ApiCourse } from "@/types/courses";
+import { ApiCourse, ApiCourseModule } from "@/types/courses";
 // import SmallCourseCards from "@/components/SmallCourseCards";
 // import { useTranslations } from "next-intl";
 import CoursesGradient from "@/components/icons/CoursesGradient";
 import Button from "@/components/ui/Button";
 import { useRouter } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
+import SmallCourseCards from "@/components/SmallCourseCards";
 
 export default function CoursesPage() {
   const [publicCourses, setPublicCourses] = useState<ApiCourse[]>([]);
@@ -20,6 +22,7 @@ export default function CoursesPage() {
   const { cart, addToCart, deleteFromCart } = useCart();
   // const t = useTranslations("AllCoursesPage");
   const router = useRouter();
+  const locale = useLocale();
 
   useEffect(() => {
     CoursesService.fetchPublicCourses()
@@ -35,7 +38,38 @@ export default function CoursesPage() {
   //   deleteFromCart(courseId);
   // };
 
+  type SmallCard = {
+    courseTitle: string;
+    courseId: string;
+    modules: ApiCourseModule[];
+  };
   const totalCartPrice = cart.reduce((red, cur) => red, 0);
+  const getSmallCards = (publicCourses: ApiCourse[]) => {
+    const smallCards: SmallCard[] = publicCourses.map((course) => ({
+      courseTitle: course.title[locale] || Object.values(course.title)[0] || "",
+      courseId: course.id,
+      modules: course.modules.filter((m) => (m.price ?? 0) > 0),
+    }));
+    return smallCards;
+  };
+
+  const smallCards = getSmallCards(
+    publicCourses.filter((c) => c.standaloneModules),
+  );
+
+  const SmallCardsList = () => {
+    return smallCards.map((card) => (
+      <SmallCourseCards
+        key={card.courseId}
+        title={card.courseTitle}
+        onHandleDeleteCard={deleteFromCart}
+        onHandleAddCard={addToCart}
+        courseModules={card.modules}
+        cart={cart}
+        className="mb-15"
+      />
+    ));
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -61,6 +95,7 @@ export default function CoursesPage() {
             ))}
           </div>
         )}
+        {<SmallCardsList />}
         {/* <SmallCourseCards
           title={t("course.professional.title")}
           onHandleDeleteCard={handleDeleteCard}

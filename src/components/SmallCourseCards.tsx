@@ -1,19 +1,19 @@
 import { inter700 } from "@/styles/fonts";
 import SmallCourseCard from "./SmallCourseCard";
-import { CartItem, SmallCourse } from "@/types/courses";
+import { ApiCourseModule, CartItem } from "@/types/courses";
 
 type SmallCourseCardsProps = {
   title: string;
-  courses: SmallCourse[];
+  courseModules: ApiCourseModule[];
   className?: string;
-  onHandleAddCard: (course: SmallCourse) => void;
+  onHandleAddCard: (course: CartItem) => void;
   onHandleDeleteCard: (courseId: string) => void;
   cart: CartItem[];
 };
 
 export default function SmallCourseCards({
   title,
-  courses,
+  courseModules,
   className,
   onHandleAddCard,
   onHandleDeleteCard,
@@ -27,10 +27,10 @@ export default function SmallCourseCards({
         {title}
       </h3>
       <div className="grid grid-cols-3 gap-x-[30px] gap-y-6">
-        {courses.map((course) => (
+        {courseModules.map((courseModule) => (
           <SmallCourseCard
-            key={course.id}
-            course={course}
+            key={courseModule.id}
+            course={courseModule}
             cart={cart}
             onHandleAddCard={onHandleAddCard}
             onHandleDeleteCard={onHandleDeleteCard}
