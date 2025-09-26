@@ -4,11 +4,12 @@ import { inter400, inter600 } from "@/styles/fonts";
 import Button from "./ui/Button";
 import ShoppingBagIcon from "./icons/ShoppingBagIcon";
 import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
-import { CartItem, SmallCourse } from "@/types/courses";
+import { ApiCourseModule, CartItem } from "@/types/courses";
+import { useLocale } from "next-intl";
 
 type SmallCourseCardProps = {
-  course: SmallCourse;
-  onHandleAddCard: (course: SmallCourse) => void;
+  course: ApiCourseModule;
+  onHandleAddCard: (course: CartItem) => void;
   onHandleDeleteCard: (courseId: string) => void;
   cart: CartItem[];
 };
@@ -20,6 +21,7 @@ export default function SmallCourseCard({
   cart,
 }: SmallCourseCardProps) {
   const [isHovering, setIsHovering] = useState(false);
+  const locale = useLocale();
 
   const isInCart = cart.some((item) => item.id === course.id.toString());
 
@@ -34,7 +36,7 @@ export default function SmallCourseCard({
         <span
           className={`${inter600.className} ${isHovering ? "text-[#00AC8E]" : "text-[#2A354F]"} text-lg leading-[120%]`}
         >
-          {course.title}
+          {course.title[locale] || Object.values(course.title)[0] || ""}
         </span>
         <span
           className={`${inter400.className} text-sm leading-[120%] text-[#2A354F]`}
@@ -52,7 +54,7 @@ export default function SmallCourseCard({
           onClick={() =>
             isInCart
               ? onHandleDeleteCard(course.id.toString())
-              : onHandleAddCard(course)
+              : onHandleAddCard({ ...course, type: "courseModule" })
           }
         />
       </div>

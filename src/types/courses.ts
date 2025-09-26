@@ -13,7 +13,9 @@ export type Course = {
   tags: string[];
 };
 
-export type CartItem = ApiCourse;
+export type CartItem =
+  | (ApiCourse & { type: "course" })
+  | (ApiCourseModule & { type: "courseModule" });
 
 export enum CourseComplexity {
   BEGINNER = "beginner",
@@ -26,6 +28,7 @@ export interface ApiCourseModule {
   title: Record<string, string>;
   pdfFile: string | null;
   position: number;
+  price: number | null;
   text: Record<string, string>;
 }
 
