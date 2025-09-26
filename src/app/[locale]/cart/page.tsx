@@ -6,15 +6,14 @@ import Footer from "@/components/Footer";
 import TrashIcon from "@/components/icons/cart/TrashIcon";
 import Button from "@/components/ui/Button";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
-import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 
 // Tax rate constant (8.1% tax)
 const TAX_MULTIPLIER = 1.081;
 
-// Fix
 const CourseItem = ({
   title,
   price,
@@ -53,7 +52,7 @@ const CourseItem = ({
 
 export default function Cart() {
   const [paymentMethod, setPaymentMethod] = useState("");
-  const { cart, deleteFromCart, totalCartPrice, clearCart } = useCart();
+  const { cart, deleteFromCart, totalCartPrice } = useCart();
   const locale = useLocale();
 
   // Return loading state while cart is loading to prevent hydration mismatch
@@ -80,7 +79,6 @@ export default function Cart() {
 
   const t = {
     header: { title: "Shopping Cart" },
-    coursesCount: "5 Courses in Cart",
     continueShopping: "Continue Shopping",
     summaryTitle: "Summary",
     subtotal: "Subtotal",
@@ -91,13 +89,12 @@ export default function Cart() {
   };
 
   // Calculate tax from total (8.1% tax is already included in totalCartPrice)
-  // If total includes 8.1% tax: total = subtotal * 1.081, so subtotal = total / 1.081
   const subtotalWithoutTax = totalCartPrice / TAX_MULTIPLIER;
   const taxAmount = totalCartPrice - subtotalWithoutTax;
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-x-hidden">
-      {/* 👇 Фон на всю сторінку (поза main і footer) */}
+      {/* Background */}
       <div className="fixed inset-0 right-150 -z-10">
         <Image
           src="/Blur_Gradient.png"
@@ -119,12 +116,6 @@ export default function Cart() {
           {t.header.title}
         </h2>
 
-        <p
-          className={`${inter400.className} mb-6 text-lg leading-[120%] text-[#2A354F]`}
-        >
-          {cart.length} Courses in Cart
-        </p>
-
         {cart.length === 0 ? (
           <div className="py-12 text-center">
             <p className={`${inter400.className} mb-4 text-lg text-[#2A354F]`}>
@@ -140,8 +131,14 @@ export default function Cart() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* LEFT SIDE */}
             <div className="md:col-span-2">
+              <p
+                className={`${inter400.className} mb-6 text-lg leading-[120%] text-[#2A354F]`}
+              >
+                {cart.length} Courses in Cart
+              </p>
+
               <div className="mb-4">
-                {cart?.map((course, index) => (
+                {cart.map((course, index) => (
                   <CourseItem
                     key={course.id || index}
                     title={
@@ -220,12 +217,7 @@ export default function Cart() {
                     onChange={() => setPaymentMethod("twint")}
                     className="hidden"
                   />
-                  <Image
-                    src="/twint.png"
-                    alt="/twint.png"
-                    width={36}
-                    height={36}
-                  />
+                  <Image src="/twint.png" alt="TWINT" width={36} height={36} />
                   <span
                     className={`${inter600.className} text-base text-[#2A354F]`}
                   >
