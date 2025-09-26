@@ -9,11 +9,12 @@ import NotificationIcon from "./icons/profile/NotificationIcon";
 import MenuIcon from "./icons/profile/MenuIcon";
 import HeaderMenuModal from "./HeaderMenuModal";
 import router from "next/router";
-
+import { useRouter } from "next/navigation";
 export default function Header() {
   const [hasBeenInViewChecked, setHasBeenInViewChecked] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(true);
+  const router = useRouter();
 
   const { ref: sentinelRef, inView } = useInView({
     threshold: 0,
@@ -63,7 +64,7 @@ export default function Header() {
         {/* Navigation and Buttons Section */}
         <div className="relative flex items-center gap-4">
           <Button
-            onClick={() => router.replace("/courses")}
+            onClick={() => router.push("/courses")}
             className="bg-[rgba(255,255,255,0.3)] font-normal text-white"
             btnType="primary"
             size="large"
