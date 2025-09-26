@@ -1,0 +1,22 @@
+Merge branch 'main' of vovakrysa:Chamaleon-H/soi_learn_ui
+
+# Conflicts:
+#	src/app/[locale]/coursepage/page.tsx
+#	src/app/[locale]/tests/page.tsx
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please run
+#	git update-ref -d MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch and 'origin/main' have diverged,
+# and have 50 and 1 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
