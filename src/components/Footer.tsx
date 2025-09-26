@@ -117,7 +117,7 @@ export default function Footer() {
             <li>
               <Button
                 className="pl-0 text-white"
-                to="#contact"
+                to="/contuctus"
                 btnType="text_btn"
                 size="normal"
                 content="text"

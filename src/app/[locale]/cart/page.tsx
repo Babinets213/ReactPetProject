@@ -6,12 +6,14 @@ import Footer from "@/components/Footer";
 import TrashIcon from "@/components/icons/cart/TrashIcon";
 import Button from "@/components/ui/Button";
 import { inter400, inter600, inter700 } from "@/styles/fonts";
-import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 
-// ✅ Компонент для курсу
+// Tax rate constant (8.1% tax)
+const TAX_MULTIPLIER = 1.081;
+
 const CourseItem = ({
   title,
   price,
@@ -48,15 +50,12 @@ const CourseItem = ({
   );
 };
 
-// ✅ Головна сторінка кошика
-export default function Cart(): React.JSX.Element {
+export default function Cart() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const { cart, deleteFromCart, totalCartPrice } = useCart();
   const locale = useLocale();
 
-  // Константа податку
-  const TAX_MULTIPLIER = 1.081;
-
+  // Return loading state while cart is loading to prevent hydration mismatch
   if (cart === null) {
     return (
       <div className="relative flex min-h-screen flex-col overflow-x-hidden">
@@ -89,14 +88,14 @@ export default function Cart(): React.JSX.Element {
     checkoutNote: "You won't be charged yet",
   };
 
-  // Розрахунок податку
+  // Calculate tax from total (8.1% tax is already included in totalCartPrice)
   const subtotalWithoutTax = totalCartPrice / TAX_MULTIPLIER;
   const taxAmount = totalCartPrice - subtotalWithoutTax;
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-x-hidden">
-      {/* Фон */}
-      <div className="fixed inset-0 -z-10">
+      {/* Background */}
+      <div className="fixed inset-0 right-150 -z-10">
         <Image
           src="/Blur_Gradient.png"
           alt="Background"
@@ -117,12 +116,6 @@ export default function Cart(): React.JSX.Element {
           {t.header.title}
         </h2>
 
-        <p
-          className={`${inter400.className} mb-6 text-lg leading-[120%] text-[#2A354F]`}
-        >
-          {cart.length} Courses in Cart
-        </p>
-
         {cart.length === 0 ? (
           <div className="py-12 text-center">
             <p className={`${inter400.className} mb-4 text-lg text-[#2A354F]`}>
@@ -130,7 +123,7 @@ export default function Cart(): React.JSX.Element {
             </p>
             <Link href="/courses">
               <Button content="text" btnType="primary" size="normal">
-                {t.continueShopping}
+                Continue Shopping
               </Button>
             </Link>
           </div>
@@ -138,8 +131,14 @@ export default function Cart(): React.JSX.Element {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* LEFT SIDE */}
             <div className="md:col-span-2">
+              <p
+                className={`${inter400.className} mb-6 text-lg leading-[120%] text-[#2A354F]`}
+              >
+                {cart.length} Courses in Cart
+              </p>
+
               <div className="mb-4">
-                {cart?.map((course, index) => (
+                {cart.map((course, index) => (
                   <CourseItem
                     key={course.id || index}
                     title={
@@ -218,7 +217,7 @@ export default function Cart(): React.JSX.Element {
                     onChange={() => setPaymentMethod("twint")}
                     className="hidden"
                   />
-                  <Image src="/twint.png" alt="twint" width={36} height={36} />
+                  <Image src="/twint.png" alt="TWINT" width={36} height={36} />
                   <span
                     className={`${inter600.className} text-base text-[#2A354F]`}
                   >

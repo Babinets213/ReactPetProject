@@ -1,4 +1,5 @@
 "use client";
+
 import Footer from "@/components/Footer";
 import Header from "@/components/HeaderBlack";
 import React from "react";
@@ -94,20 +95,27 @@ export default function LearningPage() {
           <nav className="space-y-1">
             {lessons.map((lesson, idx) => (
               <li key={idx} className={listItemClasses}>
-                {idx === 0 ? (
+                {lesson.completed ? (
                   <div className={`${iconWrapperClasses} bg-green-500`}>
+                    {/* Використовуємо Image з заокругленням для Completed icon */}
                     <Image
-                      src="/check.png"
+                      src="/checkicon.png"
                       alt="Completed icon"
-                      width={44}
-                      height={44}
+                      width={18} // Зменшуємо розмір для кращої інтеграції
+                      height={18}
+                      className="rounded-md" // Легке заокруглення кутів
                     />
                   </div>
                 ) : (
                   <div
-                    className={`${iconWrapperClasses} flex items-center justify-center bg-gray-100 text-gray-700`}
+                    className={`${iconWrapperClasses} flex items-center justify-center bg-gray-100`}
                   >
-                    <span className="text-sm font-semibold">{idx + 1}</span>
+                    {/* ЗМІНА ТУТ: Замінено text-gray-700 (темно-сірий) на text-gray-900 або просто на чорний колір 
+                       для кращої відповідності скріншоту. 
+                       Використовуємо text-[#2A354F] або text-gray-900. */}
+                    <span className="text-sm font-semibold text-gray-900">
+                      {idx + 1}
+                    </span>
                   </div>
                 )}
 

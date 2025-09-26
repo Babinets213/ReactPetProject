@@ -2,11 +2,30 @@
 
 import { inter400, inter600, inter700 } from "@/styles/fonts";
 import React, { useState } from "react";
-// import Button from "./ui/Button";
+// import Button from "./ui/Button"; // Компонент Button тут не використовується
 import Tag from "./ui/Tag";
 // import GeneralCheckMarkIcon from "./icons/GeneralCheckMarkIcon";
 import { useLocale } from "next-intl";
 import { ApiCourse, CartItem } from "@/types/courses";
+
+// Компонент іконки галочки для стану "Added"
+const CheckMarkIcon = () => (
+  <svg
+    className="ml-2 h-4 w-4"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="3"
+      d="M5 13l4 4L19 7"
+      className="text-[#2A354F]" // Колір галочки (темний, як текст)
+    ></path>
+  </svg>
+);
 
 type OpenedCourseCardProps = {
   course: ApiCourse;
@@ -31,12 +50,30 @@ export default function OpenedCourseCard({
 
   const [isHovering, setIsHovering] = useState(false);
 
+  // Перевірка, чи курс вже у кошику
   const isInCart = cart.some((item) => item.id === course.id);
 
   const durationText =
     typeof course.duration === "object" && course.duration !== null
       ? course.duration[locale] || Object.values(course.duration)[0] || ""
       : course.duration || "";
+
+  // Обробник натискання кнопки
+  const handleCartAction = () => {
+    const itemToAdd: CartItem = {
+      ...course,
+      type: "course",
+      // ... інші необхідні поля
+    };
+
+    if (!isInCart) {
+      // Додати до кошика
+      onHandleAddCard(itemToAdd);
+    } else {
+      // Видалити з кошика (якщо це бажана поведінка для кнопки "Added")
+      onHandleDeleteCard(course.id);
+    }
+  };
 
   return (
     <div
@@ -45,8 +82,8 @@ export default function OpenedCourseCard({
       className={`flex flex-col rounded-sm border ${isInCart ? "border-2 border-[#E1FFD5]" : "border-[#F1F1F3]"} px-10 pt-10 pb-5`}
     >
       {/* Title and description */}
-      <div className="mb-3 flex items-center gap-[50px]">
-        <div>
+      <div className="mb-3 flex items-center justify-between gap-[50px]">
+        <div className="flex-1">
           <h3
             className={`${inter700.className} mb-[10px] text-[23px] leading-[120%] ${isHovering ? "text-[#00AC8E]" : "text-[#2A354F]"}`}
           >
@@ -59,40 +96,34 @@ export default function OpenedCourseCard({
           </p>
         </div>
 
-        <span
-          className={`text-lg whitespace-nowrap uppercase ${inter600.className} leading-[120%] text-[#2A354F]`}
-        >
-          {price} chf
-        </span>
-        <span
-          onClick={() => {
-            if (!isInCart) {
-              onHandleAddCard({ ...course, type: "course" });
-            } else {
-              onHandleDeleteCard(course.id);
-            }
-          }}
-        >
-          Buy
-        </span>
-        {/* 
-        // TODO: fix button error
-        <Button
-          className={`${isHovering || isInCart ? "bg-[#ECFDE6]! font-semibold" : ""} whitespace-nowrap`}
-          size="large"
-          content={isInCart ? "text_icon" : "text"}
-          icon={<GeneralCheckMarkIcon />}
-          btnType="outline"
-          onClick={() => {
-            if (!isInCart) {
-              onHandleAddCard(course);
-            } else {
-              onHandleDeleteCard(course.id);
-            }
-          }}
-        >
-          {isInCart ? t("course.btnText.after") : t("course.btnText.before")}
-        </Button> */}
+        {/* Price and Button Container */}
+        <div className="flex items-center gap-4">
+          {/* Ціна */}
+          <span
+            className={`text-lg whitespace-nowrap uppercase ${inter600.className} leading-[120%] text-[#2A354F]`}
+          >
+            {price} CHF
+          </span>
+
+          {/* Кнопка "Add to Cart" / "Added" */}
+          <button
+            onClick={handleCartAction}
+            // Tailwind класи для стилю
+            className={`flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold whitespace-nowrap transition-all duration-200 ease-in-out ${
+              isInCart
+                ? "border border-[#00AC8E] bg-[#E1FFD5] text-[#2A354F] hover:bg-[#D5F5C5]" // Стиль "Added" (зелений)
+                : "border border-[#687083] bg-[#F7F7F7] text-[#2A354F] hover:bg-[#EDEDED]" // Стиль "Add to Cart" (сірий)
+            } `}
+          >
+            {isInCart ? (
+              <>
+                Added <CheckMarkIcon />
+              </>
+            ) : (
+              "Add to Cart"
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Tag Container */}
