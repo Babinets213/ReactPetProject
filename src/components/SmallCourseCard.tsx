@@ -12,6 +12,7 @@ type SmallCourseCardProps = {
   onHandleAddCard: (course: CartItem) => void;
   onHandleDeleteCard: (courseId: string) => void;
   cart: CartItem[];
+  className?: string;
 };
 
 export default function SmallCourseCard({
@@ -19,6 +20,7 @@ export default function SmallCourseCard({
   onHandleAddCard,
   onHandleDeleteCard,
   cart,
+  className,
 }: SmallCourseCardProps) {
   const [isHovering, setIsHovering] = useState(false);
   const locale = useLocale();
@@ -29,24 +31,24 @@ export default function SmallCourseCard({
     <div
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className={`flex justify-between rounded-sm border ${isInCart ? "border-2 border-[#E1FFD5]" : "border-[#F1F1F3]"} px-10 py-5`}
-      key={course.id}
+      className={`flex flex-col gap-2 rounded-sm border px-6 py-5 transition-colors ${
+        isInCart ? "border-2 border-[#E1FFD5]" : "border-[#F1F1F3]"
+      } ${className ?? ""}`}
     >
-      <div className="flex flex-col">
+      {/* Title + Button в один ряд */}
+      <div className="flex items-center justify-between">
         <span
-          className={`${inter600.className} ${isHovering ? "text-[#00AC8E]" : "text-[#2A354F]"} text-lg leading-[120%]`}
+          className={`${inter600.className} ${
+            isHovering ? "text-[#00AC8E]" : "text-[#2A354F]"
+          } text-lg leading-snug`}
         >
           {course.title[locale] || Object.values(course.title)[0] || ""}
         </span>
-        <span
-          className={`${inter400.className} text-sm leading-[120%] text-[#2A354F]`}
-        >
-          {course.price} CHF
-        </span>
-      </div>
-      <div>
+
         <Button
-          className={`${isHovering ? "bg-[#ECFDE6]! font-semibold" : ""} ${isInCart && "bg-[#ECFDE6]!"} whitespace-nowrap`}
+          className={`mt-[2px] ${isHovering ? "bg-[#ECFDE6]! font-semibold" : ""} ${
+            isInCart ? "bg-[#ECFDE6]!" : ""
+          } self-center whitespace-nowrap`}
           btnType="outline"
           size="large"
           content="icon"
@@ -58,6 +60,13 @@ export default function SmallCourseCard({
           }
         />
       </div>
+
+      {/* Price */}
+      <span
+        className={`${inter400.className} text-sm leading-snug text-[#2A354F]`}
+      >
+        {course.price} CHF
+      </span>
     </div>
   );
 }

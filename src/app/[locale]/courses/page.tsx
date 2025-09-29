@@ -9,7 +9,7 @@ import { inter400, inter600, inter700 } from "@/styles/fonts";
 import { useCart } from "@/context/CartContext";
 import { ApiCourse, ApiCourseModule } from "@/types/courses";
 // import SmallCourseCards from "@/components/SmallCourseCards";
-// import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-inl";
 import CoursesGradient from "@/components/icons/CoursesGradient";
 import Button from "@/components/ui/Button";
 import { useRouter } from "@/i18n/navigation";

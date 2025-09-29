@@ -26,6 +26,8 @@ export default function SmallCourseCards({
       >
         {title}
       </h3>
+
+      {/* Сітка для карток */}
       <div className="grid grid-cols-3 gap-x-[30px] gap-y-6">
         {courseModules.map((courseModule) => (
           <SmallCourseCard
@@ -34,6 +36,8 @@ export default function SmallCourseCards({
             cart={cart}
             onHandleAddCard={onHandleAddCard}
             onHandleDeleteCard={onHandleDeleteCard}
+            // передаємо стилі картки (фон/відступ/округлення)
+            className="flex h-full flex-col justify-between rounded-md bg-white p-4 shadow-sm"
           />
         ))}
       </div>

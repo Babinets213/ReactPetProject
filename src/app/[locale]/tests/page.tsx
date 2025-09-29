@@ -6,9 +6,9 @@ import Footer from "@/components/Footer";
 import Header from "@/components/HeaderBlack";
 
 // SVG-іконка галочки
-const CheckIcon = ({ className = "h-4 w-4 text-white" }) => (
+const CheckIcon = ({ className = "h-5 w-5 text-white" }) => (
   <svg
-    className={className}
+    className={`ml-auto ${className}`}
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -25,36 +25,17 @@ const CheckIcon = ({ className = "h-4 w-4 text-white" }) => (
 
 export default function CourseTest() {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const lessons = [
     { title: "Der Hypothekarmarkt", duration: "15 min", showDownload: true },
-    { title: "Verkehrswertschätzung", duration: "5 min", showDownload: false },
-    {
-      title: "Regulatorische Vorgaben",
-      duration: "2 min",
-      showDownload: false,
-    },
-    { title: "Tragbarkeitberechnung", duration: "11 min", showDownload: false },
-    {
-      title: "Refinanzierungsgeschäft",
-      duration: "9 min",
-      showDownload: false,
-    },
-    {
-      title: "Neufinanzierungsgeschäft",
-      duration: "11 min",
-      showDownload: false,
-    },
-    {
-      title: "Unterlagen für Hypothekfinanzierung",
-      duration: "7 min",
-      showDownload: false,
-    },
-    {
-      title: "Plattform «Chamäleon - H»",
-      duration: "3 min",
-      showDownload: false,
-    },
+    { title: "Verkehrswertschätzung", duration: "5 min" },
+    { title: "Regulatorische Vorgaben", duration: "2 min" },
+    { title: "Tragbarkeitberechnung", duration: "11 min" },
+    { title: "Refinanzierungsgeschäft", duration: "9 min" },
+    { title: "Neufinanzierungsgeschäft", duration: "11 min" },
+    { title: "Unterlagen für Hypothekfinanzierung", duration: "7 min" },
+    { title: "Plattform «Chamäleon - H»", duration: "3 min" },
   ];
 
   const answers = [
@@ -70,8 +51,6 @@ export default function CourseTest() {
 
   const listItemClasses =
     "flex items-center gap-4 py-2 px-1 hover:bg-gray-50 rounded-md transition-colors";
-  const iconWrapperClasses =
-    "flex h-7 w-7 items-center justify-center rounded-md bg-green-500 text-white";
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
@@ -80,53 +59,70 @@ export default function CourseTest() {
 
       {/* Main */}
       <main className="mx-auto mt-24 w-full max-w-7xl flex-1 px-4 py-8 lg:px-8">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <div className="grid grid-cols-[auto_1fr] gap-6">
           {/* Sidebar */}
-          <aside className="space-y-3 rounded-xl bg-white p-4 shadow lg:col-span-3">
-            <h2 className="flex items-center gap-3 border-b border-gray-100 pb-2 font-semibold text-gray-900">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gray-800 text-white">
+          <aside
+            className={`rounded-lg bg-white shadow transition-all duration-300 ${
+              isCollapsed ? "w-[70px] p-2" : "w-[400px] p-4"
+            }`}
+          >
+            <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+              {!isCollapsed && (
+                <h2 className="mb- flex items-center gap-3 pl-[15px] font-semibold text-gray-900">
+                  <Image
+                    src="/book_icon.png"
+                    alt="Book icon"
+                    width={44}
+                    height={44}
+                    className="ml-[-8px]" // 🔑 посунути іконку вліво
+                  />
+                  Assessment Block
+                </h2>
+              )}
+
+              {/* Кнопка згортання */}
+              <button
+                className="ml-auto cursor-pointer text-gray-400"
+                onClick={() => setIsCollapsed(!isCollapsed)}
+              >
                 <Image
-                  src="/book_icon.png"
-                  alt="Book icon"
-                  width={44}
-                  height={44}
-                />
-              </div>
-              Assessment Block
-              <span className="ml-auto cursor-pointer text-gray-400">
-                <Image
-                  src="/arrow_left.png"
+                  src={isCollapsed ? "/arrow_right.png" : "/arrow_left.png"}
                   alt="Collapse icon"
                   width={44}
                   height={44}
                 />
-              </span>
-            </h2>
+              </button>
+            </div>
 
-            <ul className="space-y-1">
+            {/* Lessons */}
+            <ul className="mt-3 space-y-1">
               {lessons.map((lesson, idx) => (
                 <li key={idx} className={listItemClasses}>
-                  <div className={iconWrapperClasses}>
-                    <CheckIcon />
-                  </div>
+                  <Image
+                    src="/check1.png"
+                    alt="Completed icon"
+                    width={44}
+                    height={44}
+                  />
 
-                  <div className="flex flex-grow flex-col">
-                    <span className="text-sm text-gray-800">
-                      {lesson.title}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      {lesson.duration}
-                    </span>
-                  </div>
-
-                  {lesson.showDownload && (
-                    <Image
-                      src="/icn_download.png"
-                      alt="Download icon"
-                      width={44}
-                      height={44}
-                      className="ml-auto"
-                    />
+                  {!isCollapsed && (
+                    <div className="flex flex-grow flex-col">
+                      <div className="flex items-center gap-2 text-sm text-gray-800">
+                        <span>{lesson.title}</span>
+                        {lesson.showDownload && (
+                          <Image
+                            src="/icn_download.png"
+                            alt="Download icon"
+                            width={44}
+                            height={44}
+                            className="inline-block"
+                          />
+                        )}
+                      </div>
+                      <span className="text-xs text-gray-500">
+                        {lesson.duration}
+                      </span>
+                    </div>
                   )}
                 </li>
               ))}
@@ -139,7 +135,9 @@ export default function CourseTest() {
                   width={44}
                   height={44}
                 />
-                <span className="flex-grow text-sm text-gray-800">Test</span>
+                {!isCollapsed && (
+                  <span className="flex-grow text-sm text-gray-800">Test</span>
+                )}
               </li>
 
               {/* Certificate Button */}
@@ -150,18 +148,20 @@ export default function CourseTest() {
                   width={44}
                   height={44}
                 />
-                <span className="flex-grow text-sm text-gray-800">
-                  Certificate
-                </span>
+                {!isCollapsed && (
+                  <span className="flex-grow text-sm text-gray-800">
+                    Certificate
+                  </span>
+                )}
               </li>
             </ul>
           </aside>
 
           {/* Question Section */}
-          <section className="relative max-h-[calc(100vh-250px)] overflow-hidden rounded-xl bg-white shadow lg:col-span-9">
+          <section className="relative max-h-[calc(100vh-250px)] overflow-hidden rounded-lg bg-white shadow">
             <div className="grid h-full grid-cols-1 lg:grid-cols-3">
               <div className="p-6 lg:col-span-2">
-                <h1 className="mb-2 text-xl font-semibold text-gray-900">
+                <h1 className="mb-[45px] text-xl font-semibold text-gray-900">
                   Hypotheken und Immobilienmarkt Schweiz
                 </h1>
                 <p className="mb-2 text-sm text-gray-500">1/31</p>
@@ -181,13 +181,14 @@ export default function CourseTest() {
                       className={`flex w-full items-center rounded-md border px-4 py-3 text-left text-sm font-medium transition-colors ${
                         selectedAnswer === answer
                           ? "border-green-600 bg-green-600 text-white"
-                          : "border-gray-300 bg-white text-gray-700 hover:bg-gray-100"
+                          : "border-gray-300 bg-gray-50 text-gray-900"
                       }`}
                     >
-                      <span className="mr-3 font-bold">
+                      <span className="mr-3 font-normal">
                         {String.fromCharCode(65 + idx)} |
                       </span>
                       {answer}
+                      {selectedAnswer === answer && <CheckIcon />}
                     </button>
                   ))}
                 </div>
