@@ -1,17 +1,26 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/HeaderBlack";
 import React, { useState } from "react";
 import Image from "next/image";
+
+import Footer from "@/components/Footer";
+import Header from "@/components/HeaderBlack";
+
+// Фірмові кольори
+const BRAND_GREEN = "#00AC8E";
+const BRAND_DARK_BLUE = "#333D55"; // Темно-синій для активних кнопок та тексту
+const GREY_BG_BORDER = "#F4F5F6"; // З вашого стилю: var(--Grey-BG, #F4F5F6)
 
 export default function LearningPage() {
   const [collapsed, setCollapsed] = useState(false);
 
+  // ЗМІНА ТУТ: Зменшено py-6 на py-2, щоб зменшити вертикальні відступи між елементами.
   const listItemClasses =
-    "flex items-center gap-4 py-2 px-1 hover:bg-gray-50 rounded-md transition-colors";
+    "flex items-center gap-3 py-2 px-1 rounded-md transition-colors hover:bg-[rgba(0,172,142,0.1)] cursor-pointer";
+
+  // ЗМІНА ТУТ: h-11 w-11 відповідає розміру 44px
   const iconWrapperClasses =
-    "flex h-11 w-11 items-center justify-center rounded-md text-white";
+    "flex h-11 w-11 items-center justify-center rounded-md text-white flex-shrink-0";
 
   const lessons = [
     {
@@ -70,33 +79,40 @@ export default function LearningPage() {
       {/* Header */}
       <Header />
 
-      {/* Main Content */}
-      <main className="flex flex-1 gap-6 bg-gray-100 p-6 pt-[100px]">
+      {/* Main Content: Збільшений верхній (pt-[120px]) та нижній відступ (pb-12) */}
+      <main className="flex flex-1 gap-6 bg-gray-100 px-6 pt-[120px] pb-12">
         {/* Sidebar */}
         <aside
-          className={`rounded-xl bg-white p-4 shadow transition-all duration-300 ${
-            collapsed ? "w-[80px]" : "w-[400px]"
+          className={`bg-white transition-all duration-300 ${
+            collapsed ? "w-[80px] p-2" : "w-[400px] p-4" // Зменшено padding при згортанні
           }`}
+          style={{
+            borderRadius: "4px",
+            boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.12)",
+            height: "602px", // ФІКСОВАНА ВИСОТА
+            overflowY: "auto", // Додано прокрутку
+            flexShrink: 0, // Запобігає стисненню
+          }}
         >
-          {/* Header inside Sidebar */}
+          {/* Header Section */}
           <div className="flex items-center justify-between border-b border-gray-100 pb-2">
             {!collapsed && (
-              <h2 className="mb- flex items-center gap-3 pl-[15px] font-semibold text-gray-900">
+              // Змінив ml-[-8px] на ml-[-4px] для кращого центрування і додав ms-[-4px]
+              <h2 className="flex items-center gap-2 font-semibold text-gray-900">
                 <Image
                   src="/book_icon.png"
                   alt="Book icon"
                   width={44}
                   height={44}
-                  className="ml-[-8px]" // 🔑 посунути іконку вліво
+                  className="ml-[5px] flex-shrink-0"
                 />
-                Assessment Block
+                <span className="-ml-[4px]">Assessment Block</span>
               </h2>
             )}
-
-            {/* Collapse button */}
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="ml-auto cursor-pointer text-gray-400"
+              // Змінив ml-auto на ml-0 коли не collapsed, і додав mr-[-4px]
+              className={`flex-shrink-0 cursor-pointer text-gray-400 ${!collapsed ? "ml-auto" : "ml-0"}`}
             >
               <Image
                 src={collapsed ? "/arrow_right.png" : "/arrow_left.png"}
@@ -107,25 +123,27 @@ export default function LearningPage() {
             </button>
           </div>
 
-          {/* Lessons */}
+          {/* Lessons List */}
           <nav className="mt-3 space-y-1">
             {lessons.map((lesson, idx) => (
               <li key={idx} className={listItemClasses}>
                 {lesson.completed ? (
+                  // Зображення для completed
                   <Image
                     src="/check1.png"
                     alt="Completed icon"
-                    width={44}
+                    width={44} // Фіксований розмір 44px
                     height={44}
+                    className="flex-shrink-0"
                   />
                 ) : (
+                  // Номер уроку (використовує iconWrapperClasses)
                   <div className={`${iconWrapperClasses} bg-gray-100`}>
                     <span className="text-base font-semibold text-gray-900">
                       {idx + 1}
                     </span>
                   </div>
                 )}
-
                 {!collapsed && (
                   <div className="flex flex-grow flex-col">
                     <div className="flex items-center gap-2">
@@ -136,9 +154,9 @@ export default function LearningPage() {
                         <Image
                           src="/icn_download.png"
                           alt="Download icon"
-                          width={44}
-                          height={44}
-                          className="mt-[2px] inline-block"
+                          width={20}
+                          height={20}
+                          className="mt-[2px] inline-block flex-shrink-0"
                         />
                       )}
                     </div>
@@ -157,6 +175,7 @@ export default function LearningPage() {
                 alt="Test icon"
                 width={44}
                 height={44}
+                className="flex-shrink-0"
               />
               {!collapsed && (
                 <span className="flex-grow text-sm text-gray-800">Test</span>
@@ -170,6 +189,7 @@ export default function LearningPage() {
                 alt="Certificate icon"
                 width={44}
                 height={44}
+                className="flex-shrink-0"
               />
               {!collapsed && (
                 <span className="flex-grow text-sm text-gray-800">
@@ -180,28 +200,107 @@ export default function LearningPage() {
           </nav>
         </aside>
 
-        {/* Lesson Content */}
-        <section className="flex flex-1 flex-col justify-between overflow-hidden rounded-xl shadow">
-          <div className="relative">
+        {/* Lesson Content: БЕЗ ТІНІ, ПРОЗОРИЙ ФУТЕР, ФІКСОВАНА ВИСОТА 602px */}
+        <section
+          className="flex flex-1 flex-col justify-between overflow-hidden"
+          style={{
+            maxWidth: "1070.222px",
+            height: "602px", // ФІКСОВАНА ВИСОТА
+            aspectRatio: "1070.22 / 602.00",
+            flexShrink: 0,
+            borderRadius: "4px",
+            border: `1px solid ${GREY_BG_BORDER}`, // Залишаємо рамку
+          }}
+        >
+          {/* Контейнер для контенту/відео, який має білий фон */}
+          <div className="relative flex-grow bg-white">
             <Image
               src="/coursepage_photo.png"
               alt="Lesson"
-              width={1200}
-              height={800}
-              className="w-full rounded-t-xl object-cover"
+              layout="fill"
+              objectFit="cover"
+              className="w-full rounded-t-sm"
             />
           </div>
 
-          <div className="flex items-center justify-between rounded-b-xl border-t bg-white px-6 py-4 text-sm">
-            <span className="text-gray-600">
-              ← Previous: Verkehrswertschätzung
-            </span>
-            <div className="flex gap-2">
-              <button className="rounded border px-3 py-1">1</button>
-              <span>…</span>
-              <button className="rounded border px-3 py-1">7</button>
+          {/* Pagination/Navigation Footer: Прозорий фон */}
+          <div className="flex items-center justify-between border-t border-gray-300 bg-transparent px-6 py-4 text-sm">
+            {/* Previous button */}
+            <button className="flex items-center text-gray-900">
+              <svg
+                className="mr-1 h-4 w-4"
+                style={{ color: BRAND_DARK_BLUE }}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15 19l-7-7 7-7"
+                ></path>
+              </svg>
+              Previous:{" "}
+              <span style={{ color: BRAND_GREEN }} className="ml-1 font-medium">
+                Verkehrswertschätzung
+              </span>
+            </button>
+
+            {/* Pagination numbers */}
+            <div className="flex items-center gap-2">
+              {/* "Prev" - Темний текст */}
+              <span className="px-1 font-medium text-gray-900">Prev</span>
+
+              {/* Active Page (1) - Dark Blue Background, WHITE Text */}
+              <button
+                className="px-4 py-2 font-medium text-white"
+                style={{
+                  backgroundColor: BRAND_DARK_BLUE,
+                  borderRadius: "12px",
+                }}
+              >
+                1
+              </button>
+
+              {/* Dots */}
+              <span className="px-2 text-gray-600">…</span>
+
+              {/* Last Page (7) - White Background, Dark Text, Light Border */}
+              <button
+                className="border border-gray-200 bg-white px-4 py-2 font-medium text-gray-900"
+                style={{
+                  borderRadius: "12px",
+                }}
+              >
+                7
+              </button>
+
+              {/* "Next" - Темний текст */}
+              <span className="px-1 font-medium text-gray-900">Next</span>
             </div>
-            <span className="text-blue-600">Next: Verkehrswertschätzung →</span>
+
+            {/* Next button */}
+            <button className="flex items-center text-gray-900">
+              Next:{" "}
+              <span style={{ color: BRAND_GREEN }} className="mx-1 font-medium">
+                Verkehrswertschätzung
+              </span>
+              <svg
+                className="ml-1 h-4 w-4"
+                style={{ color: BRAND_DARK_BLUE }}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+            </button>
           </div>
         </section>
       </main>
