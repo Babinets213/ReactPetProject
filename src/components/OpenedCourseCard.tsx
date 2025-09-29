@@ -47,6 +47,7 @@ export default function OpenedCourseCard({
 
   const [isHovering, setIsHovering] = useState(false);
 
+  // Перевірка, чи курс вже у кошику
   const isInCart = cart.some((item) => item.id === course.id);
 
   const durationText =
