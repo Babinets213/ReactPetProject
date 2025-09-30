@@ -79,25 +79,24 @@ export default function LearningPage() {
       {/* Header */}
       <Header />
 
-      {/* Main Content: Збільшений верхній (pt-[120px]) та нижній відступ (pb-12) */}
+      {/* Main Content */}
       <main className="flex flex-1 gap-6 bg-gray-100 px-6 pt-[120px] pb-12">
         {/* Sidebar */}
         <aside
           className={`bg-white transition-all duration-300 ${
-            collapsed ? "w-[80px] p-2" : "w-[400px] p-4" // Зменшено padding при згортанні
+            collapsed ? "w-[80px] p-2" : "w-[400px] p-4"
           }`}
           style={{
             borderRadius: "4px",
             boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.12)",
-            height: "602px", // ФІКСОВАНА ВИСОТА
-            overflowY: "auto", // Додано прокрутку
-            flexShrink: 0, // Запобігає стисненню
+            height: "602px",
+            overflowY: "auto",
+            flexShrink: 0,
           }}
         >
           {/* Header Section */}
           <div className="flex items-center justify-between border-b border-gray-100 pb-2">
             {!collapsed && (
-              // Змінив ml-[-8px] на ml-[-4px] для кращого центрування і додав ms-[-4px]
               <h2 className="flex items-center gap-2 font-semibold text-gray-900">
                 <Image
                   src="/book_icon.png"
@@ -111,8 +110,9 @@ export default function LearningPage() {
             )}
             <button
               onClick={() => setCollapsed(!collapsed)}
-              // Змінив ml-auto на ml-0 коли не collapsed, і додав mr-[-4px]
-              className={`flex-shrink-0 cursor-pointer text-gray-400 ${!collapsed ? "ml-auto" : "ml-0"}`}
+              className={`flex-shrink-0 cursor-pointer text-gray-400 ${
+                !collapsed ? "ml-auto" : "ml-0"
+              }`}
             >
               <Image
                 src={collapsed ? "/arrow_right.png" : "/arrow_left.png"}
@@ -128,16 +128,14 @@ export default function LearningPage() {
             {lessons.map((lesson, idx) => (
               <li key={idx} className={listItemClasses}>
                 {lesson.completed ? (
-                  // Зображення для completed
                   <Image
                     src="/check1.png"
                     alt="Completed icon"
-                    width={44} // Фіксований розмір 44px
+                    width={44}
                     height={44}
                     className="flex-shrink-0"
                   />
                 ) : (
-                  // Номер уроку (використовує iconWrapperClasses)
                   <div className={`${iconWrapperClasses} bg-gray-100`}>
                     <span className="text-base font-semibold text-gray-900">
                       {idx + 1}
@@ -154,13 +152,14 @@ export default function LearningPage() {
                         <Image
                           src="/icn_download.png"
                           alt="Download icon"
-                          width={20}
-                          height={20}
+                          width={44}
+                          height={44}
                           className="mt-[2px] inline-block flex-shrink-0"
                         />
                       )}
                     </div>
-                    <span className="text-xs text-gray-500">
+                    {/* Фікс шрифта хвилин */}
+                    <span className="text-[10px] text-gray-500">
                       {lesson.duration}
                     </span>
                   </div>
@@ -200,19 +199,18 @@ export default function LearningPage() {
           </nav>
         </aside>
 
-        {/* Lesson Content: БЕЗ ТІНІ, ПРОЗОРИЙ ФУТЕР, ФІКСОВАНА ВИСОТА 602px */}
+        {/* Lesson Content */}
         <section
           className="flex flex-1 flex-col justify-between overflow-hidden"
           style={{
             maxWidth: "1070.222px",
-            height: "602px", // ФІКСОВАНА ВИСОТА
+            height: "602px",
             aspectRatio: "1070.22 / 602.00",
             flexShrink: 0,
             borderRadius: "4px",
-            border: `1px solid ${GREY_BG_BORDER}`, // Залишаємо рамку
+            border: `1px solid ${GREY_BG_BORDER}`,
           }}
         >
-          {/* Контейнер для контенту/відео, який має білий фон */}
           <div className="relative flex-grow bg-white">
             <Image
               src="/coursepage_photo.png"
@@ -223,9 +221,8 @@ export default function LearningPage() {
             />
           </div>
 
-          {/* Pagination/Navigation Footer: Прозорий фон */}
+          {/* Pagination */}
           <div className="flex items-center justify-between border-t border-gray-300 bg-transparent px-6 py-4 text-sm">
-            {/* Previous button */}
             <button className="flex items-center text-gray-900">
               <svg
                 className="mr-1 h-4 w-4"
@@ -247,12 +244,9 @@ export default function LearningPage() {
               </span>
             </button>
 
-            {/* Pagination numbers */}
             <div className="flex items-center gap-2">
-              {/* "Prev" - Темний текст */}
               <span className="px-1 font-medium text-gray-900">Prev</span>
 
-              {/* Active Page (1) - Dark Blue Background, WHITE Text */}
               <button
                 className="px-4 py-2 font-medium text-white"
                 style={{
@@ -263,10 +257,8 @@ export default function LearningPage() {
                 1
               </button>
 
-              {/* Dots */}
               <span className="px-2 text-gray-600">…</span>
 
-              {/* Last Page (7) - White Background, Dark Text, Light Border */}
               <button
                 className="border border-gray-200 bg-white px-4 py-2 font-medium text-gray-900"
                 style={{
@@ -276,11 +268,9 @@ export default function LearningPage() {
                 7
               </button>
 
-              {/* "Next" - Темний текст */}
               <span className="px-1 font-medium text-gray-900">Next</span>
             </div>
 
-            {/* Next button */}
             <button className="flex items-center text-gray-900">
               Next:{" "}
               <span style={{ color: BRAND_GREEN }} className="mx-1 font-medium">
