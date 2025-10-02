@@ -14,11 +14,9 @@ const GREY_BG_BORDER = "#F4F5F6"; // З вашого стилю: var(--Grey-BG, 
 export default function LearningPage() {
   const [collapsed, setCollapsed] = useState(false);
 
-  // ЗМІНА ТУТ: Зменшено py-6 на py-2, щоб зменшити вертикальні відступи між елементами.
   const listItemClasses =
     "flex items-center gap-3 py-2 px-1 rounded-md transition-colors hover:bg-[rgba(0,172,142,0.1)] cursor-pointer";
 
-  // ЗМІНА ТУТ: h-11 w-11 відповідає розміру 44px
   const iconWrapperClasses =
     "flex h-11 w-11 items-center justify-center rounded-md text-white flex-shrink-0";
 
@@ -158,7 +156,7 @@ export default function LearningPage() {
                         />
                       )}
                     </div>
-                    {/* Фікс шрифта хвилин */}
+                    {/* Фіксований розмір шрифту хвилин */}
                     <span className="text-[10px] text-gray-500">
                       {lesson.duration}
                     </span>
@@ -246,7 +244,6 @@ export default function LearningPage() {
 
             <div className="flex items-center gap-2">
               <span className="px-1 font-medium text-gray-900">Prev</span>
-
               <button
                 className="px-4 py-2 font-medium text-white"
                 style={{
@@ -256,18 +253,13 @@ export default function LearningPage() {
               >
                 1
               </button>
-
               <span className="px-2 text-gray-600">…</span>
-
               <button
                 className="border border-gray-200 bg-white px-4 py-2 font-medium text-gray-900"
-                style={{
-                  borderRadius: "12px",
-                }}
+                style={{ borderRadius: "12px" }}
               >
                 7
               </button>
-
               <span className="px-1 font-medium text-gray-900">Next</span>
             </div>
 
